@@ -154,6 +154,11 @@ jobs:
                   '/api',
                   updated,
               )
+              updated = re.sub(
+                  r'(?<!\d)(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})(?!\d)',
+                  'PRIVATE_HOST',
+                  updated,
+              )
 
               if updated != content:
                   path.write_text(updated, encoding="utf-8")
@@ -252,6 +257,17 @@ jobs:
                   if target.is_file():
                       target.unlink()
               path.rename(target)
+
+          # Remove empty source directories left after merging renamed directory trees.
+          for directory in sorted(
+              [p for p in root.rglob("*") if p.is_dir() and ".git" not in p.parts],
+              key=lambda p: len(p.parts),
+              reverse=True,
+          ):
+              try:
+                  directory.rmdir()
+              except OSError:
+                  pass
 
           # Remove one-time workflow from the cleaned tree.
           if workflow.exists():

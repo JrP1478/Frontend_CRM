@@ -314,7 +314,7 @@ jobs:
         run: |
           npm ci
           npm run typecheck
-          npm run build
+          VITE_API_BASE_URL=http://localhost:7143 VITE_ANALYTICS_API_BASE_URL=http://localhost:7143 npm run build
 
       - name: Commit sanitized frontend
         shell: bash

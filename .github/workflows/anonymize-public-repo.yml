@@ -164,43 +164,43 @@ jobs:
                   env_path.unlink()
 
           # Replace the generic template README with a portfolio-safe project description.
-          Path("README.md").write_text(
-              """# Frontend.CRM
-
-> **Repositorio anonimizado para portafolio.** Los nombres de empresa, clientes, logos, servidores y datos específicos del entorno original fueron sustituidos por valores genéricos.
-
-Frontend de una plataforma CRM desarrollado con React, TypeScript y Vite.
-
-## Stack
-
-- React
-- TypeScript
-- Vite
-- React Router
-- ESLint
-- Tests automatizados
-
-## Configuración local
-
-Copie `.env.example` y configure únicamente valores de su propio entorno. Los archivos de entorno reales no forman parte del repositorio.
-
-```bash
-npm ci
-npm run dev
-```
-
-## Validación
-
-```bash
-npm run typecheck
-npm run test
-npm run build
-```
-
-Los nombres de clientes, marcas y configuración de infraestructura utilizados en el proyecto original han sido anonimizados.
-""",
-              encoding="utf-8",
-          )
+          readme_lines = [
+              "# Frontend.CRM",
+              "",
+              "> **Repositorio anonimizado para portafolio.** Los nombres de empresa, clientes, logos, servidores y datos específicos del entorno original fueron sustituidos por valores genéricos.",
+              "",
+              "Frontend de una plataforma CRM desarrollado con React, TypeScript y Vite.",
+              "",
+              "## Stack",
+              "",
+              "- React",
+              "- TypeScript",
+              "- Vite",
+              "- React Router",
+              "- ESLint",
+              "- Tests automatizados",
+              "",
+              "## Configuración local",
+              "",
+              "Copie `.env.example` y configure únicamente valores de su propio entorno. Los archivos de entorno reales no forman parte del repositorio.",
+              "",
+              "```bash",
+              "npm ci",
+              "npm run dev",
+              "```",
+              "",
+              "## Validación",
+              "",
+              "```bash",
+              "npm run typecheck",
+              "npm run test",
+              "npm run build",
+              "```",
+              "",
+              "Los nombres de clientes, marcas y configuración de infraestructura utilizados en el proyecto original han sido anonimizados.",
+              "",
+          ]
+          Path("README.md").write_text("\n".join(readme_lines), encoding="utf-8")
 
           # Remove branded binary assets after redirecting references.
           for asset in branded_assets:
@@ -211,15 +211,7 @@ Los nombres de clientes, marcas y configuración de infraestructura utilizados e
           # Prevent environment/build/local artifacts from being committed again.
           gitignore = Path(".gitignore")
           content = gitignore.read_text(encoding="utf-8") if gitignore.exists() else ""
-          additions = """
-# Local/environment files
-.env*
-!.env.example
-
-# Generated analysis/build metadata
-.sonarqube/
-coverage/
-"""
+          additions = "\n# Local/environment files\n.env*\n!.env.example\n\n# Generated analysis/build metadata\n.sonarqube/\ncoverage/\n"
           if "# Local/environment files" not in content:
               content = content.rstrip() + "\n" + additions
               gitignore.write_text(content, encoding="utf-8")

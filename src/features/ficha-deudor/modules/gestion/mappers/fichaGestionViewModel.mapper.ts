@@ -1,0 +1,207 @@
+import type { FichaGestionCatalogos } from '../types/fichaGestionCatalogos.types';
+import type {
+  FichaGestionTelefonoSearchProps,
+  FichaGestionViewModel,
+} from '../types/fichaGestionViewModel.types';
+import type {
+  FichaGestionValidationErrors,
+  GestionFeedback,
+  GestionFormClienteA,
+  SetGestionField,
+  SetGestionFields,
+} from '../types/fichaGestionForm.types';
+
+interface BuildFichaGestionViewModelPropsParams {
+  idCliente: string;
+
+  form: GestionFormClienteA;
+  setField: SetGestionField;
+  setFields: SetGestionFields;
+
+  handleNP0Change: (
+    value: string
+  ) => void;
+
+  handleNP1Change: (
+    value: string
+  ) => void;
+
+  telefonoSearch: FichaGestionTelefonoSearchProps;
+
+  catalogos: FichaGestionCatalogos;
+  usuarioActual: string;
+
+  handleAgendar: () => void | Promise<void>;
+
+  agendaValidationErrors:
+    FichaGestionValidationErrors;
+
+  agendaFeedback:
+    GestionFeedback | null;
+
+  isScheduling: boolean;
+
+  handleCloseAgendaFeedback:
+    () => void;
+
+  validationErrors:
+    FichaGestionValidationErrors;
+
+  feedback:
+    GestionFeedback | null;
+
+  handleCloseFeedback: () => void;
+
+  mostrarCamposClienteA: boolean;
+
+  handleGuardarGestion:
+    () => void | Promise<void>;
+
+  isSaving: boolean;
+}
+
+export const buildFichaGestionViewModelProps = ({
+  idCliente,
+
+  form,
+  setField,
+  setFields,
+
+  handleNP0Change,
+  handleNP1Change,
+  telefonoSearch,
+
+  catalogos,
+  usuarioActual,
+
+  handleAgendar,
+  agendaValidationErrors,
+  agendaFeedback,
+  isScheduling,
+  handleCloseAgendaFeedback,
+
+  validationErrors,
+  feedback,
+  handleCloseFeedback,
+
+  mostrarCamposClienteA,
+  handleGuardarGestion,
+  isSaving,
+}: BuildFichaGestionViewModelPropsParams): FichaGestionViewModel => {
+  const {
+    estadosOptions,
+    isLoadingEstados,
+    errorEstados,
+
+    tiposOptions,
+    isLoadingTipos,
+    errorTipos,
+
+    np0Options,
+    isLoadingNP0,
+    errorNP0,
+
+    np1Options,
+    isLoadingNP1,
+    errorNP1,
+
+    np2Options,
+    isLoadingNP2,
+    errorNP2,
+
+    estadoGestionClienteAOptions,
+    isLoadingEstadoGestionClienteA,
+    errorEstadoGestionClienteA,
+
+    motivoNoPagoOptions,
+    isLoadingMotivoNoPago,
+    errorMotivoNoPago,
+  } = catalogos;
+
+  return {
+    datosPrincipalesProps: {
+      idCliente,
+
+      form,
+      setField,
+
+      handleNP0Change,
+      handleNP1Change,
+      telefonoSearch,
+
+      catalogos: {
+        estados: {
+          options: estadosOptions,
+          isLoading: isLoadingEstados,
+          error: errorEstados,
+        },
+
+        tipos: {
+          options: tiposOptions,
+          isLoading: isLoadingTipos,
+          error: errorTipos,
+        },
+
+        np0: {
+          options: np0Options,
+          isLoading: isLoadingNP0,
+          error: errorNP0,
+        },
+
+        np1: {
+          options: np1Options,
+          isLoading: isLoadingNP1,
+          error: errorNP1,
+        },
+
+        np2: {
+          options: np2Options,
+          isLoading: isLoadingNP2,
+          error: errorNP2,
+        },
+      },
+    },
+
+    accionesTomarProps: {
+      form,
+      setField,
+      setFields,
+      usuarioActual,
+
+      handleAgendar,
+      agendaValidationErrors,
+      agendaFeedback,
+
+      onCloseAgendaFeedback:
+        handleCloseAgendaFeedback,
+
+      isScheduling,
+    },
+
+    resultadosLlamadaProps: {
+      form,
+      setField,
+
+      validationErrors,
+      feedback,
+
+      onCloseFeedback:
+        handleCloseFeedback,
+
+      mostrarCamposClienteA,
+
+      estadoGestionClienteAOptions,
+      isLoadingEstadoGestionClienteA,
+      errorEstadoGestionClienteA,
+
+      motivoNoPagoOptions,
+      isLoadingMotivoNoPago,
+      errorMotivoNoPago,
+
+      handleGuardar:
+        handleGuardarGestion,
+
+      isSaving,
+    },
+  };
+};

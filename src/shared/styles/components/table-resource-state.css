@@ -1,0 +1,14 @@
+/* =========================================================
+   ESTADOS DE RECURSOS PARA TABLAS
+   ========================================================= */
+
+.table-resource-error {
+  padding: 20px 24px 24px;
+}
+
+.table-resource-error__actions {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 10px;
+}

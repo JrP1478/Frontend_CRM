@@ -1,0 +1,182 @@
+import React from 'react';
+
+import {
+  PopupContextBoundary,
+  type FichaDeudorPopupContext,
+} from '@app/popups';
+import {
+  ActionButton,
+  OperationFeedbackMessage,
+} from '@shared/components/ui';
+import { useEmailsByDeudor } from '../hooks/useEmailsByDeudor';
+import { useEmailDeudorColumns } from '../hooks/useEmailDeudorColumns';
+import { useEmailDeudorModalActions } from '../hooks/useEmailDeudorModalActions';
+import ModalRegistrarEmail from './ModalRegistrarEmail';
+import ModalEditarEmail from './ModalEditarEmail';
+import {
+  EMAIL_DEUDOR_POPUP_PAGE_SIZE_OPTIONS,
+  EMAIL_DEUDOR_POPUP_TEXTS,
+} from '../constants/emailDeudorPopup.constants';
+import { buildEmailDeudorInfo } from '../utils/emailDeudorPopup.utils';
+import {
+  PopupErrorState,
+  PopupLoadingState,
+  PopupPageLayout,
+  PopupPaginatedTableSection,
+} from '../../../shared/components/popups/common';
+import { closePopupWindow } from '../../../shared/utils/popupWindow.utils';
+
+interface EmailDeudorPopupContentProps {
+  context: FichaDeudorPopupContext<'email-deudor'>;
+}
+
+const EmailDeudorPopupContent: React.FC<
+  EmailDeudorPopupContentProps
+> = ({ context }) => {
+  const {
+    idCliente,
+    idDeudor,
+    idUsuario,
+    nombre,
+    documento,
+  } = context;
+
+  const deudorData = buildEmailDeudorInfo(nombre, documento);
+
+  const {
+    allData,
+    paginatedData,
+    isLoading,
+    error,
+    pageNumber,
+    pageSize,
+    totalRecords,
+    totalPages,
+    setPageNumber,
+    setPageSize,
+    refetch,
+    textFilters,
+    selectedFilters,
+    onTextFilterChange,
+    onSelectedFilterChange,
+  } = useEmailsByDeudor(idCliente, idDeudor);
+
+  const {
+    feedback,
+    clearFeedback,
+    showRegistrar,
+    showEditar,
+    emailEditarId,
+    handleNuevo,
+    handleEdit,
+    handleCloseRegistrar,
+    handleCloseEditar,
+    handleRegistrar,
+    handleGuardarEdicion,
+  } = useEmailDeudorModalActions({
+    idCliente,
+    idDeudor,
+    idUsuario,
+    refetch,
+  });
+
+  const columns = useEmailDeudorColumns({
+    onEdit: handleEdit,
+  });
+
+  if (isLoading) {
+    return <PopupLoadingState message={EMAIL_DEUDOR_POPUP_TEXTS.loading} />;
+  }
+
+  if (error) {
+    return (
+      <PopupErrorState
+        title={EMAIL_DEUDOR_POPUP_TEXTS.errorTitle}
+        message={error}
+        retryLabel={EMAIL_DEUDOR_POPUP_TEXTS.retryButton}
+        closeLabel={EMAIL_DEUDOR_POPUP_TEXTS.closeButton}
+        onRetry={refetch}
+        onClose={closePopupWindow}
+      />
+    );
+  }
+
+  return (
+    <>
+      <PopupPageLayout
+        logoText={EMAIL_DEUDOR_POPUP_TEXTS.logoText}
+        logoSub={EMAIL_DEUDOR_POPUP_TEXTS.logoSub}
+        navSection={EMAIL_DEUDOR_POPUP_TEXTS.navSection}
+        navActive={EMAIL_DEUDOR_POPUP_TEXTS.navActive}
+        nombre={nombre}
+        documento={documento}
+      >
+        <OperationFeedbackMessage
+          feedback={feedback}
+          onClose={clearFeedback}
+        />
+
+        <PopupPaginatedTableSection
+          columns={columns}
+          data={paginatedData}
+          allData={allData}
+          emptyMessage={EMAIL_DEUDOR_POPUP_TEXTS.tableEmptyMessage}
+          textFilters={textFilters}
+          selectedFilters={selectedFilters}
+          onTextFilterChange={onTextFilterChange}
+          onSelectedFilterChange={onSelectedFilterChange}
+          totalRecords={totalRecords}
+          pageNumber={pageNumber}
+          totalPages={totalPages}
+          pageSize={pageSize}
+          pageSizeOptions={EMAIL_DEUDOR_POPUP_PAGE_SIZE_OPTIONS}
+          countSuffix={EMAIL_DEUDOR_POPUP_TEXTS.toolbarCountSuffix}
+          onPageNumberChange={setPageNumber}
+          onPageSizeChange={setPageSize}
+          actions={
+            <ActionButton
+              label={EMAIL_DEUDOR_POPUP_TEXTS.addButton}
+              variant="primary"
+              size="sm"
+              icon={EMAIL_DEUDOR_POPUP_TEXTS.addButtonIcon}
+              onClick={handleNuevo}
+            />
+          }
+        />
+      </PopupPageLayout>
+
+      {showRegistrar && (
+        <ModalRegistrarEmail
+          isOpen
+          onClose={handleCloseRegistrar}
+          emailsExistentes={allData}
+          onRegistrar={handleRegistrar}
+          deudorData={deudorData}
+        />
+      )}
+
+      {showEditar && (
+        <ModalEditarEmail
+          isOpen
+          onClose={handleCloseEditar}
+          emailId={emailEditarId}
+          emailsExistentes={allData}
+          onGuardar={handleGuardarEdicion}
+          deudorData={deudorData}
+        />
+      )}
+    </>
+  );
+};
+
+const EmailDeudorPopup: React.FC = () => {
+  return (
+    <PopupContextBoundary popupType="email-deudor">
+      {(context) => (
+        <EmailDeudorPopupContent context={context} />
+      )}
+    </PopupContextBoundary>
+  );
+};
+
+export default EmailDeudorPopup;

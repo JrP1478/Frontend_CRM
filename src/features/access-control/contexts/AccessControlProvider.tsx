@@ -1,0 +1,427 @@
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+
+import {
+  useAuth,
+} from '@features/auth/hooks/useAuth';
+
+import {
+  hasPrivateRouteAccess,
+} from '@features/auth/utils/authAccess.utils';
+
+import {
+  resolveClienteGrupoId,
+} from '@features/auth/utils/clienteGrupo.utils';
+
+import {
+  fetchAccessControlData,
+} from '../api/accessControlApi';
+
+import type {
+  AccessControlContextValue,
+  AccessControlProviderProps,
+  AccessControlSnapshot,
+  AccessControlStatus,
+  AccessPermissionName,
+} from '../types/accessControl.types';
+
+import {
+  buildAccessControlSnapshot,
+  EMPTY_ACCESS_PERMISSIONS,
+} from '../utils/accessControl.utils';
+
+import {
+  AccessControlContext,
+} from './accessControlContextValue';
+
+interface AccessControlState {
+  status: AccessControlStatus;
+  error: string | null;
+  snapshot: AccessControlSnapshot | null;
+}
+
+interface AccessControlSessionProps
+  extends AccessControlProviderProps {
+  profileId: number;
+  userId: number;
+  groupId: number | null;
+}
+
+const NOOP_REFRESH = async (): Promise<void> => {
+  await Promise.resolve();
+};
+
+const buildUnavailableValue = (
+  status: 'idle' | 'error',
+  error: string | null
+): AccessControlContextValue => ({
+  status,
+  error,
+  menuTree: [],
+  navigationTree: [],
+  refresh: NOOP_REFRESH,
+  hasOption: () => false,
+  hasPermission: () => false,
+  getPermissions: () =>
+    EMPTY_ACCESS_PERMISSIONS,
+});
+
+const IDLE_CONTEXT_VALUE =
+  buildUnavailableValue(
+    'idle',
+    null
+  );
+
+const INVALID_PROFILE_CONTEXT_VALUE =
+  buildUnavailableValue(
+    'error',
+    'El usuario autenticado no tiene un perfil válido.'
+  );
+
+function AccessControlSession({
+  profileId,
+  userId,
+  groupId,
+  children,
+}: AccessControlSessionProps) {
+  const [state, setState] =
+    useState<AccessControlState>({
+      status: 'loading',
+      error: null,
+      snapshot: null,
+    });
+
+  const requestSequenceRef =
+    useRef(0);
+
+  const abortControllerRef =
+    useRef<AbortController | null>(
+      null
+    );
+
+  const startRequest = useCallback(
+    () => {
+      abortControllerRef.current
+        ?.abort();
+
+      const controller =
+        new AbortController();
+
+      abortControllerRef.current =
+        controller;
+      requestSequenceRef.current += 1;
+
+      return {
+        controller,
+        sequence:
+          requestSequenceRef.current,
+      };
+    },
+    []
+  );
+
+  const isCurrentRequest = useCallback(
+    (
+      controller: AbortController,
+      sequence: number
+    ): boolean =>
+      !controller.signal.aborted &&
+      sequence ===
+        requestSequenceRef.current,
+    []
+  );
+
+  const fetchSnapshot = useCallback(
+    async (
+      signal: AbortSignal
+    ): Promise<AccessControlSnapshot> => {
+      const data =
+        await fetchAccessControlData(
+          profileId,
+          userId,
+          groupId,
+          signal
+        );
+
+      return buildAccessControlSnapshot(
+        profileId,
+        data.options,
+        data.assignments,
+        data.userGroupAssignments
+      );
+    },
+    [groupId, profileId, userId]
+  );
+
+  useEffect(() => {
+    const {
+      controller,
+      sequence,
+    } = startRequest();
+
+    const runInitialLoad = async () => {
+      try {
+        const snapshot =
+          await fetchSnapshot(
+            controller.signal
+          );
+
+        if (
+          !isCurrentRequest(
+            controller,
+            sequence
+          )
+        ) {
+          return;
+        }
+
+        setState({
+          status: 'ready',
+          error: null,
+          snapshot,
+        });
+      } catch (error) {
+        if (
+          !isCurrentRequest(
+            controller,
+            sequence
+          )
+        ) {
+          return;
+        }
+
+        setState({
+          status: 'error',
+          error:
+            error instanceof Error
+              ? error.message
+              : 'No se pudieron cargar los accesos del usuario.',
+          snapshot: null,
+        });
+      }
+    };
+
+    void runInitialLoad();
+
+    return () => {
+      controller.abort();
+    };
+  }, [
+    fetchSnapshot,
+    isCurrentRequest,
+    startRequest,
+  ]);
+
+  const refresh = useCallback(
+    async (): Promise<void> => {
+      const {
+        controller,
+        sequence,
+      } = startRequest();
+
+      setState((currentState) => ({
+        status: 'loading',
+        error: null,
+        snapshot:
+          currentState.snapshot,
+      }));
+
+      try {
+        const snapshot =
+          await fetchSnapshot(
+            controller.signal
+          );
+
+        if (
+          !isCurrentRequest(
+            controller,
+            sequence
+          )
+        ) {
+          return;
+        }
+
+        setState({
+          status: 'ready',
+          error: null,
+          snapshot,
+        });
+      } catch (error) {
+        if (
+          !isCurrentRequest(
+            controller,
+            sequence
+          )
+        ) {
+          return;
+        }
+
+        setState({
+          status: 'error',
+          error:
+            error instanceof Error
+              ? error.message
+              : 'No se pudieron cargar los accesos del usuario.',
+          snapshot: null,
+        });
+      }
+    },
+    [
+      fetchSnapshot,
+      isCurrentRequest,
+      startRequest,
+    ]
+  );
+
+  const hasOption = useCallback(
+    (optionId: number): boolean =>
+      state.snapshot
+        ?.optionsById.has(
+          optionId
+        ) ?? false,
+    [state.snapshot]
+  );
+
+  const getPermissions = useCallback(
+    (optionId: number) =>
+      state.snapshot
+        ?.optionsById.get(
+          optionId
+        )?.permissions ??
+      EMPTY_ACCESS_PERMISSIONS,
+    [state.snapshot]
+  );
+
+  const hasPermission = useCallback(
+    (
+      optionId: number,
+      permission: AccessPermissionName
+    ): boolean =>
+      getPermissions(optionId)[
+        permission
+      ],
+    [getPermissions]
+  );
+
+  const value = useMemo(
+    () => ({
+      status: state.status,
+      error: state.error,
+      menuTree:
+        state.snapshot
+          ?.menuTree ?? [],
+      navigationTree:
+        state.snapshot
+          ?.navigationTree ?? [],
+      refresh,
+      hasOption,
+      hasPermission,
+      getPermissions,
+    }),
+    [
+      getPermissions,
+      hasOption,
+      hasPermission,
+      refresh,
+      state.error,
+      state.snapshot,
+      state.status,
+    ]
+  );
+
+  return (
+    <AccessControlContext.Provider
+      value={value}
+    >
+      {children}
+    </AccessControlContext.Provider>
+  );
+}
+
+export function AccessControlProvider({
+  children,
+}: AccessControlProviderProps) {
+  const {
+    usuario,
+    clienteSeleccionada,
+  } = useAuth();
+
+  const hasCompleteAuthContext = hasPrivateRouteAccess({
+    usuario,
+    clienteSeleccionada,
+  });
+
+  if (!hasCompleteAuthContext) {
+    return (
+      <AccessControlContext.Provider
+        value={IDLE_CONTEXT_VALUE}
+      >
+        {children}
+      </AccessControlContext.Provider>
+    );
+  }
+
+  const profileId =
+    usuario?.perfilId ?? null;
+
+  if (
+    profileId === null ||
+    !Number.isSafeInteger(
+      profileId
+    ) ||
+    profileId <= 0
+  ) {
+    return (
+      <AccessControlContext.Provider
+        value={
+          INVALID_PROFILE_CONTEXT_VALUE
+        }
+      >
+        {children}
+      </AccessControlContext.Provider>
+    );
+  }
+
+  const userId = Number(
+    usuario?.id_usuario
+  );
+
+  if (
+    !Number.isSafeInteger(userId) ||
+    userId <= 0
+  ) {
+    return (
+      <AccessControlContext.Provider
+        value={
+          buildUnavailableValue(
+            'error',
+            'El usuario autenticado no tiene un identificador válido.'
+          )
+        }
+      >
+        {children}
+      </AccessControlContext.Provider>
+    );
+  }
+
+  const groupId =
+    resolveClienteGrupoId(
+      clienteSeleccionada
+    );
+
+  return (
+    <AccessControlSession
+      key={`${userId}:${profileId}:${groupId ?? 'sin-grupo'}`}
+      profileId={profileId}
+      userId={userId}
+      groupId={groupId}
+    >
+      {children}
+    </AccessControlSession>
+  );
+}

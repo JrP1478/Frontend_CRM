@@ -1,0 +1,83 @@
+import { useMemo } from 'react';
+
+import { SelectActionButton } from '@shared/components/ui';
+import type { Column } from '@shared/types';
+
+import {
+  LISTA_GESTORES_POPUP_COLUMNS,
+  LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+  LISTA_GESTORES_POPUP_COLUMN_WIDTHS,
+  LISTA_GESTORES_POPUP_TEXTS,
+} from '../constants/listaGestoresPopup.constants';
+import type { Gestor } from '../types/gestor.types';
+
+interface UseListaGestoresColumnsProps {
+  onSelect: (row: Gestor) => void;
+}
+
+export const useListaGestoresColumns = ({
+  onSelect,
+}: UseListaGestoresColumnsProps): Column<Gestor>[] => {
+  return useMemo(
+    () => [
+      {
+        key: 'id',
+        label: LISTA_GESTORES_POPUP_COLUMNS.id,
+        width: LISTA_GESTORES_POPUP_COLUMN_WIDTHS.id,
+        render: (row: Gestor) => row.id,
+      },
+      {
+        key: 'nombre',
+        label: LISTA_GESTORES_POPUP_COLUMNS.nombre,
+        width: LISTA_GESTORES_POPUP_COLUMN_WIDTHS.nombre,
+        render: (row: Gestor) =>
+          row.nombre || LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+      },
+      {
+        key: 'perfil',
+        label: LISTA_GESTORES_POPUP_COLUMNS.perfil,
+        width: LISTA_GESTORES_POPUP_COLUMN_WIDTHS.perfil,
+        render: (row: Gestor) =>
+          row.perfil || LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+      },
+      {
+        key: 'login',
+        label: LISTA_GESTORES_POPUP_COLUMNS.login,
+        width: LISTA_GESTORES_POPUP_COLUMN_WIDTHS.login,
+        render: (row: Gestor) =>
+          row.login || LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+      },
+      {
+        key: 'subZona',
+        label: LISTA_GESTORES_POPUP_COLUMNS.subZona,
+        width: LISTA_GESTORES_POPUP_COLUMN_WIDTHS.subZona,
+        render: (row: Gestor) =>
+          row.subZona || LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+      },
+      {
+        key: 'codRecaudacion',
+        label: LISTA_GESTORES_POPUP_COLUMNS.codRecaudacion,
+        width:
+          LISTA_GESTORES_POPUP_COLUMN_WIDTHS.codRecaudacion,
+        render: (row: Gestor) =>
+          row.codRecaudacion || LISTA_GESTORES_POPUP_FALLBACK_TEXT,
+      },
+      {
+        key: 'acciones',
+        label: LISTA_GESTORES_POPUP_COLUMNS.acciones,
+        width:
+          LISTA_GESTORES_POPUP_COLUMN_WIDTHS.acciones,
+        align: 'center',  
+        filterable: false,
+        render: (row: Gestor) => (
+          <SelectActionButton
+            ariaLabel={`${LISTA_GESTORES_POPUP_TEXTS.selectButton}: ${row.nombre}`}
+            title={LISTA_GESTORES_POPUP_TEXTS.selectButton}
+            onClick={() => onSelect(row)}
+          />
+        ),
+      },
+    ],
+    [onSelect]
+  );
+};

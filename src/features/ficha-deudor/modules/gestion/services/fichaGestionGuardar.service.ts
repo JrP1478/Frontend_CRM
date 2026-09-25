@@ -1,0 +1,95 @@
+import type { CreateGestionOpeGesContratosPayload } from '../types/fichaGestionApi.types';
+import {
+  buildCreateGestionPayload,
+  buildDocxCobrars,
+} from '../mappers/fichaGestion.mapper';
+import type { FichaDeudorGestionFormParams } from '../../../shared/types/fichaDeudor.types';
+import type {
+  FichaGestionValidationErrors,
+  GestionFormClienteA,
+} from '../types/fichaGestionForm.types';
+import {
+  hasFichaGestionErrors,
+  validateFichaGestion,
+} from '../validations/fichaGestionValidation';
+import type { DocumentoApi } from '../../../shared/types';
+
+interface BuildGestionSaveRequestParams {
+  form: GestionFormClienteA;
+  params: FichaDeudorGestionFormParams;
+  documentosFiltrados: DocumentoApi[];
+  np1TipoContacto: number;
+  requiereCamposClienteA: boolean;
+  fechaFinGestion: string;
+}
+
+interface GestionSaveRequestValid {
+  isValid: true;
+  validationErrors: FichaGestionValidationErrors;
+  payload: CreateGestionOpeGesContratosPayload;
+}
+
+interface GestionSaveRequestInvalid {
+  isValid: false;
+  validationErrors: FichaGestionValidationErrors;
+  payload?: never;
+}
+
+export type GestionSaveRequest =
+  | GestionSaveRequestValid
+  | GestionSaveRequestInvalid;
+
+export const buildGestionSaveRequest = ({
+  form,
+  params,
+  documentosFiltrados,
+  np1TipoContacto,
+  requiereCamposClienteA,
+  fechaFinGestion,
+}: BuildGestionSaveRequestParams): GestionSaveRequest => {
+  const nIdDocxCobrars = buildDocxCobrars(documentosFiltrados);
+
+  const validationErrors = validateFichaGestion({
+    form,
+    np1TipoContacto,
+    tieneDocumentos: Boolean(nIdDocxCobrars),
+    requiereCamposClienteA,
+  });
+
+  if (hasFichaGestionErrors(validationErrors)) {
+    return {
+      isValid: false,
+      validationErrors,
+    };
+  }
+
+  const {
+    id_cliente: idCliente,
+    id_cartera: idCartera,
+    id_contrato: idContrato,
+    id_deudor: idDeudor,
+    id_usuario: idUsuario,
+    fecha_inicio_gestion: fechaInicioGestion,
+  } = params;
+
+  const payload =
+    buildCreateGestionPayload({
+      form,
+      idCliente,
+      idCartera,
+      idContrato,
+      idDeudor,
+      idUsuario,
+      fechaInicioGestion,
+      fechaFinGestion,
+      nIdDocxCobrars,
+      incluyeCamposClienteA:
+        requiereCamposClienteA,
+    });
+
+  return {
+    isValid: true,
+    validationErrors,
+    payload,
+  };
+};

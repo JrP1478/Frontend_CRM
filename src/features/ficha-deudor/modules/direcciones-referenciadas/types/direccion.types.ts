@@ -1,0 +1,149 @@
+export interface DireccionReferenciadaApi {
+  nId_PersDirecc: number;
+  direccion: string;
+  referenciaUbicacion: string;
+  tipoDeudor: string;
+  nombre: string;
+  estado: string;
+}
+
+export interface DireccionReferenciada {
+  id: string;
+  direccion: string;
+  refUbicacion: string;
+  tipoDeudor: string;
+  nombre: string;
+  estado: string;
+  departamento?: string; 
+  provincia?: string;
+  distrito?: string;
+  comentario?: string;
+  llegoDeBase?: boolean;
+  nombreLegacyCrm?: string
+}
+
+export interface DireccionFormData {
+  direccion: string;
+  departamento: string;
+  provincia: string;
+  distrito: string;
+  refUbicacion: string;
+  comentario: string;
+  llegoDeBase: boolean;
+  tipoDeudor: string;
+}
+
+export interface DireccionEditFormData {
+  id: string;
+  direccion: string;
+  departamento: string;
+  provincia: string;
+  distrito: string;
+  refUbicacion: string;
+  comentario: string;
+  llegoDeBase: boolean;
+  tipoDeudor: string;
+  nombreLegacyCrm: string;
+  estado: boolean;
+}
+
+export type {
+  Departamento,
+  DepartamentoApi,
+} from '@shared/catalogos/departamentos/types/departamento.types';
+
+export interface ProvinciaApi {
+  nId_Provincia: number;
+  cNombre_Provincia: string;
+}
+
+export interface Provincia {
+  id: string;
+  nombre: string;
+}
+
+export interface DistritoApi {
+  nId_Distrito: number;
+  cNombre_Distrito: string;
+}
+
+export interface Distrito {
+  id: string;
+  nombre: string;
+}
+
+
+export interface DireccionUbicacionApi {
+  nId_PersRefUbi: number;
+  cNombre_PersRefUbi: string;
+}
+
+export interface DireccionUbicacion {
+  id: string;
+  nombre: string;
+}
+
+// ─── POST /v1/Direccion ───
+export interface CreateDireccionRequest {
+  nId_PersDirecc?: number;     // ← Opcional: la BD lo asigna
+  nId_PersDeudor: number;
+  cDirecc_Nomb: string;
+  nId_PersRefUbi: number;
+  cDirecc_Coment: string;
+  bEstado: boolean;
+  bOrigen_Base: boolean;
+  cTipoCoDeudor: string;
+  dFec_Actualizacion: string;
+  nId_Cliente: number;
+  nid_CalifDirecc: number | null;
+  nid_usuarioUpd: number;
+  nId_Departamento: number;
+  nId_Provincia: number;
+  nId_Distrito: number;
+}
+
+export interface CreateDireccionResponse {
+  nId_PersDirecc: number;
+  nId_PersDeudor: number;
+  nId_Ubigeo: number;
+}
+
+// ─── GET /v1/Direccion/{nId_PersDirecc} ───
+export interface DireccionByIdApi {
+  nId_PersDirecc: number;
+  cDirecc_Nomb: string;
+  nombreLegacyCrm: string;
+  nId_PersRefUbi: number;
+  cDirecc_Coment: string;
+  bEstado?: boolean | null;
+  bOrigen_Base: boolean;
+  cTipoCoDeudor: string;
+  nId_Departamento: number;
+  nId_Provincia: number;
+  nId_Distrito: number;
+}
+
+// ─── PUT /v1/Direccion ───
+export interface UpdateDireccionRequest {
+  nId_PersDirecc: number;
+  nId_PersDeudor: number;
+  cDirecc_Nomb: string;
+  nId_PersRefUbi: number;
+  cDirecc_Coment: string;
+  bEstado: boolean;
+  bOrigen_Base: boolean;
+  cTipoCoDeudor: string;
+  dFec_Actualizacion: string;
+  nId_Cliente: number;
+  nid_CalifDirecc: number | null;
+  nid_usuarioUpd: number;
+  nId_Departamento: number;
+  nId_Provincia: number;
+  nId_Distrito: number;
+}
+
+export interface UpdateDireccionResponse {
+  nId_PersDirecc: number;
+  nId_PersDeudor: number;
+  nId_Ubigeo: number;
+}

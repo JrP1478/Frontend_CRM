@@ -1,0 +1,291 @@
+import {
+  useCallback,
+  useMemo,
+} from 'react';
+
+import {
+  APPLICATION_OPTION_IDS,
+  useAccessControl,
+  useOptionPermissions,
+} from '@features/access-control';
+import {
+  useAuth,
+} from '@features/auth/hooks/useAuth';
+import {
+  resolveClienteGrupoId,
+} from '@features/auth/utils/clienteGrupo.utils';
+
+import {
+  useApiResource,
+} from '@shared/hooks/useApiResource';
+import {
+  useClientSideTable,
+} from '@shared/hooks/useClientSideTable';
+import {
+  useOperationFeedback,
+} from '@shared/hooks/useOperationFeedback';
+
+import {
+  actualizarAccesosUsuario as ejecutarActualizacionAccesosUsuario,
+  loadAccesosUsuarioListado,
+  registrarAccesosUsuario as ejecutarRegistroAccesosUsuario,
+} from '../../../application/accesos/accessMaintenance.application';
+
+import type {
+  UsuarioGrupoOpcionDetalle,
+  UsuarioGrupoOpcionListado,
+} from '../../../types/usuarioGrupoOpcion.types';
+
+import type {
+  RegistrarUsuarioGrupoOpcionesData,
+} from '../types/asignarAccesosUsuario.types';
+
+import {
+  assertMantenerAccesosUsuarioPermission,
+} from '../utils/mantenerAccesosUsuarioPermissions';
+
+export const useMantenerAccesosUsuarioTable = () => {
+  const {
+    usuario,
+    clienteSeleccionada,
+  } = useAuth();
+  const {
+    refresh: refreshAccessControl,
+  } = useAccessControl();
+
+  const permissions =
+    useOptionPermissions(
+      APPLICATION_OPTION_IDS.MANTENER_ACCESOS_POR_USUARIO
+    );
+  const canInsert =
+    permissions.insertar;
+  const canEdit = permissions.editar;
+
+  const {
+    feedback,
+    clearFeedback,
+    showSuccess,
+  } = useOperationFeedback();
+
+  const {
+    data,
+    isLoading,
+    error,
+    refetch,
+  } = useApiResource<UsuarioGrupoOpcionListado[]>(
+    loadAccesosUsuarioListado,
+    []
+  );
+
+  const allData = useMemo(
+    () => data ?? [],
+    [data]
+  );
+
+  const table =
+    useClientSideTable<UsuarioGrupoOpcionListado>(
+      allData,
+      [],
+      {
+        initialPageSize: 10,
+      }
+    );
+
+  const {
+    setPageNumber,
+  } = table;
+
+  const selectedGroupId =
+    resolveClienteGrupoId(
+      clienteSeleccionada
+    );
+
+  const refreshAffectedState = useCallback(
+    async (
+      targetUsuarioId: number,
+      targetGrupoId: number
+    ): Promise<void> => {
+      refetch();
+
+      const authenticatedUserId = Number(
+        usuario?.id_usuario
+      );
+
+      if (
+        Number.isSafeInteger(
+          authenticatedUserId
+        ) &&
+        authenticatedUserId ===
+          targetUsuarioId &&
+        selectedGroupId === targetGrupoId
+      ) {
+        await refreshAccessControl();
+      }
+    },
+    [
+      refetch,
+      refreshAccessControl,
+      selectedGroupId,
+      usuario?.id_usuario,
+    ]
+  );
+
+  const registrarAccesosUsuario =
+    useCallback(
+      async (
+        form: RegistrarUsuarioGrupoOpcionesData
+      ): Promise<void> => {
+        clearFeedback();
+
+        assertMantenerAccesosUsuarioPermission(
+          'insertar',
+          canInsert
+        );
+
+        const authenticatedUserId =
+          usuario?.id_usuario;
+
+        if (!authenticatedUserId) {
+          throw new Error(
+            'No se pudo identificar al usuario autenticado que registra los accesos.'
+          );
+        }
+
+        try {
+          await ejecutarRegistroAccesosUsuario(
+            form,
+            authenticatedUserId
+          );
+        } catch (error) {
+          await refreshAffectedState(
+            form.usuarioId,
+            form.grupoId
+          );
+          throw error;
+        }
+
+        setPageNumber(1);
+        await refreshAffectedState(
+          form.usuarioId,
+          form.grupoId
+        );
+
+        showSuccess({
+          entity: {
+            label: 'Accesos por usuario',
+            gender: 'masculine',
+            number: 'plural',
+          },
+          action: 'assign',
+        });
+      },
+      [
+        canInsert,
+        clearFeedback,
+        refreshAffectedState,
+        setPageNumber,
+        showSuccess,
+        usuario?.id_usuario,
+      ]
+    );
+
+  const actualizarAccesosUsuario =
+    useCallback(
+      async (
+        asignacionesActuales:
+          readonly UsuarioGrupoOpcionDetalle[],
+        form: RegistrarUsuarioGrupoOpcionesData
+      ): Promise<void> => {
+        clearFeedback();
+
+        assertMantenerAccesosUsuarioPermission(
+          'editar',
+          canEdit
+        );
+
+        const authenticatedUserId =
+          usuario?.id_usuario;
+
+        if (!authenticatedUserId) {
+          throw new Error(
+            'No se pudo identificar al usuario autenticado que actualiza los accesos.'
+          );
+        }
+
+        try {
+          await ejecutarActualizacionAccesosUsuario(
+            asignacionesActuales,
+            form,
+            authenticatedUserId
+          );
+        } catch (error) {
+          await refreshAffectedState(
+            form.usuarioId,
+            form.grupoId
+          );
+          throw error;
+        }
+
+        await refreshAffectedState(
+          form.usuarioId,
+          form.grupoId
+        );
+
+        showSuccess({
+          entity: {
+            label: 'Accesos por usuario',
+            gender: 'masculine',
+            number: 'plural',
+          },
+          action: 'update',
+        });
+      },
+      [
+        canEdit,
+        clearFeedback,
+        refreshAffectedState,
+        showSuccess,
+        usuario?.id_usuario,
+      ]
+    );
+
+  const indiceInicio =
+    (table.pageNumber - 1) *
+    table.pageSize;
+
+  const indiceFin = Math.min(
+    indiceInicio + table.pageSize,
+    table.totalRecords
+  );
+
+  return {
+    allData,
+    canInsert,
+    canEdit,
+    feedback,
+    clearFeedback,
+    paginatedData:
+      table.paginatedData,
+    isLoading,
+    error,
+    refetch,
+    pageNumber: table.pageNumber,
+    pageSize: table.pageSize,
+    totalRecords:
+      table.totalRecords,
+    totalPages: table.totalPages,
+    indiceInicio,
+    indiceFin,
+    textFilters: table.textFilters,
+    selectedFilters:
+      table.selectedFilters,
+    setPageNumber,
+    setPageSize: table.setPageSize,
+    onTextFilterChange:
+      table.onTextFilterChange,
+    onSelectedFilterChange:
+      table.onSelectedFilterChange,
+    registrarAccesosUsuario,
+    actualizarAccesosUsuario,
+  };
+};

@@ -1,0 +1,45 @@
+{
+  "name": "ficha-deudor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:real": "VITE_USE_MOCKS=false vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "mock": "node mock-api.js",
+    "typecheck": "tsc -b",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "test": "node scripts/run-tests.mjs",
+    "test:auth": "node scripts/run-tests.mjs src/features/auth",
+    "check:auth": "npm run typecheck && npm run lint && npm run test:auth && npm run build",
+    "test:gestion-deudor": "node scripts/run-tests.mjs src/features/gestion-cobranzas/modules/gestion-deudor",
+    "check:gestion-deudor": "npm run typecheck && npm run lint && npm run test:gestion-deudor && npm run build",
+    "test:analisis-carteras": "node scripts/run-tests.mjs src/features/gestion-analitica/modules/centro-control-cartera",
+    "check:analisis-carteras": "npm run typecheck && npm run lint && npm run test:analisis-carteras && npm run build"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "cors": "^2.8.6",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "express": "^5.2.1",
+    "globals": "^17.5.0",
+    "json-server": "^1.0.0-beta.15",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.9"
+  }
+}

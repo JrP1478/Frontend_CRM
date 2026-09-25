@@ -1,0 +1,518 @@
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 900px) {
+  .deudor-info-grid { grid-template-columns: 1fr; }
+  .deudor-info-col + .deudor-info-col { border-left: none; border-top: 1px solid var(--ap-gray-200); }
+  .form-grid--3 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (
+  max-width: 768px
+) and (
+  hover: none
+) and (
+  pointer: coarse
+) {
+  .ficha-main--two-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ficha-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .ficha-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-grid--2,
+  .form-grid--3 { grid-template-columns: 1fr; }
+  .header-meta-strip { flex-wrap: wrap; gap: 8px; }
+  .meta-separator { display: none; }
+  .ficha-main { padding: 12px; }
+}
+
+
+/* Acciones Rápidas en el sidebar - Versión vertical */
+.acciones-rapidas {
+  margin-top: 16px;
+}
+
+.acciones-rapidas-header {
+  background: var(--ap-navy);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ap-gray-200);
+}
+
+.acciones-rapidas-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.acciones-rapidas .botones-estaticos {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;  /* ← Cambiado de 'row' a 'column' */
+  gap: 8px;               /* Espacio entre botones */
+  background: #fff;
+}
+
+.acciones-rapidas .btn-est {
+  width: 100%;            /* Ocupa todo el ancho disponible */
+  text-align: center;     /* Texto centrado */
+  padding: 8px 12px;      /* Padding más cómodo para vertical */
+  font-size: 11px;        /* Texto ligeramente más grande */
+  border: 1.5px solid var(--ap-red);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ap-red);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+
+.acciones-rapidas .btn-est:hover {
+  background: var(--ap-red);
+  color: #fff;
+}
+
+/* Estilos para la sección de Agendar Gestión */
+.agendar-gestion-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--ap-gray-50);
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-top: 16px;
+}
+
+.agendar-gestion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.agendar-gestion-group .form-label {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+
+.agendar-date,
+.agendar-time {
+  min-width: 130px;
+}
+
+.agendar-usuario {
+  background: var(--ap-gray-100);
+  cursor: not-allowed;
+}
+
+.agendar-btn {
+  height: 32px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.agendar-placeholder {
+  flex: 1.5;
+}
+
+.agendar-estado {
+  background: var(--ap-gray-100);
+  color: var(--ap-text-muted);
+  font-style: italic;
+}
+
+/* Estilos para Fecha de Gestión */
+.fecha-gestion-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: var(--ap-info-bg);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--ap-info);
+}
+
+.fecha-gestion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.fecha-gestion-group .form-label {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+
+.fecha-gestion-date,
+.fecha-gestion-time {
+  background: #fff;
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .agendar-gestion-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .agendar-btn {
+    margin-top: 8px;
+  }
+  
+  .fecha-gestion-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.panel-colapsable {
+  animation: panelSlideDown 0.2s ease-out;
+}
+
+@keyframes panelSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-colapsable-header {
+  background: var(--ap-navy);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-colapsable-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.panel-colapsable-body {
+  padding: 16px 20px;
+}
+
+/* Botón activo en Acciones Rápidas */
+.btn-est--active {
+  background: var(--ap-red) !important;
+  color: #fff !important;
+}
+
+/* Solo esto, sin porcentajes ni nth-child */
+.panel-colapsable .data-table {
+  width: 100%;
+  table-layout: auto;  /* Auto-ajuste según contenido */
+}
+
+.panel-colapsable .data-table th,
+.panel-colapsable .data-table td {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ═══════════════════════════════════════════════════
+   CONTENIDO RESPONSIVE DEL SIDEBAR
+   ═══════════════════════════════════════════════════ */
+
+/*
+ * Información del deudor y asesores siempre apilados.
+ *
+ * El sidebar es una columna compacta; no conviene colocar
+ * ambas secciones una al lado de la otra.
+ */
+.ficha-sidebar .compact-layout {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+.ficha-sidebar .compact-layout__grid {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.ficha-sidebar .compact-section {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Filas de etiqueta y valor */
+.ficha-sidebar .compact-row {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns:
+    minmax(64px, 38%)
+    minmax(0, 1fr);
+
+  align-items: start;
+  gap: 5px;
+
+  box-sizing: border-box;
+}
+
+.ficha-sidebar .compact-row--center {
+  align-items: center;
+}
+
+.ficha-sidebar .compact-label {
+  min-width: 0;
+  width: auto;
+
+  font-size: 9px;
+  line-height: 1.3;
+
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.ficha-sidebar .compact-value,
+.ficha-sidebar .compact-value--highlight {
+  min-width: 0;
+  max-width: 100%;
+
+  line-height: 1.35;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/*
+ * Los correos sí pueden contener una cadena larga sin espacios.
+ * Solo en estos valores se permite cortar en cualquier punto.
+ */
+.ficha-sidebar .compact-value--link {
+  min-width: 0;
+  max-width: 100%;
+
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.ficha-sidebar .compact-input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+/* ── Cabecera de zona, cartera y campaña ──────────── */
+
+.ficha-sidebar .header-meta-strip {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  gap: 5px;
+  padding: 8px 10px;
+
+  box-sizing: border-box;
+}
+
+.ficha-sidebar .meta-item {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: start;
+  gap: 6px;
+}
+
+.ficha-sidebar .meta-label {
+  min-width: 0;
+  font-size: 8px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.ficha-sidebar .meta-value {
+  min-width: 0;
+  max-width: 100%;
+
+  font-size: 10px;
+  line-height: 1.3;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ── Acciones rápidas ─────────────────────────────── */
+
+.acciones-rapidas .botones-estaticos {
+  width: 100%;
+  min-width: 0;
+
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+.acciones-rapidas .btn-est {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 30px;
+
+  padding: 6px 5px;
+
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+
+  box-sizing: border-box;
+}
+
+/*
+ * Ajuste adicional cuando el sidebar queda especialmente
+ * angosto por monitor pequeño o zoom elevado.
+ */
+@container ficha-sidebar (max-width: 190px) {
+  .ficha-sidebar .compact-layout {
+    padding: 7px 8px;
+  }
+
+  .ficha-sidebar .compact-row {
+    grid-template-columns:
+      minmax(58px, 38%)
+      minmax(0, 1fr);
+
+    gap: 4px;
+  }
+
+  .ficha-sidebar .compact-section__header {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+
+  .ficha-sidebar .compact-label {
+    font-size: 8px;
+  }
+
+  .ficha-sidebar .compact-value {
+    font-size: 9px;
+  }
+
+  .acciones-rapidas .botones-estaticos {
+    padding: 8px;
+  }
+
+  .acciones-rapidas .btn-est {
+    padding: 6px 4px;
+    font-size: 9px;
+    letter-spacing: 0.1px;
+  }
+}
+
+/* ── Legibilidad específica de Ficha de Gestión ───── */
+
+/* Títulos de los campos, incluida Gestión Terminada */
+.ficha-gestion--compact .form-label,
+.ficha-gestion--compact .checkbox-label {
+  color: #000;
+}
+
+/*
+ * Texto realmente ingresado en controles habilitados.
+ * No se incluyen fechas ni controles deshabilitados.
+ */
+.ficha-gestion--compact
+  input.form-input:not(:disabled):not([type='date']),
+.ficha-gestion--compact
+  textarea.form-input:not(:disabled) {
+  color: #000;
+  -webkit-text-fill-color: #000;
+}
+
+/* Los placeholders conservan el color tenue */
+.ficha-gestion--compact
+  input.form-input:not(:disabled):not([type='date'])::placeholder,
+.ficha-gestion--compact
+  textarea.form-input:not(:disabled)::placeholder {
+  color: var(--ap-text-muted);
+  -webkit-text-fill-color: var(--ap-text-muted);
+  opacity: 1;
+}
+
+/* Valor real seleccionado en un desplegable habilitado */
+.ficha-gestion--compact
+  .form-select--has-value:not(:disabled) {
+  color: #000;
+  -webkit-text-fill-color: #000;
+}
+
+/* Placeholder del desplegable */
+.ficha-gestion--compact
+  .form-select--placeholder:not(:disabled) {
+  color: var(--ap-text-muted);
+  -webkit-text-fill-color: var(--ap-text-muted);
+}
+
+/* Opciones de los desplegables habilitados */
+.ficha-gestion--compact select.form-select:enabled {
+  color-scheme: light;
+}
+
+/* Opciones reales: negro nítido */
+.ficha-gestion--compact select.form-select:enabled option {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000;
+  background-color: #ffffff;
+}
+
+/* Placeholder: Seleccionar..., HH, MM, etc. */
+.ficha-gestion--compact
+  select.form-select:enabled
+  option[value=''] {
+  color: var(--ap-text-muted) !important;
+  -webkit-text-fill-color: var(--ap-text-muted);
+}

@@ -1,0 +1,342 @@
+import assert from 'node:assert/strict';
+
+import {
+  defineSuite,
+  test,
+} from '../../../test/testHarness';
+
+import {
+  activateUsuarioGrupo,
+  createUsuarioGrupo,
+  fetchGruposByUsuario,
+  removeUsuarioGrupo,
+} from './usuarioGruposApi';
+
+
+const createJsonResponse = (
+  body: unknown,
+  status = 200
+): Response =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+export const suite = defineSuite(
+  'usuarioGruposApi',
+  [
+    test(
+      'consulta grupos asignados y conserva nId_UGrupo separado de nid_grupo',
+      async () => {
+        const originalFetch =
+          globalThis.fetch;
+        let capturedUrl = '';
+
+        globalThis.fetch = async (input) => {
+          capturedUrl = String(input);
+
+          return createJsonResponse({
+            code: '00',
+            message: 'OK',
+            messageUser: 'OK',
+            statusCode: 200,
+            pageNumber: 1,
+            pageSize: 1000,
+            totalRecords: 1,
+            totalPages: 1,
+            response: [
+              {
+                nId_UGrupo: 9001,
+                nId_Usuario: 16068,
+                nid_grupo: 219,
+                cNombre_Grupo:
+                  'CLIENTE_C INSTITUTO',
+              },
+            ],
+          });
+        };
+
+        try {
+          const groups =
+            await fetchGruposByUsuario(
+              16068
+            );
+
+          assert.deepEqual(groups, [
+            {
+              idUsuarioGrupo: 9001,
+              idUsuario: 16068,
+              idGrupo: 219,
+              nombre: 'CLIENTE_C INSTITUTO',
+            },
+          ]);
+
+          const url = new URL(
+            capturedUrl
+          );
+
+          assert.equal(
+            url.pathname,
+            '/v1/UGrupo/GetGruposByIdUsuario'
+          );
+          assert.equal(
+            url.searchParams.get(
+              'nId_Usuario'
+            ),
+            '16068'
+          );
+          assert.equal(
+            url.searchParams.get(
+              'PageSize'
+            ),
+            '1000'
+          );
+        } finally {
+          globalThis.fetch =
+            originalFetch;
+        }
+      }
+    ),
+
+    test(
+      'agrega una asignación mediante POST sin confundir el id del grupo con nId_UGrupo',
+      async () => {
+        const originalFetch =
+          globalThis.fetch;
+        let capturedMethod = '';
+        let capturedBody:
+          Record<string, unknown> = {};
+
+        globalThis.fetch = async (
+          _input,
+          init
+        ) => {
+          capturedMethod =
+            init?.method ?? '';
+          capturedBody = JSON.parse(
+            String(init?.body)
+          ) as Record<string, unknown>;
+
+          return createJsonResponse({
+            code: '00',
+            message: 'OK',
+            messageUser: 'OK',
+            statusCode: 200,
+            response: {
+              nId_UGrupo: 9002,
+              nId_Usuario: 16068,
+              nId_Grupo: 247,
+            },
+          });
+        };
+
+        try {
+          await createUsuarioGrupo(
+            16068,
+            247
+          );
+
+          assert.equal(
+            capturedMethod,
+            'POST'
+          );
+          assert.equal(
+            capturedBody.nId_Usuario,
+            16068
+          );
+          assert.equal(
+            capturedBody.nId_Grupo,
+            247
+          );
+          assert.equal(
+            capturedBody.bEstado,
+            true
+          );
+          assert.equal(
+            capturedBody.bActivo,
+            true
+          );
+          assert.equal(
+            capturedBody.bGestion,
+            true
+          );
+        } finally {
+          globalThis.fetch =
+            originalFetch;
+        }
+      }
+    ),
+
+
+    test(
+      'impide quitar un grupo cuando el backend todavía no devuelve nId_UGrupo',
+      async () => {
+        await assert.rejects(
+          () =>
+            removeUsuarioGrupo({
+              idUsuarioGrupo: null,
+              idUsuario: 16068,
+              idGrupo: 219,
+              nombre: 'CLIENTE_C INSTITUTO',
+            }),
+          /No se pudo identificar la asignación/i
+        );
+      }
+    ),
+
+    test(
+      'quita una asignación mediante PUT usando nId_UGrupo como id de la relación',
+      async () => {
+        const originalFetch =
+          globalThis.fetch;
+        let capturedMethod = '';
+        let capturedBody:
+          Record<string, unknown> = {};
+
+        globalThis.fetch = async (
+          _input,
+          init
+        ) => {
+          capturedMethod =
+            init?.method ?? '';
+          capturedBody = JSON.parse(
+            String(init?.body)
+          ) as Record<string, unknown>;
+
+          return createJsonResponse({
+            code: '00',
+            message: 'OK',
+            messageUser: 'OK',
+            statusCode: 200,
+            response: {
+              nId_UGrupo: 9001,
+              nId_Usuario: 16068,
+              nId_Grupo: 219,
+            },
+          });
+        };
+
+        try {
+          await removeUsuarioGrupo({
+            idUsuarioGrupo: 9001,
+            idUsuario: 16068,
+            idGrupo: 219,
+            nombre: 'CLIENTE_C INSTITUTO',
+          });
+
+          assert.equal(
+            capturedMethod,
+            'PUT'
+          );
+          assert.equal(
+            capturedBody.nId_UGrupo,
+            9001
+          );
+          assert.equal(
+            capturedBody.nId_Grupo,
+            219
+          );
+          assert.equal(
+            capturedBody.bEstado,
+            false
+          );
+          assert.equal(
+            capturedBody.bActivo,
+            true
+          );
+          assert.equal(
+            capturedBody.bGestion,
+            false
+          );
+        } finally {
+          globalThis.fetch =
+            originalFetch;
+        }
+      }
+    ),
+    test(
+      'reactiva una asignación existente mediante PUT',
+      async () => {
+        const originalFetch =
+          globalThis.fetch;
+
+        let capturedMethod = '';
+        let capturedBody:
+          Record<string, unknown> = {};
+
+        globalThis.fetch = async (
+          _input,
+          init
+        ) => {
+          capturedMethod =
+            init?.method ?? '';
+
+          capturedBody = JSON.parse(
+            String(init?.body)
+          ) as Record<string, unknown>;
+
+          return createJsonResponse({
+            code: '00',
+            message: 'OK',
+            messageUser: 'OK',
+            statusCode: 200,
+            response: {
+              nId_UGrupo: 38029,
+              nId_Usuario: 16068,
+              nId_Grupo: 156,
+            },
+          });
+        };
+
+        try {
+          await activateUsuarioGrupo({
+            idUsuarioGrupo: 38029,
+            idUsuario: 16068,
+            idGrupo: 156,
+            nombre: 'CLIENTE_A CORPORATIVO',
+          });
+
+          assert.equal(
+            capturedMethod,
+            'PUT'
+          );
+
+          assert.equal(
+            capturedBody.nId_UGrupo,
+            38029
+          );
+
+          assert.equal(
+            capturedBody.nId_Usuario,
+            16068
+          );
+
+          assert.equal(
+            capturedBody.nId_Grupo,
+            156
+          );
+
+          assert.equal(
+            capturedBody.bEstado,
+            true
+          );
+
+          assert.equal(
+            capturedBody.bActivo,
+            true
+          );
+
+          assert.equal(
+            capturedBody.bGestion,
+            true
+          );
+        } finally {
+          globalThis.fetch =
+            originalFetch;
+        }
+      }
+    ),
+  ]
+);

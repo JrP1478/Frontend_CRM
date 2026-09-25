@@ -1,0 +1,1092 @@
+/* Gestor row compacto */
+.gestor-row { display: flex; align-items: center; gap: 6px; }
+.gestor-row--compact { gap: 4px; }
+
+/* Agendar gestión - fila compacta */
+.agendar-gestion-row { 
+  display: flex; 
+  align-items: flex-end; 
+  gap: 8px; 
+  margin-top: 10px; 
+  flex-wrap: wrap; 
+}
+.agendar-gestion-row--compact { 
+  margin-top: 8px; 
+  gap: 6px; 
+}
+.agendar-gestion-group { display: flex; flex-direction: column; gap: 1px; }
+.agendar-gestion-group .form-input { width: 130px; }
+.agendar-btn { align-self: flex-end; }
+
+/* Fecha gestión row compacto */
+.fecha-gestion-row { 
+  display: flex; 
+  align-items: flex-end; 
+  gap: 8px; 
+  margin-top: 8px; 
+}
+.fecha-gestion-row--compact { 
+  margin-top: 6px; 
+  gap: 6px; 
+}
+.fecha-gestion-group { display: flex; flex-direction: column; gap: 1px; }
+.fecha-gestion-group .form-input { width: 130px; }
+
+/* Submit compacto */
+.ficha-submit { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px; background: var(--ap-gray-50); border-top: 1px solid var(--ap-gray-200); }
+.ficha-submit--compact { padding: 8px 16px; }
+
+
+/* Resultados de llamada - layout horizontal */
+.resultados-row { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-top: 4px; 
+}
+
+/* CORREGIDO: modal-body ahora alinea contenido arriba y a la izquierda */
+.modal-body { 
+  flex: 1; 
+  padding: 20px; 
+  overflow-y: auto; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: stretch; 
+  justify-content: flex-start; 
+  gap: 8px; 
+  color: var(--ap-text-muted); 
+}
+
+.modal-container .field-row {
+  padding: 3px 0;
+  min-height: 22px;
+}
+
+.modal-container .field-label {
+  min-width: 70px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ap-gray-500);
+}
+
+.modal-container .field-value {
+  font-size: 11px;
+  word-break: break-word;
+}
+
+.modal-container .field-highlight .field-value {
+  font-size: 11px;
+  color: var(--ap-navy);
+}
+
+.data-table td {
+  height: auto;
+  min-height: 32px;
+  vertical-align: top;
+  padding: 8px 10px;
+}
+
+.data-table tbody tr {
+  height: auto;
+  min-height: 32px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.data-table {
+  min-width: auto;
+}
+
+/* WhatsApp button compacto */
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #25D366;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  height: fit-content;
+  align-self: flex-end;
+  margin-bottom: 0; 
+}
+
+.btn-whatsapp--compact {
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.btn-whatsapp:hover:not(:disabled) { background-color: #128C7E; }
+.btn-whatsapp:disabled { background-color: #a0d9b5; cursor: not-allowed; opacity: 0.6; }
+
+.botones-carrusel-wrapper {
+  position: relative;
+
+  margin-top: 4px;
+  padding: 4px 32px 10px;
+
+  border-bottom: 0;
+}
+
+.botones-scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;        
+  -ms-overflow-style: none;    
+}
+
+.botones-scroll-container::-webkit-scrollbar {
+  display: none;           
+}
+
+.botones-estaticos {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.btn-est {
+  flex-shrink: 0;            
+  white-space: nowrap;
+}
+
+.carrusel-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #1a1f3c;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s, opacity 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.carrusel-flecha:hover {
+  background: #c3102c;
+}
+
+.carrusel-flecha-izq {
+  left: 0;
+}
+
+.carrusel-flecha-der {
+  right: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   FORM ROW INLINE — Label al costado del input
+   ═══════════════════════════════════════════════════ */
+
+.form-row-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.form-label--inline {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ap-text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-bottom: 0;
+  min-width: auto;
+  flex-shrink: 0;
+}
+
+.form-input--inline-field {
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--ap-gray-200);
+  border-radius: var(--radius);
+  font-size: 11px;
+  font-family: inherit;
+  color: var(--ap-text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  flex: 1;
+  min-width: 0;
+}
+
+.form-input--inline-field:focus {
+  border-color: var(--ap-red);
+  box-shadow: 0 0 0 2px rgba(192, 0, 30, 0.08);
+}
+
+/* Grid con filas inline */
+.form-grid--inline {
+  gap: 8px 12px;
+}
+
+/* Grupo teléfono + WhatsApp */
+.form-row-inline--tel {
+  margin-top: 8px;
+}
+
+.tel-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.tel-input-group .form-input--inline-field {
+  flex: 1;
+}
+
+/* Agendar gestión inline */
+.agendar-gestion-row--inline {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.agendar-gestion-row--inline .form-row-inline {
+  flex: 1;
+  min-width: 160px;
+}
+
+.agendar-gestion-row--inline .agendar-btn {
+  height: 26px;
+  margin-bottom: 0;
+}
+
+/* Fecha gestión inline */
+.fecha-gestion-row--inline {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.fecha-gestion-row--inline .form-row-inline {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* ═══════════════════════════════════════════════════
+   COMPACT INFO SECTION — Reutilizable para sidebar
+   ═══════════════════════════════════════════════════ */
+
+.compact-section {
+  flex: 1 1 45%;
+  min-width: 180px;
+}
+
+.compact-section__header {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ap-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--ap-gray-200);
+  padding-bottom: 4px;
+}
+
+.compact-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.compact-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 20px;
+}
+
+.compact-row--center {
+  align-items: center;
+}
+
+.compact-label {
+  font-size: 10px;
+  color: var(--ap-text-muted);
+  flex-shrink: 0;
+  min-width: 90px;
+}
+
+.compact-value {
+  font-size: 11px;
+  color: var(--ap-text);
+  font-weight: 500;
+}
+
+.compact-value--highlight {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ap-navy);
+}
+
+.compact-row--danger .compact-label,
+.compact-row--danger .compact-value,
+.compact-row--danger .compact-value--highlight {
+  color: var(--ap-red);
+}
+
+.compact-row--danger .compact-label {
+  font-weight: 600;
+}
+
+.compact-row--danger .compact-value {
+  font-weight: 700;
+}
+
+.compact-value--link {
+  font-size: 10px;
+  color: var(--ap-info);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Input inline en compacto */
+.compact-input {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid var(--ap-gray-200);
+  background-color: #ffffff;
+  outline: none;
+  height: 22px;
+  font-family: inherit;
+}
+
+.compact-input:focus {
+  border-color: var(--ap-red);
+  box-shadow: 0 0 0 2px rgba(192, 0, 30, 0.08);
+}
+
+/* Layout del contenedor compacto */
+.compact-layout {
+  padding: 8px 12px;
+}
+
+.compact-layout__grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+} 
+
+.deudor-header_2 {
+  flex: 0 0 220px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-self: flex-start;
+}
+
+.deudor-header__title_2 {
+  font-size: 10px;
+  font-weight: 700;
+  color: #1a2540;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* src/styles/error-summary.css */
+.error-summary {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  color: #721c24;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.error-summary strong {
+  font-weight: 600;
+}
+
+.error-summary ul {
+  margin: 8px 0 0 20px;
+  padding-left: 0;
+}
+
+.error-summary li {
+  margin-bottom: 4px;
+}
+
+/* Estilos para campos con error */
+.form-input--error,
+.form-select--error,
+.form-textarea--error {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+}
+
+.form-error {
+  color: #dc3545;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Animación suave para errores */
+.form-input--error,
+.form-select--error,
+.form-textarea--error,
+.form-error,
+.error-summary {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════
+   DEUDOR HEADER INLINE — Línea horizontal arriba
+   ═══════════════════════════════════════════════════ */
+
+.deudor-header-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--ap-navy);
+  border-bottom: 2px solid var(--ap-red);
+  flex-shrink: 0;
+}
+
+.deudor-header-inline .label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.deudor-header-inline .value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.deudor-header-inline .value--highlight {
+  font-weight: 700;
+}
+
+.deudor-header-inline .divider {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  margin: 0 4px;
+}
+
+/* ═══════════════════════════════════════════════════
+   MODAL FORM LAYOUT — Vertical con header arriba
+   ═══════════════════════════════════════════════════ */
+
+.modal-form-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal-form-layout__body {
+  flex: 1;
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-form-layout__footer {
+  padding: 12px 20px;
+  background: var(--ap-gray-50);
+  border-top: 1px solid var(--ap-gray-200);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   FORM ERROR — estandarizado (reutilizable)
+   ═══════════════════════════════════════════════════ */
+
+.form-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-row-inline .form-error {
+  margin-top: 2px;
+  font-size: 10px;
+}
+
+/* ═══════════════════════════════════════════════════
+   SELECT EN MODO INLINE
+   ═══════════════════════════════════════════════════ */
+
+.form-row-inline .form-select {
+  flex: 1;
+  min-width: 0;
+  height: 26px;
+  padding: 0 8px;
+  font-size: 11px;
+  border: 1px solid var(--ap-gray-200);
+  border-radius: var(--radius);
+  font-family: inherit;
+  color: var(--ap-text);
+  background: #fff;
+  outline: none;
+}
+
+.form-row-inline .form-select:focus {
+  border-color: var(--ap-red);
+  box-shadow: 0 0 0 2px rgba(192, 0, 30, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════
+   TEXTAREA EN MODO INLINE
+   ═══════════════════════════════════════════════════ */
+
+.form-row-inline .form-textarea {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  resize: vertical;
+}
+
+/* ============================================
+   TÍTULOS VERTICALES CON writing-mode
+   Funciona en todos los navegadores modernos
+   ============================================ */
+.ficha-block--with-side-title {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--ap-gray-200);
+}
+.ficha-block--with-side-title:last-child {
+  border-bottom: none;
+}
+
+/* Columna izquierda del título */
+.block-side-title-wrapper {
+  flex: 0 0 36px;
+  background: var(--ap-red);
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+/* Texto vertical: de abajo hacia arriba */
+.block-side-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Esto es lo que hace el texto vertical */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-orientation: mixed;
+  white-space: nowrap;
+}
+
+/* Contenido a la derecha */
+.block-content {
+  flex: 1;
+  padding: 12px 16px;
+}
+
+/* En móvil se vuelve horizontal */
+@media (max-width: 768px) {
+  .ficha-block--with-side-title {
+    flex-direction: column;
+  }
+  .block-side-title-wrapper {
+    flex: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--ap-gray-200);
+    min-height: auto;
+    padding: 8px;
+    background: var(--ap-red);
+  }
+  .block-side-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.92);
+  }
+}
+
+.form-error-summary {
+  background-color: #f8d7da;
+  border: 1px solid #f1b6bd;
+  border-radius: 6px;
+  color: #842029;
+  padding: 14px 16px;
+  margin: 12px 0 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-error-summary p {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: #842029;
+}
+
+.form-error-summary ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-error-summary li {
+  margin-bottom: 4px;
+  color: #842029;
+}
+
+.form-error-summary li:last-child {
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   FICHA GESTIÓN COMPACTA
+   Reduce altura general aprox. 30% - 40% en desktop
+   ═══════════════════════════════════════════════════ */
+
+.ficha-gestion--compact .ficha-gestion-header {
+  padding: 5px 14px;
+  line-height: 1;
+}
+
+.ficha-gestion--compact .fg-title {
+  font-size: 10px;
+  letter-spacing: 0.9px;
+}
+
+.ficha-gestion--compact .ficha-block--compact-gestion {
+  border-bottom: 1px solid var(--ap-gray-200);
+}
+
+.ficha-gestion--compact .ficha-block--compact-gestion .block-side-title-wrapper {
+  flex: 0 0 30px;
+  min-height: 64px;
+}
+
+.ficha-gestion--compact .ficha-block--compact-gestion .block-side-title {
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+}
+
+.ficha-gestion--compact .block-content--compact-gestion {
+  padding: 7px 10px;
+}
+
+.ficha-gestion--compact .form-label {
+  margin-bottom: 1px;
+  font-size: 8.5px;
+  line-height: 1.1;
+}
+
+.ficha-gestion--compact .form-group {
+  gap: 1px;
+}
+
+.ficha-gestion--compact .form-input,
+.ficha-gestion--compact .form-select,
+.ficha-gestion--compact .form-input--inline-field {
+  height: 24px;
+  min-height: 24px;
+  padding: 0 7px;
+  font-size: 10.5px;
+}
+
+.ficha-gestion--compact .form-textarea {
+  min-height: 30px;
+  padding: 4px 7px;
+  font-size: 10.5px;
+  line-height: 1.25;
+  resize: vertical;
+}
+
+.ficha-gestion--compact .btn-xs,
+.ficha-gestion--compact .btn-sm {
+  min-height: 24px;
+  padding: 0 8px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.ficha-gestion--compact .btn-whatsapp--compact {
+  min-height: 24px;
+  padding: 0 8px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.gestion-compact-grid {
+  display: grid;
+  align-items: end;
+  gap: 5px 8px;
+  margin-bottom: 6px;
+}
+
+.gestion-compact-grid:last-child {
+  margin-bottom: 0;
+}
+
+.gestion-compact-grid--datos-contacto {
+  grid-template-columns: minmax(180px, 1.25fr) minmax(160px, 1.15fr) minmax(220px, 1fr);
+}
+
+.gestion-compact-grid--np {
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+}
+
+.gestion-compact-grid--resultado-gestor {
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) minmax(300px, 1.25fr);
+}
+
+.gestion-compact-grid--compromiso {
+  grid-template-columns: minmax(170px, 1.1fr) minmax(120px, 0.75fr) minmax(120px, 0.75fr);
+}
+
+.gestion-compact-grid--fechas {
+  grid-template-columns:
+    minmax(150px, 1fr)
+    minmax(110px, 0.85fr)
+    minmax(180px, 1.15fr)
+    auto
+    minmax(150px, 1fr)
+    minmax(110px, 0.85fr);
+}
+
+.gestion-compact-grid--cliente_a-resultados {
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+}
+
+.tel-input-group--compact {
+  gap: 5px;
+}
+
+.gestor-row--inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.gestor-row--inline .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.gestor-row__id {
+  flex: 0 0 62px;
+  width: 62px;
+}
+
+.gestor-row__name {
+  flex: 1;
+  min-width: 130px;
+}
+
+.time-select-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.time-select-group .form-input {
+  min-width: 52px;
+}
+
+.agendar-btn--compact {
+  align-self: end;
+  height: 24px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.gestion-compact-errors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -2px 0 5px;
+}
+
+.resultados-compact-main {
+  display: grid;
+  grid-template-columns: 145px minmax(300px, 1fr);
+  align-items: start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.resultados-compact-main .form-group {
+  margin: 0;
+}
+
+.ficha-gestion--compact .form-error {
+  margin-top: 1px;
+  font-size: 9px;
+  line-height: 1.15;
+}
+
+.ficha-gestion--compact .form-error-summary--compact {
+  margin: 4px 0 0;
+  padding: 5px 8px;
+  font-size: 10px;
+}
+
+.ficha-gestion--compact .form-error-summary--compact p {
+  margin-bottom: 2px;
+}
+
+.ficha-gestion--compact .form-error-summary--compact ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.ficha-gestion--compact .ficha-submit--compact-gestion {
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 6px 0 0;
+  background: transparent;
+  border-top: 1px solid var(--ap-gray-100);
+}
+
+@media (max-width: 1400px) {
+  .gestion-compact-grid--fechas {
+    grid-template-columns:
+      minmax(150px, 1fr)
+      minmax(110px, 0.85fr)
+      minmax(180px, 1.15fr)
+      auto;
+  }
+}
+
+@media (max-width: 1100px) {
+  .gestion-compact-grid--datos-contacto,
+  .gestion-compact-grid--np,
+  .gestion-compact-grid--resultado-gestor,
+  .gestion-compact-grid--compromiso,
+  .gestion-compact-grid--cliente_a-resultados {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+
+  .gestion-compact-grid--fechas {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+
+  .agendar-btn--compact {
+    width: fit-content;
+  }
+
+  .resultados-compact-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ficha-gestion--compact .block-content--compact-gestion {
+    padding: 8px;
+  }
+
+  .ficha-gestion--compact .ficha-block--compact-gestion .block-side-title-wrapper {
+    min-height: auto;
+    padding: 6px;
+  }
+
+  .gestion-compact-grid,
+  .gestion-compact-grid--datos-contacto,
+  .gestion-compact-grid--np,
+  .gestion-compact-grid--resultado-gestor,
+  .gestion-compact-grid--compromiso,
+  .gestion-compact-grid--fechas,
+  .gestion-compact-grid--cliente_a-resultados {
+    grid-template-columns: 1fr;
+  }
+
+  .gestor-row--inline {
+    flex-wrap: wrap;
+  }
+
+  .gestor-row__id {
+    flex: 0 0 70px;
+  }
+
+  .gestor-row__name {
+    flex: 1 1 180px;
+  }
+}
+
+/* Ajuste solo para el título vertical de ACCIONES A TOMAR */
+.ficha-gestion--compact
+  .ficha-block--acciones-tomar
+  .block-side-title-wrapper {
+  align-self: center;
+  height: 145px;
+  min-height: 145px;
+}
+
+/* Búsqueda manual de teléfono en Ficha de Gestión */
+.telefono-search-modal__help {
+  display: block;
+  margin-top: 6px;
+  color: var(--ap-gray-500);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESULTADOS DE LA LLAMADA
+   ═══════════════════════════════════════════════════ */
+
+/*
+ * Columna izquierda:
+ * - Gestión terminada
+ * - Observaciones
+ *
+ * Columna derecha:
+ * - Estado Gestión ClienteA
+ * - Motivo No Pago
+ */
+.resultados-llamada-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(240px, 0.75fr);
+
+  align-items: start;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/*
+ * Cuando los campos de ClienteA no se muestran,
+ * la sección principal utiliza todo el ancho.
+ */
+.resultados-llamada-layout--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ── Columna izquierda ────────────────────────────── */
+
+.resultados-llamada__principal {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.resultados-llamada__terminada {
+  display: flex;
+  align-items: center;
+
+  min-height: 24px;
+}
+
+/*
+ * Tres líneas visibles aproximadamente.
+ *
+ * Se declara height porque el estilo compacto general
+ * establece una altura reducida para todos los campos.
+ */
+.ficha-gestion--compact
+.resultados-llamada__observaciones
+.form-textarea {
+  width: 100%;
+  height: 72px;
+  min-height: 72px;
+  max-height: 160px;
+
+  padding: 6px 8px;
+
+  line-height: 1.35;
+  resize: vertical;
+
+  box-sizing: border-box;
+}
+
+/* ── Columna derecha ──────────────────────────────── */
+
+.resultados-llamada__campos-cliente_a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.resultados-llamada__campos-cliente_a .form-group {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+/*
+ * Cuando el espacio disponible ya no permite mantener
+ * campos utilizables, las dos columnas se apilan.
+ */
+@media (max-width: 850px) {
+  .resultados-llamada-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Estado de envío en formularios modales */
+.modal-form-layout__submit-button {
+  min-width: 118px;
+}
+
+/*
+ * Mientras se procesa, se impide modificar
+ * el formulario enviado.
+ */
+.modal-form-layout--submitting
+  .modal-form-layout__body {
+  pointer-events: none;
+  opacity: 0.82;
+}

@@ -25,8 +25,8 @@ export const tipoDeudorOptions:
       label: 'TITULAR',
     },
     {
-      id: 'AVAL',
-      label: 'AVAL',
+      id: 'LEGACY_CRM',
+      label: 'LEGACY_CRM',
     },
   ];
 

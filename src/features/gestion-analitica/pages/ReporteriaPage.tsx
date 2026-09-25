@@ -98,7 +98,7 @@ export const ReporteriaPage = (): ReactNode => {
                 Reportes disponibles
               </h2>
               <p>
-                Los reportes mostrados respetan los permisos de SISGES y, cuando corresponde, los grupos autorizados en Analytics.
+                Los reportes mostrados respetan los permisos de CRM y, cuando corresponde, los grupos autorizados en Analytics.
               </p>
             </div>
 

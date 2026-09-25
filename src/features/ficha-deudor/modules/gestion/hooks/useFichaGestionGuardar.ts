@@ -10,7 +10,7 @@ import { FICHA_GESTION_MESSAGES } from '../constants/fichaGestionMessages.consta
 import { buildGestionSaveRequest } from '../services/fichaGestionGuardar.service';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
 } from '../types/fichaGestionForm.types';
 import { useAutoClearValidationErrors } from './useAutoClearValidationErrors';
 import { getCurrentPeruDateTime } from '../../../shared/utils/date.utils';
@@ -18,15 +18,15 @@ import { getErrorMessage } from '../../../shared/utils/getErrorMessage';
 import { useAsyncMutation } from '../../../../../shared/hooks/useAsyncMutation';
 
 interface UseFichaGestionGuardarParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   params: FichaDeudorGestionFormParams;
   documentosFiltrados: DocumentoApi[];
   np1TipoContacto: number;
-  requiereCamposClaro: boolean;
+  requiereCamposClienteA: boolean;
   onGestionGuardada?: (gestionTerminada: boolean) => void;
   onError?: (message: string) => void;
   onSubmit?: (
-    data: GestionFormClaro,
+    data: GestionFormClienteA,
     fechaFinGestion: string
   ) => void;
 }
@@ -36,7 +36,7 @@ export const useFichaGestionGuardar = ({
   params,
   documentosFiltrados,
   np1TipoContacto,
-  requiereCamposClaro,
+  requiereCamposClienteA,
   onGestionGuardada,
   onError,
   onSubmit,
@@ -74,7 +74,7 @@ export const useFichaGestionGuardar = ({
             params,
             documentosFiltrados,
             np1TipoContacto,
-            requiereCamposClaro,
+            requiereCamposClienteA,
             fechaFinGestion,
           });
       } catch (error) {
@@ -138,7 +138,7 @@ export const useFichaGestionGuardar = ({
       onGestionGuardada,
       onSubmit,
       params,
-      requiereCamposClaro,
+      requiereCamposClienteA,
     ]);
 
   return {

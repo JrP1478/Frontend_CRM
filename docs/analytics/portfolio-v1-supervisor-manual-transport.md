@@ -4,7 +4,7 @@
 
 Desde Ubuntu:
 
-- TCP hacia `172.23.1.180:51601` funciona;
+- TCP hacia `PRIVATE_HOST:51601` funciona;
 - ODBC Driver 18 falla con `10054`;
 - ODBC Driver 17 falla con `10054`;
 - `Encrypt=yes` y `Encrypt=no` fallan de la misma forma.
@@ -14,13 +14,13 @@ Ubuntu -> SQL Server 180.
 
 ## Flujo temporal de validación
 
-1. Python en Ubuntu conecta únicamente a `192.168.100.45 / aval_cob`.
-2. `export_aval_usuario_snapshot_sql.py` lee `dbo.av_Usuario`.
+1. Python en Ubuntu conecta únicamente a `PRIVATE_HOST / legacy_crm_cob`.
+2. `export_legacy_crm_usuario_snapshot_sql.py` lee `dbo.av_Usuario`.
 3. Genera un archivo SQL autocontenido en `/tmp`.
 4. El archivo se abre y ejecuta con SSMS contra
-   `172.23.1.180 / aval_analytics`.
-5. El snapshot queda en `staging.aval_usuario_current`.
-6. Se ejecuta localmente `etl.usp_load_claro_supervisor_hierarchy`.
+   `PRIVATE_HOST / legacy_crm_analytics`.
+5. El snapshot queda en `staging.legacy_crm_usuario_current`.
+6. Se ejecuta localmente `etl.usp_load_cliente_a_supervisor_hierarchy`.
 7. Se ejecuta la validación de jerarquía.
 
 ## Alcance

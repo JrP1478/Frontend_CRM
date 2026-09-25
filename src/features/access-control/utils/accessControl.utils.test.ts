@@ -811,7 +811,7 @@ export const suite = defineSuite(
               option(1, 'Root', 'Root', 1, 0, 0),
               option(24, 'mGestionAnalitica', 'Gestión Analítica', 2, 1, 1),
               option(25, 'mReporteria', 'Reportería', 3, 24, 1),
-              option(26, 'mBackusCobranza', 'Backus Cobranza', 4, 25, 1, {
+              option(26, 'mClienteFCobranza', 'ClienteF Cobranza', 4, 25, 1, {
                 urlBI: 'https://app.powerbi.com/view?r=demo',
                 image: '/logos/backus.webp',
                 icon: 'analytics',

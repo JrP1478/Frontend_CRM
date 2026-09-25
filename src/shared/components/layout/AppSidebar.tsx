@@ -32,8 +32,8 @@ import {
 } from '@features/gestion-analitica/navigation';
 
 import {
-  SisgesIcon,
-} from '../../icons/sisges';
+  CrmIcon,
+} from '../../icons/crm';
 
 import SidebarMenuSection, {
   type SidebarNavigationItem,
@@ -213,7 +213,7 @@ export const AppSidebar: React.FC<
         <div className="app-sidebar__brand">
           <div
             className="app-sidebar__brand-title"
-            aria-label="SISGES"
+            aria-label="CRM"
           >
             <span className="app-sidebar__brand-letter app-sidebar__brand-letter--white">
               S
@@ -341,7 +341,7 @@ export const AppSidebar: React.FC<
                     sectionId={module.id}
                     label={module.name}
                     icon={
-                      <SisgesIcon
+                      <CrmIcon
                         name={module.icon}
                         aria-hidden="true"
                       />

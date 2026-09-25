@@ -69,9 +69,9 @@ export const FICHA_DEUDOR_POPUP_REGISTRY = {
       APPLICATION_OPTION_IDS.GESTION_DEUDOR,
   },
 
-  'adicional-maf': {
-    path: '/popup/adicional-maf',
-    windowName: 'adicional-maf',
+  'adicional-cliente_b': {
+    path: '/popup/adicional-cliente_b',
+    windowName: 'adicional-cliente_b',
     width: 1050,
     height: 780,
     requiredOptionId:

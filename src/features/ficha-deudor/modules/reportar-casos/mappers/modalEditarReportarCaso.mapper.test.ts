@@ -15,12 +15,12 @@ export const suite = defineSuite('modalEditarReportarCaso.mapper', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     });
 
     assert.deepEqual(result, {
-      caso: 'Reportar Caso MAF',
+      caso: 'Reportar Caso CLIENTE_B',
       descripcion: 'ACTUALIZACION DE CUOTA',
       tipoSiniestro: 'Caso Varios',
     });

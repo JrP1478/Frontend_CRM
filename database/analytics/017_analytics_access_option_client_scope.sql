@@ -1,20 +1,20 @@
 /*
 Analytics Access - ETAPA 1
 Scope de clientes por opcion Analytics
-Motor objetivo: SQL Server / aval_analytics
+Motor objetivo: SQL Server / legacy_crm_analytics
 
 Objetivos
 - Crear un unico esquema de acceso para funcionalidades Analytics.
-- Relacionar nId_Opcion de SISGES con uno o varios crm_client_id.
+- Relacionar nId_Opcion de CRM con uno o varios crm_client_id.
 - Reutilizar la misma relacion para Portfolio Control Center y Reporteria.
 - Mantener default deny: una opcion sin relaciones activas no tiene clientes habilitados.
 - Preservar el comportamiento actual de Portfolio Control Center habilitando
-  inicialmente la opcion 23 para CLARO (crm_client_id = 95).
+  inicialmente la opcion 23 para CLIENTE_A (crm_client_id = 95).
 
 IMPORTANTE
-- Este script NO modifica la base transaccional de SISGES.
-- No se crean FK hacia SISGES porque option_id y crm_client_id son identificadores
-  externos respecto de aval_analytics.
+- Este script NO modifica la base transaccional de CRM.
+- No se crean FK hacia CRM porque option_id y crm_client_id son identificadores
+  externos respecto de legacy_crm_analytics.
 - Tampoco se crea FK hacia analytics.dim_client: Reporteria puede configurar un BI
   para un cliente aunque ese cliente aun no tenga modelo analitico provisionado.
 - Es aditivo e idempotente: no elimina ni recrea objetos existentes.
@@ -94,7 +94,7 @@ GO
 /*
 Bootstrap de compatibilidad.
 Portfolio Control Center tiene nId_Opcion = 23 en el registro React actual y hoy
-opera con CLARO crm_client_id = 95. Se registra solo si la relacion nunca existio.
+opera con CLIENTE_A crm_client_id = 95. Se registra solo si la relacion nunca existio.
 Si en el futuro un administrador la desactiva, volver a ejecutar este script NO
 la reactiva automaticamente.
 */

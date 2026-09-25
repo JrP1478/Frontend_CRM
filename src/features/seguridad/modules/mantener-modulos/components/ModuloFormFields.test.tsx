@@ -155,14 +155,14 @@ export const suite = defineSuite(
         const html = renderToStaticMarkup(
           <ModuloFormFields
             form={{
-              nombre: 'Backus Cobranza',
+              nombre: 'ClienteF Cobranza',
               descripcion: '',
-              codigo: 'mBackusCobranza',
+              codigo: 'mClienteFCobranza',
               icono: 'analytics',
               esPowerBI: true,
               urlBI: 'https://app.powerbi.com/view?r=demo',
-              imagenOpcion: '/imgs_webp/logo-backus.webp',
-              emailOpcion: 'ngutierrez@avalperu.com',
+              imagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+              emailOpcion: 'ngutierrez@legacy_crmperu.com',
               padreId: 25,
               visible: true,
               estado: true,
@@ -193,7 +193,7 @@ export const suite = defineSuite(
         );
         assert.match(
           html,
-          /BACKUS COBRANZA/
+          /CLIENTE_F COBRANZA/
         );
         assert.match(
           html,
@@ -217,8 +217,8 @@ export const suite = defineSuite(
               icono: 'analytics',
               esPowerBI: true,
               urlBI: 'https://app.powerbi.com/view?r=demo',
-              imagenOpcion: '/imgs_webp/logo-entel.webp',
-              emailOpcion: 'mparipanca@avalperu.com',
+              imagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+              emailOpcion: 'mparipanca@legacy_crmperu.com',
               padreId: 25,
               visible: true,
               estado: true,

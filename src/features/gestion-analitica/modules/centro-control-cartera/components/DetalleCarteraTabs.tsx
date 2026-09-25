@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   SelectField,
 } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsPanel } from '../../../shared/components';
 import type {
@@ -172,7 +172,7 @@ export const DetalleCarteraTabs: React.FC<
       className="analytics-data-panel portfolio-control-center__section--detail"
       headerClassName="analytics-data-panel__header portfolio-control-center__detail-header"
       iconClassName="analytics-heading-icon"
-      icon={<SisgesIcon name="bar-chart" />}
+      icon={<CrmIcon name="bar-chart" />}
       title="Detalle operativo"
       description="Compara campañas, equipos y asesores sin abandonar el Control Center."
       actions={(
@@ -234,7 +234,7 @@ export const DetalleCarteraTabs: React.FC<
                 changeActiveTab('campaigns');
               }}
             >
-              <SisgesIcon name="campaign" aria-hidden="true" />
+              <CrmIcon name="campaign" aria-hidden="true" />
               <span>Campañas</span>
             </button>
             <button
@@ -257,7 +257,7 @@ export const DetalleCarteraTabs: React.FC<
                 changeActiveTab('supervisors');
               }}
             >
-              <SisgesIcon name="users" aria-hidden="true" />
+              <CrmIcon name="users" aria-hidden="true" />
               <span>Supervisores / equipos</span>
             </button>
             <button
@@ -273,7 +273,7 @@ export const DetalleCarteraTabs: React.FC<
                 changeActiveTab('advisors');
               }}
             >
-              <SisgesIcon name="user" aria-hidden="true" />
+              <CrmIcon name="user" aria-hidden="true" />
               <span>Asesores</span>
             </button>
           </div>

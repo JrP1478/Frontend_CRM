@@ -36,7 +36,7 @@ export const mapDireccionReferenciada = (
     distrito: '',
     comentario: '',
     llegoDeBase: false,
-    nombreAval: '',
+    nombreLegacyCrm: '',
   };
 };
 

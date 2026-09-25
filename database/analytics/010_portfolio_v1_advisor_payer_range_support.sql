@@ -3,13 +3,13 @@ Portfolio Control Center - ETAPA 6
 Soporte para pagadores exactos por asesor en rangos multi-día
 Motor: SQL Server
 
-Ejecutar DENTRO de aval_analytics después de:
+Ejecutar DENTRO de legacy_crm_analytics después de:
   001_portfolio_v1_schema.sql
   005_portfolio_v1_advisor_support.sql
   009_portfolio_v1_advisor_range_support.sql
 
 Este script NO carga datos.
-La carga la realiza etl.usp_load_claro_advisor_daily.
+La carga la realiza etl.usp_load_cliente_a_advisor_daily.
 */
 
 SET NOCOUNT ON;

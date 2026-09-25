@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { CLIENTE_CLARO_ID } from '../constants/fichaGestion.constants';
+import { CLIENTE_CLIENTE_A_ID } from '../constants/fichaGestion.constants';
 import type { PaletaRespuestaOption } from '../../../shared/utils/selectOptions.utils';
 import { toNumberOrZero } from '../../../shared/utils/number.utils';
 
@@ -30,8 +30,8 @@ export const useFichaGestionDerivedValues = ({
     return nombreCompleto || idUsuario || 'Usuario';
   }, [usuarioNombre, usuarioApellido, idUsuario]);
 
-  const mostrarCamposClaro = useMemo(() => {
-    return String(idCliente).trim() === CLIENTE_CLARO_ID;
+  const mostrarCamposClienteA = useMemo(() => {
+    return String(idCliente).trim() === CLIENTE_CLIENTE_A_ID;
   }, [idCliente]);
 
   const np1TipoContacto = useMemo(() => {
@@ -44,7 +44,7 @@ export const useFichaGestionDerivedValues = ({
 
   return {
     usuarioActual,
-    mostrarCamposClaro,
+    mostrarCamposClienteA,
     np1TipoContacto,
   };
 };

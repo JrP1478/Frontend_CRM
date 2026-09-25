@@ -6,7 +6,7 @@ import {
 import type { FichaDeudorGestionFormParams } from '../../../shared/types/fichaDeudor.types';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
 } from '../types/fichaGestionForm.types';
 import {
   hasFichaGestionErrors,
@@ -15,11 +15,11 @@ import {
 import type { DocumentoApi } from '../../../shared/types';
 
 interface BuildGestionSaveRequestParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   params: FichaDeudorGestionFormParams;
   documentosFiltrados: DocumentoApi[];
   np1TipoContacto: number;
-  requiereCamposClaro: boolean;
+  requiereCamposClienteA: boolean;
   fechaFinGestion: string;
 }
 
@@ -44,7 +44,7 @@ export const buildGestionSaveRequest = ({
   params,
   documentosFiltrados,
   np1TipoContacto,
-  requiereCamposClaro,
+  requiereCamposClienteA,
   fechaFinGestion,
 }: BuildGestionSaveRequestParams): GestionSaveRequest => {
   const nIdDocxCobrars = buildDocxCobrars(documentosFiltrados);
@@ -53,7 +53,7 @@ export const buildGestionSaveRequest = ({
     form,
     np1TipoContacto,
     tieneDocumentos: Boolean(nIdDocxCobrars),
-    requiereCamposClaro,
+    requiereCamposClienteA,
   });
 
   if (hasFichaGestionErrors(validationErrors)) {
@@ -83,8 +83,8 @@ export const buildGestionSaveRequest = ({
       fechaInicioGestion,
       fechaFinGestion,
       nIdDocxCobrars,
-      incluyeCamposClaro:
-        requiereCamposClaro,
+      incluyeCamposClienteA:
+        requiereCamposClienteA,
     });
 
   return {

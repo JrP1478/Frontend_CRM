@@ -8,7 +8,7 @@ export const suite = defineSuite('validateFichaGestion', [
   test('acepta una gestión completa', () => {
     const errors = validateFichaGestion({
       form: createGestionForm(), np1TipoContacto: 1,
-      tieneDocumentos: true, requiereCamposClaro: true,
+      tieneDocumentos: true, requiereCamposClienteA: true,
     });
     assert.deepEqual(errors, {});
     assert.equal(hasFichaGestionErrors(errors), false);

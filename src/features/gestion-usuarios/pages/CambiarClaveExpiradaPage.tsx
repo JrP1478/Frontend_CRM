@@ -9,7 +9,7 @@ export const CambiarClaveExpiradaPage: React.FC = () => {
     <div className="cambiar-clave-page cambiar-clave-page--public">
       <div className="cambiar-clave-page__public-shell">
         <div className="cambiar-clave-page__public-brand">
-          <span className="login-page__logo-text">AVAL</span>
+          <span className="login-page__logo-text">LEGACY_CRM</span>
           <span className="login-page__logo-sub">PERÚ</span>
         </div>
 

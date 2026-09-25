@@ -1,8 +1,8 @@
 import type { ReportarCasoFormData } from '../types/reportarCaso.types';
-import { REPORTAR_CASO_MAF_VALUE } from './modalCrearReportarCaso.constants';
+import { REPORTAR_CASO_CLIENTE_B_VALUE } from './modalCrearReportarCaso.constants';
 
 export const MODAL_EDITAR_REPORTAR_CASO_INITIAL_FORM: ReportarCasoFormData = {
-  caso: REPORTAR_CASO_MAF_VALUE,
+  caso: REPORTAR_CASO_CLIENTE_B_VALUE,
   descripcion: '',
   tipoSiniestro: '',
 };

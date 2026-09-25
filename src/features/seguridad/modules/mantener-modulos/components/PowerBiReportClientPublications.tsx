@@ -63,7 +63,7 @@ const getStatus = (
 
   if (client.candidateGroups.length === 0) {
     return {
-      label: 'Sin grupo SISGES',
+      label: 'Sin grupo CRM',
       modifier: 'warning',
     };
   }
@@ -170,7 +170,7 @@ const PowerBiReportClientPublicationRow = memo(
           {client.isAvailable &&
             client.candidateGroups.length === 0 && (
               <span className="power-bi-report-client-publications__access-warning">
-                No hay grupos SISGES activos vinculados a este cliente.
+                No hay grupos CRM activos vinculados a este cliente.
               </span>
             )}
 
@@ -199,7 +199,7 @@ const PowerBiReportClientPublicationRow = memo(
                 client.candidateGroups.length === 1 &&
                 client.groupResolution === 'AUTO_DETECTED' && (
                   <span className="power-bi-report-client-publications__auto-note">
-                    Detectado automáticamente por cliente SISGES.
+                    Detectado automáticamente por cliente CRM.
                   </span>
                 )}
 
@@ -358,7 +358,7 @@ export const PowerBiReportClientPublications = ({
 
         <div className="power-bi-report-client-publications__body">
           <p className="power-bi-report-client-publications__help">
-            Las carteras vigentes se detectan desde el BI. Si un cliente tiene un único grupo SISGES activo, el acceso se propone automáticamente; si tiene varios, seleccione los grupos requeridos. Una cartera solo aparece al usuario cuando tiene acceso resuelto y una URL Publish to web válida.
+            Las carteras vigentes se detectan desde el BI. Si un cliente tiene un único grupo CRM activo, el acceso se propone automáticamente; si tiene varios, seleccione los grupos requeridos. Una cartera solo aparece al usuario cuando tiene acceso resuelto y una URL Publish to web válida.
           </p>
 
           <div className="power-bi-report-client-publications__list">

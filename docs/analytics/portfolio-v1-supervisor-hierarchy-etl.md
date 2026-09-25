@@ -2,9 +2,9 @@
 
 ## Decisión de fuente
 
-Para CLARO, la jerarquía operacional current se obtiene desde:
+Para CLIENTE_A, la jerarquía operacional current se obtiene desde:
 
-`aval_cob.dbo.av_Usuario`
+`legacy_crm_cob.dbo.av_Usuario`
 
 Regla:
 
@@ -25,14 +25,14 @@ jerarquía.
 2. contrato vigente `rh_Contrato.nId_EstadoContrato = 4`;
 3. superior por `rh_Documento.nId_PerSuperior`;
 4. DNI del superior en `rh_Personal`;
-5. resolución del superior contra `aval_cob.dbo.av_Usuario`;
+5. resolución del superior contra `legacy_crm_cob.dbo.av_Usuario`;
 6. actualización de `av_Usuario.nid_UsuSuper`.
 
 Analytics no ejecuta `sp_datosrrhh` y no requiere acceso directo a RRHH.
 
 ## Limitación confirmada al 2026-08-13
 
-Los 9 asesores CLARO existen en `av_Usuario` y sus DNI coinciden.
+Los 9 asesores CLIENTE_A existen en `av_Usuario` y sus DNI coinciden.
 
 La fuente current informa:
 
@@ -41,7 +41,7 @@ La fuente current informa:
 - 0 IDs de supervisor huérfanos;
 - 0 conflictos de identidad.
 
-Las tres bases RRHH (`aval_rrhh`, `dextra_rrhh`, `tfi_rrhh`) no son accesibles
+Las tres bases RRHH (`legacy_crm_rrhh`, `dextra_rrhh`, `tfi_rrhh`) no son accesibles
 desde el usuario utilizado para Analytics/diagnóstico. Por ello no se inventa
 una relación para los cuatro asesores sin supervisor.
 

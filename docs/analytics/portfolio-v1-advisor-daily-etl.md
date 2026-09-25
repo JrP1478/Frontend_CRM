@@ -2,7 +2,7 @@
 
 ## Identidad elegida
 
-Para CLARO se validó:
+Para CLIENTE_A se validó:
 
 - 9 asesores;
 - 9 `nId_Usuario`;
@@ -117,7 +117,7 @@ solo cuando el mapping es inequívoco.
 
 ## Supervisor
 
-La jerarquía canonical actual proviene de `aval_cob.dbo.av_Usuario.nid_UsuSuper`
+La jerarquía canonical actual proviene de `legacy_crm_cob.dbo.av_Usuario.nid_UsuSuper`
 y se materializa en `dim_supervisor` + `bridge_supervisor_advisor`. La ausencia
 de supervisor en la fuente se conserva como `NULL`; no se infiere una relación.
 

@@ -34,7 +34,7 @@ ejecutadas durante el desarrollo.
 
 El scheduling automático del transporte:
 
-`192.168.100.45 / aval_cob -> 172.23.1.180 / aval_analytics`
+`PRIVATE_HOST / legacy_crm_cob -> PRIVATE_HOST / legacy_crm_analytics`
 
 permanece como deuda operativa de infraestructura mientras no exista un runtime
 que alcance ambas instancias. El modelo, staging, jerarquía y runner están

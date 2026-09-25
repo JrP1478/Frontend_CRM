@@ -43,7 +43,7 @@ export const suite = defineSuite(
             clients: [
               {
                 clientId: 178,
-                name: ' ADEX INSTITUTO ',
+                name: ' CLIENTE_C INSTITUTO ',
                 isAvailable: true,
                 groupResolution: 'AUTO_DETECTED',
                 hasExplicitGroupConfiguration: false,
@@ -51,7 +51,7 @@ export const suite = defineSuite(
                 candidateGroups: [
                   {
                     groupId: 219,
-                    name: ' ADEX INSTITUTO [219] ',
+                    name: ' CLIENTE_C INSTITUTO [219] ',
                   },
                 ],
                 embedUrl:
@@ -141,7 +141,7 @@ export const suite = defineSuite(
             clients: [
               {
                 clientId: 178,
-                name: 'ADEX',
+                name: 'CLIENTE_C',
                 isAvailable: true,
                 groupResolution: 'MISSING',
                 hasExplicitGroupConfiguration: false,
@@ -178,13 +178,13 @@ export const suite = defineSuite(
               {
                 groupId: 156,
                 clientId: 178,
-                name: 'ADEX - COBRANZAS',
+                name: 'CLIENTE_C - COBRANZAS',
               },
             ],
             clients: [
               {
                 clientId: 178,
-                name: 'ADEX',
+                name: 'CLIENTE_C',
                 isAvailable: true,
                 groupResolution: 'AUTO_DETECTED',
                 hasExplicitGroupConfiguration: false,
@@ -192,7 +192,7 @@ export const suite = defineSuite(
                 candidateGroups: [
                   {
                     groupId: 156,
-                    name: 'ADEX - COBRANZAS',
+                    name: 'CLIENTE_C - COBRANZAS',
                   },
                 ],
                 isReady: false,
@@ -226,7 +226,7 @@ export const suite = defineSuite(
             clients: [
               {
                 clientId: 178,
-                name: 'ADEX',
+                name: 'CLIENTE_C',
                 isAvailable: true,
                 groupResolution: 'MISSING',
                 hasExplicitGroupConfiguration: false,
@@ -262,7 +262,7 @@ export const suite = defineSuite(
             clients: [
               {
                 clientId: 178,
-                name: 'ADEX',
+                name: 'CLIENTE_C',
                 isAvailable: true,
                 groupResolution: 'UNKNOWN',
                 hasExplicitGroupConfiguration: false,
@@ -298,7 +298,7 @@ export const suite = defineSuite(
             clients: [
               {
                 clientId: 178,
-                name: 'ADEX',
+                name: 'CLIENTE_C',
                 isAvailable: true,
                 groupResolution: 'CONFIGURED',
                 hasExplicitGroupConfiguration: true,
@@ -381,7 +381,7 @@ export const suite = defineSuite(
             publications: [
               {
                 clientId: 178,
-                name: ' ADEX INSTITUTO ',
+                name: ' CLIENTE_C INSTITUTO ',
                 groupIds: null,
                 embedUrl:
                   ' https://app.powerbi.com/view?r=test ',
@@ -405,7 +405,7 @@ export const suite = defineSuite(
             publicaciones: [
               {
                 idCliente: 178,
-                nombre: 'ADEX INSTITUTO',
+                nombre: 'CLIENTE_C INSTITUTO',
                 idsGrupos: null,
                 urlIncrustacion:
                   'https://app.powerbi.com/view?r=test',
@@ -479,7 +479,7 @@ export const suite = defineSuite(
                 publications: [
                   {
                     clientId: 0,
-                    name: 'ADEX',
+                    name: 'CLIENTE_C',
                     groupIds: null,
                     embedUrl:
                       'https://app.powerbi.com/view?r=test',
@@ -513,7 +513,7 @@ export const suite = defineSuite(
                 publications: [
                   {
                     clientId: 178,
-                    name: 'ADEX',
+                    name: 'CLIENTE_C',
                     groupIds: null,
                     embedUrl: 'javascript:alert(1)',
                   },
@@ -529,7 +529,7 @@ export const suite = defineSuite(
                 publications: [
                   {
                     clientId: 178,
-                    name: 'ADEX',
+                    name: 'CLIENTE_C',
                     groupIds: [0],
                     embedUrl:
                       'https://app.powerbi.com/view?r=test',

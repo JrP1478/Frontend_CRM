@@ -3,8 +3,8 @@
 ## Objetivo
 
 Definir el **modelo físico mínimo** del Analytics DB para Portfolio Control
-Center V1, usando CLARO como primera implementación sin convertir el modelo en
-un diseño exclusivo para CLARO.
+Center V1, usando CLIENTE_A como primera implementación sin convertir el modelo en
+un diseño exclusivo para CLIENTE_A.
 
 No se implementa todavía ETL ni API.
 
@@ -12,10 +12,10 @@ No se implementa todavía ETL ni API.
 
 ## Decisiones cerradas en ETAPA 4
 
-### CLARO específico
+### CLIENTE_A específico
 
-- Campaña CLARO = año-mes.
-- `PBI_CLARO_CORP_ADMINISTRATIVO` representa el snapshot de cartera/documentos.
+- Campaña CLIENTE_A = año-mes.
+- `PBI_CLIENTE_A_CORP_ADMINISTRATIVO` representa el snapshot de cartera/documentos.
 - `NID_DOCXCOBRAR` se comporta como identificador físico de documento.
 - `Deudor_unico` es único dentro de cartera, no globalmente dentro del mes.
 - Cartera asignada = `SUM(Deudor_unico)`.
@@ -29,13 +29,13 @@ No se implementa todavía ETL ni API.
 
 Fuente:
 
-`aval_reporteria.dbo.vw_bi_gerencia_gestiones_pagos`
+`legacy_crm_reporteria.dbo.vw_bi_gerencia_gestiones_pagos`
 
 La vista lee:
 
-`aval_reporteria.dbo.rpt_gestiones_pagos_final`
+`legacy_crm_reporteria.dbo.rpt_gestiones_pagos_final`
 
-Para CLARO se comprobó actualización durante el mismo día.
+Para CLIENTE_A se comprobó actualización durante el mismo día.
 
 Campos principales:
 
@@ -82,16 +82,16 @@ La numeración del texto fuente no forma parte de la regla de negocio.
 ```text
 Fuentes existentes
 │
-├── CLARO snapshot
-│   └── PBI_CLARO_CORP_ADMINISTRATIVO
+├── CLIENTE_A snapshot
+│   └── PBI_CLIENTE_A_CORP_ADMINISTRATIVO
 │
-├── CLARO evolutivo T-1
-│   └── PBI_CARTERA_DIA_CLARO_CORP_ADMINISTRATIVO_EVOL
+├── CLIENTE_A evolutivo T-1
+│   └── PBI_CARTERA_DIA_CLIENTE_A_CORP_ADMINISTRATIVO_EVOL
 │
 ├── Gestión transversal intradía
 │   └── vw_bi_gerencia_gestiones_pagos
 │
-├── Metas CLARO
+├── Metas CLIENTE_A
 │   └── base-goals
 │
 └── Jerarquía CRM
@@ -108,7 +108,7 @@ Fuentes existentes
 ```
 
 React nunca selecciona tablas de cliente ni contiene ramas del tipo
-`if cliente == CLARO`.
+`if cliente == CLIENTE_A`.
 
 ---
 
@@ -165,7 +165,7 @@ Grain:
 
 `fecha + cliente + campaña + cartera`
 
-Conserva el estado histórico diario proveniente de CLARO EVOL:
+Conserva el estado histórico diario proveniente de CLIENTE_A EVOL:
 
 - asignada;
 - gestionada;
@@ -246,13 +246,13 @@ principal.
 
 ### Snapshot de cartera
 
-Fuente CLARO materializada.
+Fuente CLIENTE_A materializada.
 
 Carga menos frecuente. Define el universo asignado y sirve como base estable.
 
 ### Intradía
 
-`vw_bi_gerencia_gestiones_pagos` ya contiene gestiones de CLARO del mismo día.
+`vw_bi_gerencia_gestiones_pagos` ya contiene gestiones de CLIENTE_A del mismo día.
 
 Se utilizará con reproceso solapado e idempotente para:
 
@@ -282,7 +282,7 @@ No necesitan columnas físicas propias:
 
 `assigned - managed`
 
-### Contactabilidad CLARO
+### Contactabilidad CLIENTE_A
 
 `contacted / assigned`
 
@@ -319,16 +319,16 @@ Los impactos por canal permanecen disponibles por separado en
 
 | Bloque | Fuente inicial |
 |---|---|
-| Asignación / universo | CLARO snapshot |
+| Asignación / universo | CLIENTE_A snapshot |
 | Gestionada / pendiente | snapshot + gestión transversal |
-| Evolución histórica | CLARO EVOL |
+| Evolución histórica | CLIENTE_A EVOL |
 | Gestión intradía | GESTION-COB2 |
 | RPC | GESTION-COB2 |
 | Promesas / PDP | GESTION-COB2 |
 | Pagos / recaudo | GESTION-COB2 |
 | Asesor | GESTION-COB2 / PROD |
 | Supervisor | CRM |
-| Metas | Goals CLARO |
+| Metas | Goals CLIENTE_A |
 | Curva esperada | Analytics |
 
 ---
@@ -340,8 +340,8 @@ Los impactos por canal permanecen disponibles por separado en
 - no se crea job;
 - no se hace FULL sobre 80M;
 - no se replica el PBIX;
-- no se hardcodea CLARO en React;
+- no se hardcodea CLIENTE_A en React;
 - no se implementa todavía ETL.
 
 El siguiente avance es **ETAPA 5 / Avance 2: consultas canónicas de lectura y
-validación contra CLARO**, antes de comenzar ETAPA 6 (ETL incremental).
+validación contra CLIENTE_A**, antes de comenzar ETAPA 6 (ETL incremental).

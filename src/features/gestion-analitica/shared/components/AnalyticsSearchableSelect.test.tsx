@@ -16,7 +16,7 @@ import {
 
 const OPTIONS = [
   { id: 10, label: 'América Telecom' },
-  { id: 20, label: 'Backus Cobranza' },
+  { id: 20, label: 'ClienteF Cobranza' },
   { id: 30, label: 'Cliente General' },
 ] as const;
 
@@ -52,7 +52,7 @@ export const suite = defineSuite(
           />
         );
 
-        assert.match(html, />Backus Cobranza</);
+        assert.match(html, />ClienteF Cobranza</);
         assert.match(html, /aria-haspopup="listbox"/);
       }
     ),

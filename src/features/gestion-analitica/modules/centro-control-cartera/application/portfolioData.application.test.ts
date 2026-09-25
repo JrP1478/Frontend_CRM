@@ -29,11 +29,11 @@ const responseFor = (url: string): Response => {
     const requestUrl = new URL(url, 'http://localhost');
     const requestedBusinessUnit =
       requestUrl.searchParams.get('unidadNegocio') ??
-      'CLARO ADMINISTRATIVO';
+      'CLIENTE_A ADMINISTRATIVO';
     const requestedCampaign =
       requestUrl.searchParams.get('campana');
     const currentCampaignUnavailable =
-      requestedBusinessUnit === 'CLARO GOBIERNO' &&
+      requestedBusinessUnit === 'CLIENTE_A GOBIERNO' &&
       requestedCampaign === null;
 
     return jsonResponse({
@@ -43,8 +43,8 @@ const responseFor = (url: string): Response => {
         updatedAt: null,
         portfolio: { id: 95 },
         businessUnits: [
-          { code: 'CLARO ADMINISTRATIVO', name: 'CLARO ADMINISTRATIVO' },
-          { code: 'CLARO GOBIERNO', name: 'CLARO GOBIERNO' },
+          { code: 'CLIENTE_A ADMINISTRATIVO', name: 'CLIENTE_A ADMINISTRATIVO' },
+          { code: 'CLIENTE_A GOBIERNO', name: 'CLIENTE_A GOBIERNO' },
         ],
         selectedBusinessUnit: requestedBusinessUnit,
         campaigns: [
@@ -235,7 +235,7 @@ export const suite = defineSuite(
           assert.equal(result.data.context.campaignId, '2026-08');
           assert.equal(
             result.data.context.businessUnit,
-            'CLARO ADMINISTRATIVO'
+            'CLIENTE_A ADMINISTRATIVO'
           );
           assert.equal(result.filterOptions.portfolio?.id, '95');
           assert.equal(result.filterOptions.campaigns.length, 1);
@@ -280,7 +280,7 @@ export const suite = defineSuite(
               95,
               {
                 ...DEFAULT_CENTRO_CONTROL_CARTERA_FILTERS,
-                businessUnit: 'CLARO GOBIERNO',
+                businessUnit: 'CLIENTE_A GOBIERNO',
                 campaignId: '2026-08',
               },
               controller.signal
@@ -288,12 +288,12 @@ export const suite = defineSuite(
 
           assert.equal(
             result.filterOptions.selectedBusinessUnit,
-            'CLARO GOBIERNO'
+            'CLIENTE_A GOBIERNO'
           );
           assert.ok(result.data);
           assert.equal(
             result.data.context.businessUnit,
-            'CLARO GOBIERNO'
+            'CLIENTE_A GOBIERNO'
           );
           assert.equal(result.data.target, null);
         } finally {
@@ -307,7 +307,7 @@ export const suite = defineSuite(
         );
         assert.match(
           requests[0]?.url ?? '',
-          /(?:\?|&)unidadNegocio=CLARO\+GOBIERNO(?:&|$)/
+          /(?:\?|&)unidadNegocio=CLIENTE_A\+GOBIERNO(?:&|$)/
         );
         assert.equal(
           requests[0]?.signal,
@@ -333,7 +333,7 @@ export const suite = defineSuite(
               95,
               {
                 ...DEFAULT_CENTRO_CONTROL_CARTERA_FILTERS,
-                businessUnit: 'CLARO GOBIERNO',
+                businessUnit: 'CLIENTE_A GOBIERNO',
               },
               new AbortController().signal
             );
@@ -341,7 +341,7 @@ export const suite = defineSuite(
           assert.equal(result.data, null);
           assert.equal(
             result.filterOptions.selectedBusinessUnit,
-            'CLARO GOBIERNO'
+            'CLIENTE_A GOBIERNO'
           );
           assert.equal(
             result.filterOptions.campaigns[0]?.id,
@@ -354,7 +354,7 @@ export const suite = defineSuite(
         assert.equal(requests.length, 1);
         assert.match(
           requests[0] ?? '',
-          /unidadNegocio=CLARO\+GOBIERNO/
+          /unidadNegocio=CLIENTE_A\+GOBIERNO/
         );
         assert.doesNotMatch(
           requests[0] ?? '',
@@ -426,7 +426,7 @@ export const suite = defineSuite(
           await loadCentroControlCartera(
             95,
             {
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
               dateFrom: '2026-08-05',
               dateTo: '2026-08-13',
               subPortfolioId: '29',
@@ -449,7 +449,7 @@ export const suite = defineSuite(
             /^\/analytics-api(?=\/)/,
             ''
           )}${requestUrl.search}`,
-          '/v1/Analitica/CentroControlCartera/Panorama?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29&idClienteCrm=95'
+          '/v1/Analitica/CentroControlCartera/Panorama?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29&idClienteCrm=95'
         );
       }
     ),
@@ -474,7 +474,7 @@ export const suite = defineSuite(
 
         try {
           const context = {
-            businessUnit: 'CLARO GOBIERNO',
+            businessUnit: 'CLIENTE_A GOBIERNO',
             campaignId: '2026-08',
             dateFrom: '2026-08-01',
             dateTo: '2026-08-13',
@@ -494,7 +494,7 @@ export const suite = defineSuite(
           );
           assert.match(
             requests[0]?.url ?? '',
-            /(?:\?|&)unidadNegocio=CLARO\+GOBIERNO(?:&|$)/
+            /(?:\?|&)unidadNegocio=CLIENTE_A\+GOBIERNO(?:&|$)/
           );
           assert.match(
             requests[0]?.url ?? '',
@@ -525,7 +525,7 @@ export const suite = defineSuite(
           );
           assert.match(
             requests[0]?.url ?? '',
-            /(?:\?|&)unidadNegocio=CLARO\+GOBIERNO(?:&|$)/
+            /(?:\?|&)unidadNegocio=CLIENTE_A\+GOBIERNO(?:&|$)/
           );
           assert.match(
             requests[0]?.url ?? '',

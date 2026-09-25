@@ -24,7 +24,7 @@ export const suite = defineSuite('clienteApi.guard', [
     assert.deepEqual(
       normalizeGrupoClienteInicial({
         nId_Cliente: 95,
-        cCli_Nombre: ' CLARO CORPORATIVO ',
+        cCli_Nombre: ' CLIENTE_A CORPORATIVO ',
         nId_Grupo: 156,
       }),
       createCliente()
@@ -66,12 +66,12 @@ export const suite = defineSuite('clienteApi.guard', [
         createResponse([
           {
             nId_Cliente: 27,
-            cCli_Nombre: 'BACKUS',
+            cCli_Nombre: 'CLIENTE_F',
             nId_Grupo: 22,
           },
           {
             nId_Cliente: 27,
-            cCli_Nombre: 'BACKUS',
+            cCli_Nombre: 'CLIENTE_F',
             nId_Grupo: 168,
           },
         ])
@@ -80,12 +80,12 @@ export const suite = defineSuite('clienteApi.guard', [
         createCliente({
           id_cliente: '27',
           id_grupo: 22,
-          nombre: 'BACKUS',
+          nombre: 'CLIENTE_F',
         }),
         createCliente({
           id_cliente: '27',
           id_grupo: 168,
-          nombre: 'BACKUS',
+          nombre: 'CLIENTE_F',
         }),
       ]
     );
@@ -96,7 +96,7 @@ export const suite = defineSuite('clienteApi.guard', [
         () =>
           normalizeGrupoClienteInicial({
             nId_Cliente: id_cliente,
-            cCli_Nombre: 'CLARO CORPORATIVO',
+            cCli_Nombre: 'CLIENTE_A CORPORATIVO',
             nId_Grupo: 156,
           }),
         /clientes no contiene datos válidos/i
@@ -109,7 +109,7 @@ export const suite = defineSuite('clienteApi.guard', [
         () =>
           normalizeGrupoClienteInicial({
             nId_Cliente: 95,
-            cCli_Nombre: 'CLARO CORPORATIVO',
+            cCli_Nombre: 'CLIENTE_A CORPORATIVO',
             nId_Grupo: id_grupo,
           }),
         /clientes no contiene datos válidos/i

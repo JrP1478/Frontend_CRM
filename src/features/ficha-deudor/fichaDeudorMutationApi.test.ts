@@ -107,7 +107,7 @@ const direccionForm: DireccionFormData = {
 const direccionEditForm: DireccionEditFormData = {
   ...direccionForm,
   id: '9',
-  nombreAval: '',
+  nombreLegacyCrm: '',
   estado: true,
 };
 
@@ -174,7 +174,7 @@ const gestionPayload: CreateGestionOpeGesContratosPayload = {
   cMINUTOGESTION: '00',
   cOBSERVACION: 'Gestión de prueba',
   cSISTEMA: 'WEB',
-  nESTADOGESTIONCLARO: 0,
+  nESTADOGESTIONCLIENTE_A: 0,
   nMOTIVONOPAGO: 0,
   dFechaInicioGestion:
     '2026-09-07T10:55:00.000',

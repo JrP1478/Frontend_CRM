@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { APPLICATION_OPTION_IDS } from '@features/access-control/registry/applicationOptionIds';
 
@@ -107,7 +107,7 @@ const CentroControlCarteraContent: React.FC<
             className="portfolio-control-center__section portfolio-control-center__section--kpis"
             headerClassName="portfolio-control-center__section-heading portfolio-control-center__section-heading--compact"
             iconClassName="analytics-heading-icon analytics-heading-icon--brand"
-            icon={<SisgesIcon name="dashboard" />}
+            icon={<CrmIcon name="dashboard" />}
             title="Indicadores clave"
             description="Estado operativo principal del portafolio en el corte seleccionado."
           >

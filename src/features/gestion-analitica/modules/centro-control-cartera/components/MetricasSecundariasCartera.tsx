@@ -1,9 +1,9 @@
 import type React from 'react';
 
 import {
-  SisgesIcon,
-  type SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIcon,
+  type CrmIconName,
+} from '@shared/icons/crm';
 import type {
   PortfolioSummaryMetrics,
 } from '../domain/panoramaCartera.types';
@@ -20,7 +20,7 @@ interface MetricasSecundariasCarteraProps {
 interface SecondaryMetricProps {
   label: string;
   value: string;
-  icon: SisgesIconName;
+  icon: CrmIconName;
 }
 
 const SecondaryMetric: React.FC<
@@ -32,7 +32,7 @@ const SecondaryMetric: React.FC<
         className="portfolio-secondary-metric__icon"
         aria-hidden="true"
       >
-        <SisgesIcon name={icon} />
+        <CrmIcon name={icon} />
       </span>
 
       <span className="portfolio-secondary-metric__copy">

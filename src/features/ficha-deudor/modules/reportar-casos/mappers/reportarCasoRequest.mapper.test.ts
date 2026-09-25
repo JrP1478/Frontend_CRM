@@ -7,14 +7,14 @@ import {
 } from './reportarCasoRequest.mapper';
 
 export const suite = defineSuite('reportarCasoRequest.mapper', [
-  test('construye el payload documentado para crear un caso MAF', () => {
+  test('construye el payload documentado para crear un caso CLIENTE_B', () => {
     const result = buildCreateReportarCasoRequest(
       '95',
       '156',
       '3001',
       '15458',
       {
-        caso: ' Reportar Caso MAF ',
+        caso: ' Reportar Caso CLIENTE_B ',
         descripcion: ' Pago no reconocido por el cliente. ',
         tipoSiniestro: ' Pago no Reflejado ',
       },
@@ -30,7 +30,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
       nId_Cartera: 156,
       nId_Cliente: 95,
       dDoc_FecActual: '2026-09-16T13:44:23.449',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Pago no Reflejado',
     });
   }),
@@ -45,7 +45,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     };
 
@@ -56,7 +56,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
       '15458',
       original,
       {
-        caso: ' Reportar Caso MAF ',
+        caso: ' Reportar Caso CLIENTE_B ',
         descripcion: ' Descripción editada ',
         tipoSiniestro: ' Extorno de Seguro ',
       },
@@ -73,7 +73,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T14:38:44.440',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Extorno de Seguro',
     });
   }),
@@ -88,7 +88,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     };
 
@@ -101,7 +101,7 @@ export const suite = defineSuite('reportarCasoRequest.mapper', [
           '15458',
           original,
           {
-            caso: 'Reportar Caso MAF',
+            caso: 'Reportar Caso CLIENTE_B',
             descripcion: 'Descripción editada',
             tipoSiniestro: 'Caso Varios',
           }

@@ -4,7 +4,7 @@ import {
   useGestionEstados,
   useGestionTipos,
   useGestionPaletaRespuesta,
-  useGestionEstadoGestionClaro,
+  useGestionEstadoGestionClienteA,
   useGestionMotivoNoPago,
 } from './useFichaGestion';
 
@@ -107,22 +107,22 @@ export const useFichaGestionCatalogos = (
   );
 
   const {
-    data: estadoGestionClaroData,
+    data: estadoGestionClienteAData,
     isLoading:
-      isLoadingEstadoGestionClaro,
-    error: errorEstadoGestionClaro,
-  } = useGestionEstadoGestionClaro(
+      isLoadingEstadoGestionClienteA,
+    error: errorEstadoGestionClienteA,
+  } = useGestionEstadoGestionClienteA(
     idCliente,
     idCartera
   );
 
-  const estadoGestionClaroOptions =
+  const estadoGestionClienteAOptions =
     useMemo(
       () =>
         mapCatalogToOptions(
-          estadoGestionClaroData
+          estadoGestionClienteAData
         ),
-      [estadoGestionClaroData]
+      [estadoGestionClienteAData]
     );
 
   const {
@@ -163,9 +163,9 @@ export const useFichaGestionCatalogos = (
     isLoadingNP2,
     errorNP2,
 
-    estadoGestionClaroOptions,
-    isLoadingEstadoGestionClaro,
-    errorEstadoGestionClaro,
+    estadoGestionClienteAOptions,
+    isLoadingEstadoGestionClienteA,
+    errorEstadoGestionClienteA,
 
     motivoNoPagoOptions,
     isLoadingMotivoNoPago,

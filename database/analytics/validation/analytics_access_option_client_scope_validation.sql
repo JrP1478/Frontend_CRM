@@ -1,12 +1,12 @@
 /*
 Validacion - Analytics Access / ETAPA 1
-Motor objetivo: SQL Server / aval_analytics
+Motor objetivo: SQL Server / legacy_crm_analytics
 
 Comprueba:
 - existencia del esquema y tabla;
 - columnas principales;
 - PK e indice de acceso inverso;
-- bootstrap Portfolio Control Center (23) -> CLARO (95);
+- bootstrap Portfolio Control Center (23) -> CLIENTE_A (95);
 - diagnostico de clientes configurados que aun no existen en analytics.dim_client.
 */
 
@@ -60,7 +60,7 @@ IF NOT EXISTS
       AND is_active = 1
 )
 BEGIN
-    THROW 53004, 'No existe el bootstrap activo Portfolio Control Center (23) -> CLARO (95).', 1;
+    THROW 53004, 'No existe el bootstrap activo Portfolio Control Center (23) -> CLIENTE_A (95).', 1;
 END;
 
 SELECT

@@ -98,7 +98,7 @@ BEGIN
         source_portfolio_id    INT NULL,             -- nId_Cartera cuando exista
         portfolio_code         VARCHAR(100) NULL,
         portfolio_name         VARCHAR(200) NOT NULL,
-        source_business_unit   VARCHAR(150) NULL,    -- Ej.: CLARO CORPORATIVO
+        source_business_unit   VARCHAR(150) NULL,    -- Ej.: CLIENTE_A CORPORATIVO
         is_active              BIT NOT NULL
             CONSTRAINT DF_dim_portfolio_is_active DEFAULT (1),
         created_at             DATETIME2(3) NOT NULL
@@ -481,7 +481,7 @@ GO
    5. FACT - PROMESAS / PDP
 
    Fuente inicial transversal:
-   aval_reporteria.dbo.vw_bi_gerencia_gestiones_pagos
+   legacy_crm_reporteria.dbo.vw_bi_gerencia_gestiones_pagos
 
    El source_status se conserva para auditoría.
    status_code es el estado normalizado del producto.
@@ -661,20 +661,20 @@ GO
 
 IF NOT EXISTS (
     SELECT 1 FROM etl.watermark
-    WHERE source_code = 'CLARO_PORTFOLIO_SNAPSHOT'
+    WHERE source_code = 'CLIENTE_A_PORTFOLIO_SNAPSHOT'
 )
 BEGIN
     INSERT INTO etl.watermark(source_code, overlap_days)
-    VALUES ('CLARO_PORTFOLIO_SNAPSHOT', 1);
+    VALUES ('CLIENTE_A_PORTFOLIO_SNAPSHOT', 1);
 END;
 
 IF NOT EXISTS (
     SELECT 1 FROM etl.watermark
-    WHERE source_code = 'CLARO_EVOLUTION_DAILY'
+    WHERE source_code = 'CLIENTE_A_EVOLUTION_DAILY'
 )
 BEGIN
     INSERT INTO etl.watermark(source_code, overlap_days)
-    VALUES ('CLARO_EVOLUTION_DAILY', 3);
+    VALUES ('CLIENTE_A_EVOLUTION_DAILY', 3);
 END;
 
 IF NOT EXISTS (

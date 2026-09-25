@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useMemo } from 'react';
 
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   PortfolioOperationalContext,
@@ -219,7 +219,7 @@ export const SeguimientoPromesasCarteraModal: React.FC<
                     visibleData.pagination.totalItems <= 0
                   }
                 >
-                  <SisgesIcon name="export" />
+                  <CrmIcon name="export" />
                   <span>
                     {isExporting ? 'Generando Excel...' : 'Exportar Excel'}
                   </span>

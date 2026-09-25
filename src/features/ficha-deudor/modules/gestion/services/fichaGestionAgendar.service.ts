@@ -4,12 +4,12 @@ import { buildCreateAgendaPayload } from '../mappers/fichaGestionAgenda.mapper';
 import type { CreateAgendaPayload } from '../types/fichaGestionApi.types';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
 } from '../types/fichaGestionForm.types';
 import { validateFichaGestionAgenda } from '../validations/fichaGestionAgendaValidation';
 
 interface BuildAgendaRequestParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   params: FichaDeudorGestionFormParams;
   deudorNombre: string;
   carteraNombre: string;

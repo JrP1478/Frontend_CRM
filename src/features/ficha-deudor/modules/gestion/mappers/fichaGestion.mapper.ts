@@ -1,6 +1,6 @@
 import type { CreateGestionOpeGesContratosPayload } from '../types/fichaGestionApi.types';
 import { SISTEMA_GESTION } from '../constants/fichaGestion.constants';
-import type { GestionFormClaro } from '../types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../types/fichaGestionForm.types';
 import {
   splitTime,
   toPeruApiDateTimeOrCurrent,
@@ -15,7 +15,7 @@ import {
 import type { DocumentoApi } from '../../../shared/types';
 
 interface BuildCreateGestionPayloadParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   idCliente: string;
   idCartera: string;
   idContrato: string;
@@ -24,7 +24,7 @@ interface BuildCreateGestionPayloadParams {
   fechaInicioGestion: string;
   fechaFinGestion: string;
   nIdDocxCobrars: string;
-  incluyeCamposClaro: boolean;
+  incluyeCamposClienteA: boolean;
 }
 
 type GestionIdentityPayload = Pick<
@@ -66,9 +66,9 @@ type GestionActualPayload = Pick<
   'dFECHAGESTION' | 'cHORAGESTION' | 'cMINUTOGESTION' | 'cOBSERVACION'
 >;
 
-type GestionClaroPayload = Pick<
+type GestionClienteAPayload = Pick<
   CreateGestionOpeGesContratosPayload,
-  'nESTADOGESTIONCLARO' | 'nMOTIVONOPAGO'
+  'nESTADOGESTIONCLIENTE_A' | 'nMOTIVONOPAGO'
 >;
 
 type GestionAuditPayload = Pick<
@@ -115,7 +115,7 @@ const buildGestionIdentityPayload = ({
 };
 
 const buildGestionContactPayload = (
-  form: GestionFormClaro
+  form: GestionFormClienteA
 ): GestionContactPayload => {
   return {
     cNOMBRECONTACTO: form.nombreContacto.trim(),
@@ -134,7 +134,7 @@ const buildGestionContactPayload = (
 };
 
 const buildGestionCompromisoPayload = (
-  form: GestionFormClaro
+  form: GestionFormClienteA
 ): GestionCompromisoPayload => {
   return {
     dFECHACOMPROMISO: toPeruApiDateTimeOrNull(form.fechaCompromisoPago),
@@ -144,7 +144,7 @@ const buildGestionCompromisoPayload = (
 };
 
 const buildGestionAgendaPayload = (
-  form: GestionFormClaro
+  form: GestionFormClienteA
 ): GestionAgendaPayload => {
   const nuevaGestionTime = splitTime(form.horaNuevaGestion);
 
@@ -156,7 +156,7 @@ const buildGestionAgendaPayload = (
 };
 
 const buildGestionActualPayload = (
-  form: GestionFormClaro
+  form: GestionFormClienteA
 ): GestionActualPayload => {
   const gestionTime = splitTime(form.horaGestion);
 
@@ -168,21 +168,21 @@ const buildGestionActualPayload = (
   };
 };
 
-const buildGestionClaroPayload = (
-  form: GestionFormClaro,
-  incluyeCamposClaro: boolean
-): GestionClaroPayload => {
-  if (!incluyeCamposClaro) {
+const buildGestionClienteAPayload = (
+  form: GestionFormClienteA,
+  incluyeCamposClienteA: boolean
+): GestionClienteAPayload => {
+  if (!incluyeCamposClienteA) {
     return {
-      nESTADOGESTIONCLARO: 0,
+      nESTADOGESTIONCLIENTE_A: 0,
       nMOTIVONOPAGO: 0,
     };
   }
 
   return {
-    nESTADOGESTIONCLARO: toRequiredId(
-      form.estadoGestionClaro,
-      'nESTADOGESTIONCLARO'
+    nESTADOGESTIONCLIENTE_A: toRequiredId(
+      form.estadoGestionClienteA,
+      'nESTADOGESTIONCLIENTE_A'
     ),
     nMOTIVONOPAGO: toRequiredId(
       form.motivoNoPago,
@@ -224,7 +224,7 @@ export const buildCreateGestionPayload = ({
   fechaInicioGestion,
   fechaFinGestion,
   nIdDocxCobrars,
-  incluyeCamposClaro,
+  incluyeCamposClienteA,
 }: BuildCreateGestionPayloadParams): CreateGestionOpeGesContratosPayload => {
   return {
     ...buildGestionIdentityPayload({
@@ -239,7 +239,7 @@ export const buildCreateGestionPayload = ({
     ...buildGestionCompromisoPayload(form),
     ...buildGestionAgendaPayload(form),
     ...buildGestionActualPayload(form),
-    ...buildGestionClaroPayload(form, incluyeCamposClaro),
+    ...buildGestionClienteAPayload(form, incluyeCamposClienteA),
     ...buildGestionAuditPayload(fechaInicioGestion, fechaFinGestion),
   };
 };

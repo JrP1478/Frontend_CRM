@@ -25,12 +25,12 @@ const buildReport = (
   overrides: Partial<PowerBiReport>
 ): PowerBiReport => ({
   id: 26,
-  code: 'mBackusCobranza',
-  name: 'Backus Cobranza',
+  code: 'mClienteFCobranza',
+  name: 'ClienteF Cobranza',
   description: 'Seguimiento de cobranza.',
   serviceUrl: 'https://app.powerbi.com/view?r=demo',
   image: '/logos/backus.webp',
-  email: 'ngutierrez@avalperu.com',
+  email: 'ngutierrez@legacy_crmperu.com',
   icon: 'analytics',
   ...overrides,
 });
@@ -142,7 +142,7 @@ export const suite = defineSuite(
             [report],
             26
           )?.name,
-          'Backus Cobranza'
+          'ClienteF Cobranza'
         );
         assert.equal(
           resolvePowerBiEmbedUrl(

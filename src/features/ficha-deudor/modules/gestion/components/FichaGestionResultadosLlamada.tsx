@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { FichaGestionResultadosLlamadaProps } from '../types/fichaGestionViewModel.types';
-import FichaGestionCamposClaro from './shared/FichaGestionCamposClaro';
+import FichaGestionCamposClienteA from './shared/FichaGestionCamposClienteA';
 import FichaGestionResultadoFields from './shared/FichaGestionResultadoFields';
 import FichaGestionSubmitSection from './shared/FichaGestionSubmitSection';
 import FichaGestionValidationSummary from './shared/FichaGestionValidationSummary';
@@ -14,17 +14,17 @@ const FichaGestionResultadosLlamada: React.FC<
   validationErrors = {},
   feedback,
   onCloseFeedback,
-  mostrarCamposClaro,
-  estadoGestionClaroOptions,
-  isLoadingEstadoGestionClaro,
-  errorEstadoGestionClaro,
+  mostrarCamposClienteA,
+  estadoGestionClienteAOptions,
+  isLoadingEstadoGestionClienteA,
+  errorEstadoGestionClienteA,
   motivoNoPagoOptions,
   isLoadingMotivoNoPago,
   errorMotivoNoPago,
   handleGuardar,
   isSaving = false,
 }) => {
-  const layoutClassName = mostrarCamposClaro
+  const layoutClassName = mostrarCamposClienteA
     ? 'resultados-llamada-layout'
     : 'resultados-llamada-layout resultados-llamada-layout--single';
 
@@ -43,18 +43,18 @@ const FichaGestionResultadosLlamada: React.FC<
             setField={setField}
           />
 
-          {mostrarCamposClaro && (
-            <FichaGestionCamposClaro
+          {mostrarCamposClienteA && (
+            <FichaGestionCamposClienteA
               form={form}
               setField={setField}
-              estadoGestionClaroOptions={
-                estadoGestionClaroOptions
+              estadoGestionClienteAOptions={
+                estadoGestionClienteAOptions
               }
-              isLoadingEstadoGestionClaro={
-                isLoadingEstadoGestionClaro
+              isLoadingEstadoGestionClienteA={
+                isLoadingEstadoGestionClienteA
               }
-              errorEstadoGestionClaro={
-                errorEstadoGestionClaro
+              errorEstadoGestionClienteA={
+                errorEstadoGestionClienteA
               }
               motivoNoPagoOptions={
                 motivoNoPagoOptions

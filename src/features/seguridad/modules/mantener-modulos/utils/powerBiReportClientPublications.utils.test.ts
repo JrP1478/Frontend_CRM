@@ -20,7 +20,7 @@ const createPublication = (
   overrides: Partial<AnalyticsOptionReportClientPublication> = {}
 ): AnalyticsOptionReportClientPublication => ({
   clientId: 178,
-  name: 'ADEX INSTITUTO',
+  name: 'CLIENTE_C INSTITUTO',
   isAvailable: true,
   groupResolution: 'AUTO_DETECTED',
   hasExplicitGroupConfiguration: false,
@@ -28,7 +28,7 @@ const createPublication = (
   candidateGroups: [
     {
       groupId: 219,
-      name: 'ADEX INSTITUTO',
+      name: 'CLIENTE_C INSTITUTO',
     },
   ],
   embedUrl:
@@ -57,7 +57,7 @@ export const suite = defineSuite(
           [
             {
               clientId: 178,
-              name: 'ADEX INSTITUTO',
+              name: 'CLIENTE_C INSTITUTO',
               groupIds: null,
               embedUrl:
                 'https://app.powerbi.com/view?r=new',
@@ -76,11 +76,11 @@ export const suite = defineSuite(
           candidateGroups: [
             {
               groupId: 219,
-              name: 'ADEX INSTITUTO',
+              name: 'CLIENTE_C INSTITUTO',
             },
             {
               groupId: 220,
-              name: 'ADEX COBRANZA',
+              name: 'CLIENTE_C COBRANZA',
             },
           ],
         });
@@ -100,7 +100,7 @@ export const suite = defineSuite(
           [
             {
               clientId: 178,
-              name: 'ADEX INSTITUTO',
+              name: 'CLIENTE_C INSTITUTO',
               groupIds: [219, 220],
               embedUrl:
                 'https://app.powerbi.com/view?r=old',
@@ -127,7 +127,7 @@ export const suite = defineSuite(
       'indexa la publicación con una clave canónica estable',
       () => {
         const publication = createPublication({
-          name: '  ADEX INSTITUTO  ',
+          name: '  CLIENTE_C INSTITUTO  ',
         });
         const index =
           buildReportClientPublicationIndex([
@@ -151,7 +151,7 @@ export const suite = defineSuite(
         const first = createPublication();
         const second = createPublication({
           clientId: 179,
-          name: 'ALFIN BANCO',
+          name: 'CLIENTE_D BANCO',
         });
         const editedFirst = {
           ...first,

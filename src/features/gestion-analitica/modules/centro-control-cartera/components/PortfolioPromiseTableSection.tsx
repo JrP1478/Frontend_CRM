@@ -2,7 +2,7 @@ import type React from 'react';
 
 import type { Column } from '@shared/types';
 import Table from '@shared/components/table/Table';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   PortfolioPagination,
@@ -112,7 +112,7 @@ export function PortfolioPromiseTableSection<
             className={`${toolbarClassName}__filter-icon`}
             aria-hidden="true"
           >
-            <SisgesIcon name="filter" />
+            <CrmIcon name="filter" />
           </span>
         </div>
       </div>

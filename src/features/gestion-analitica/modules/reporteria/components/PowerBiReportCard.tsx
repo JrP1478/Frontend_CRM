@@ -8,8 +8,8 @@ import type {
 } from '../domain/reporteria.types';
 
 import {
-  SisgesIcon,
-} from '@shared/icons/sisges';
+  CrmIcon,
+} from '@shared/icons/crm';
 
 import {
   isValidEmailValue,
@@ -77,7 +77,7 @@ export const PowerBiReportCard = ({
               className="reporteria-card__fallback-icon"
               aria-hidden="true"
             >
-              <SisgesIcon
+              <CrmIcon
                 name={report.icon}
               />
             </span>
@@ -108,7 +108,7 @@ export const PowerBiReportCard = ({
           }}
           aria-label={`Ingresar al reporte ${report.name}`}
         >
-          <SisgesIcon
+          <CrmIcon
             name="analytics"
             aria-hidden="true"
           />
@@ -123,7 +123,7 @@ export const PowerBiReportCard = ({
             )}`}
             aria-label={`Enviar correo sobre ${report.name}`}
           >
-            <SisgesIcon
+            <CrmIcon
               name="mail"
               aria-hidden="true"
             />
@@ -135,7 +135,7 @@ export const PowerBiReportCard = ({
             title="Correo pendiente de configurar"
             aria-label={`Correo pendiente de configurar para ${report.name}`}
           >
-            <SisgesIcon
+            <CrmIcon
               name="mail"
               aria-hidden="true"
             />

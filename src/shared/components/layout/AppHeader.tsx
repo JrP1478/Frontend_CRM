@@ -67,7 +67,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         )}
 
         <div className="app-header__brand">
-          <span className="logo-text">AVAL</span>
+          <span className="logo-text">LEGACY_CRM</span>
           <span className="logo-sub">PERÚ</span>
         </div>
 

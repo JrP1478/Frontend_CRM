@@ -1,6 +1,6 @@
 /*
 Portfolio Control Center - ETAPA 6
-Soporte físico de evolución histórica CLARO
+Soporte físico de evolución histórica CLIENTE_A
 Motor: SQL Server
 
 PRERREQUISITOS:

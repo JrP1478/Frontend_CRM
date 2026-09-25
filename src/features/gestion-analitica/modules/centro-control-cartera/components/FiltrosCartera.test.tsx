@@ -28,15 +28,15 @@ const OPTIONS: CentroControlCarteraFilterOptions = {
   portfolio: { id: '95' },
   businessUnits: [
     {
-      id: 'CLARO ADMINISTRATIVO',
-      label: 'CLARO ADMINISTRATIVO',
+      id: 'CLIENTE_A ADMINISTRATIVO',
+      label: 'CLIENTE_A ADMINISTRATIVO',
     },
     {
-      id: 'CLARO GOBIERNO',
-      label: 'CLARO GOBIERNO',
+      id: 'CLIENTE_A GOBIERNO',
+      label: 'CLIENTE_A GOBIERNO',
     },
   ],
-  selectedBusinessUnit: 'CLARO ADMINISTRATIVO',
+  selectedBusinessUnit: 'CLIENTE_A ADMINISTRATIVO',
   subPortfolios: [],
   campaigns: [],
   supervisors: [],
@@ -55,7 +55,7 @@ export const suite = defineSuite(
         const html = renderToStaticMarkup(
           <FiltrosCartera
             clientOptions={[
-              { id: '95', label: 'CLARO CORPORATIVO' },
+              { id: '95', label: 'CLIENTE_A CORPORATIVO' },
               { id: '59', label: 'MITSUI AUTO FINANCE' },
             ]}
             selectedClientId={95}
@@ -64,7 +64,7 @@ export const suite = defineSuite(
             options={OPTIONS}
             portfolioOption={{
               id: '95',
-              label: 'CLARO CORPORATIVO',
+              label: 'CLIENTE_A CORPORATIVO',
             }}
             resolvedCampaignId={null}
             isLoading={false}
@@ -76,11 +76,11 @@ export const suite = defineSuite(
         );
 
         assert.match(html, />Cartera</);
-        assert.match(html, /CLARO ADMINISTRATIVO/);
-        assert.match(html, /CLARO GOBIERNO/);
+        assert.match(html, /CLIENTE_A ADMINISTRATIVO/);
+        assert.match(html, /CLIENTE_A GOBIERNO/);
         assert.match(
           html,
-          /value="CLARO ADMINISTRATIVO" selected=""/
+          /value="CLIENTE_A ADMINISTRATIVO" selected=""/
         );
 
         const clienteIndex = html.indexOf('>Cliente</label>');
@@ -106,18 +106,18 @@ export const suite = defineSuite(
         const html = renderToStaticMarkup(
           <FiltrosCartera
             clientOptions={[
-              { id: '95', label: 'CLARO CORPORATIVO' },
+              { id: '95', label: 'CLIENTE_A CORPORATIVO' },
               { id: '59', label: 'MITSUI AUTO FINANCE' },
             ]}
             selectedClientId={95}
             onClientChange={() => undefined}
             filters={{
               ...FILTERS,
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
             }}
             options={{
               ...OPTIONS,
-              selectedBusinessUnit: 'CLARO GOBIERNO',
+              selectedBusinessUnit: 'CLIENTE_A GOBIERNO',
               campaigns: [
                 {
                   id: '2025-12',
@@ -143,7 +143,7 @@ export const suite = defineSuite(
             }}
             portfolioOption={{
               id: '95',
-              label: 'CLARO CORPORATIVO',
+              label: 'CLIENTE_A CORPORATIVO',
             }}
             resolvedCampaignId={null}
             isLoading={false}

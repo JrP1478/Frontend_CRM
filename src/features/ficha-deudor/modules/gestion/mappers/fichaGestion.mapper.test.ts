@@ -18,7 +18,7 @@ export const suite = defineSuite('fichaGestion.mapper', [
       idCliente: '1', idCartera: '2', idContrato: '4', idDeudor: '3', idUsuario: '5',
       fechaInicioGestion: '2026-08-04T14:00:00.000Z',
       fechaFinGestion: '2026-08-04T14:17:00.000Z',
-      nIdDocxCobrars: '101,202', incluyeCamposClaro: true,
+      nIdDocxCobrars: '101,202', incluyeCamposClienteA: true,
     });
 
     assert.equal(payload.nId_Cliente, 1);
@@ -30,7 +30,7 @@ export const suite = defineSuite('fichaGestion.mapper', [
     assert.equal(payload.cMINUTONUEVAGESTION, '35');
     assert.equal(payload.dFechaInicioGestion, '2026-08-04T09:00:00.000');
     assert.equal(payload.dFechaFinGestion, '2026-08-04T09:17:00.000');
-    assert.equal(payload.nESTADOGESTIONCLARO, 50);
+    assert.equal(payload.nESTADOGESTIONCLIENTE_A, 50);
     assert.equal(payload.nMOTIVONOPAGO, 60);
   }),
   test('rechaza identificadores inválidos antes de construir el payload', () => {
@@ -40,7 +40,7 @@ export const suite = defineSuite('fichaGestion.mapper', [
         idCliente: 'abc', idCartera: '2', idContrato: '4', idDeudor: '3', idUsuario: '5',
         fechaInicioGestion: '2026-08-04T09:00:00.000',
         fechaFinGestion: '2026-08-04T09:17:00.000',
-        nIdDocxCobrars: '101', incluyeCamposClaro: true,
+        nIdDocxCobrars: '101', incluyeCamposClienteA: true,
       }),
       /nId_Cliente/
     );
@@ -51,20 +51,20 @@ export const suite = defineSuite('fichaGestion.mapper', [
       idCliente: '1', idCartera: '2', idContrato: '4', idDeudor: '3', idUsuario: '5',
       fechaInicioGestion: '2026-08-04T09:00:00.000',
       fechaFinGestion: '2026-08-04T09:17:00.000',
-      nIdDocxCobrars: '101', incluyeCamposClaro: true,
+      nIdDocxCobrars: '101', incluyeCamposClienteA: true,
     });
 
     assert.equal(payload.nNP2, 0);
   }),
-  test('envía cero en campos Claro cuando el cliente no los usa', () => {
+  test('envía cero en campos ClienteA cuando el cliente no los usa', () => {
     const payload = buildCreateGestionPayload({
       form: createGestionForm(),
       idCliente: '1', idCartera: '2', idContrato: '4', idDeudor: '3', idUsuario: '5',
       fechaInicioGestion: '2026-08-04T09:00:00.000',
       fechaFinGestion: '2026-08-04T09:17:00.000',
-      nIdDocxCobrars: '101', incluyeCamposClaro: false,
+      nIdDocxCobrars: '101', incluyeCamposClienteA: false,
     });
-    assert.equal(payload.nESTADOGESTIONCLARO, 0);
+    assert.equal(payload.nESTADOGESTIONCLIENTE_A, 0);
     assert.equal(payload.nMOTIVONOPAGO, 0);
   }),
 ]);

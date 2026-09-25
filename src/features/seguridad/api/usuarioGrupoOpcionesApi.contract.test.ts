@@ -37,7 +37,7 @@ const listadoItem = (
   cUsr_Nombres: 'Luis Pierre',
   cUsr_Login: '14931',
   nId_Grupo: 156,
-  cNombre_Grupo: 'CLARO CORPORATIVO',
+  cNombre_Grupo: 'CLIENTE_A CORPORATIVO',
   nId_Opcion: 10,
   sCodigoOpcion: 'mMantenerPerfil',
   sNombreOpcion: 'Mantener perfil',

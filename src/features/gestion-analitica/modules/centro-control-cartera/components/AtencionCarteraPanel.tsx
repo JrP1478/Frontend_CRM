@@ -2,9 +2,9 @@ import type React from 'react';
 import { useState } from 'react';
 
 import {
-  SisgesIcon,
-  type SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIcon,
+  type CrmIconName,
+} from '@shared/icons/crm';
 
 import { AnalyticsPanel } from '../../../shared/components';
 import type {
@@ -87,7 +87,7 @@ const getMetricLabel = (
 
 const getAttentionIcon = (
   tone: AtencionCarteraTone
-): SisgesIconName => {
+): CrmIconName => {
   switch (tone) {
     case 'critical':
       return 'warning';
@@ -154,7 +154,7 @@ export const AtencionCarteraPanel: React.FC<
       className="portfolio-control-center__section portfolio-control-center__section--attention"
       headerClassName="portfolio-control-center__section-heading portfolio-control-center__section-heading--compact"
       iconClassName="analytics-heading-icon analytics-heading-icon--danger"
-      icon={<SisgesIcon name="warning" />}
+      icon={<CrmIcon name="warning" />}
       title="Requiere atención"
       description="Señales operativas para actuar durante el día, no solo al cierre."
     >
@@ -192,7 +192,7 @@ export const AtencionCarteraPanel: React.FC<
                   className="portfolio-attention-item__icon"
                   aria-hidden="true"
                 >
-                  <SisgesIcon
+                  <CrmIcon
                     name={getAttentionIcon(item.tone)}
                   />
                 </span>
@@ -270,7 +270,7 @@ export const AtencionCarteraPanel: React.FC<
       {target === null && context !== null && (
         <div className="portfolio-attention-target-unavailable">
           <span aria-hidden="true">
-            <SisgesIcon name="target" />
+            <CrmIcon name="target" />
           </span>
           <div>
             <strong>Meta mensual no disponible</strong>

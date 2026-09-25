@@ -41,10 +41,10 @@ const FILTER_OPTIONS_RESPONSE: OpcionesFiltroCarteraApiResponse = {
   updatedAt: '2026-08-14T16:00:00Z',
   portfolio: { id: 95 },
   businessUnits: [
-    { code: 'CLARO ADMINISTRATIVO', name: 'CLARO ADMINISTRATIVO' },
-    { code: 'CLARO GOBIERNO', name: 'CLARO GOBIERNO' },
+    { code: 'CLIENTE_A ADMINISTRATIVO', name: 'CLIENTE_A ADMINISTRATIVO' },
+    { code: 'CLIENTE_A GOBIERNO', name: 'CLIENTE_A GOBIERNO' },
   ],
-  selectedBusinessUnit: 'CLARO GOBIERNO',
+  selectedBusinessUnit: 'CLIENTE_A GOBIERNO',
   campaigns: [
     {
       code: '2026-08',
@@ -439,10 +439,10 @@ export const suite = defineSuite(
         );
 
         assert.deepEqual(result.businessUnits, [
-          { id: 'CLARO ADMINISTRATIVO', label: 'CLARO ADMINISTRATIVO' },
-          { id: 'CLARO GOBIERNO', label: 'CLARO GOBIERNO' },
+          { id: 'CLIENTE_A ADMINISTRATIVO', label: 'CLIENTE_A ADMINISTRATIVO' },
+          { id: 'CLIENTE_A GOBIERNO', label: 'CLIENTE_A GOBIERNO' },
         ]);
-        assert.equal(result.selectedBusinessUnit, 'CLARO GOBIERNO');
+        assert.equal(result.selectedBusinessUnit, 'CLIENTE_A GOBIERNO');
         assert.deepEqual(result.subPortfolios[0], {
           id: '29',
           label: 'Subcartera real',
@@ -676,7 +676,7 @@ export const suite = defineSuite(
           PROMISES_RESPONSE,
           EVOLUTION_RESPONSE,
           '29',
-          'CLARO GOBIERNO'
+          'CLIENTE_A GOBIERNO'
         );
 
         assert.equal(
@@ -699,7 +699,7 @@ export const suite = defineSuite(
           refreshedAt: '2026-08-14T15:55:00Z',
         });
         assert.deepEqual(result.context, {
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           campaignId: '2026-08',
           dateFrom: '2026-08-01',
           dateTo: '2026-08-13',

@@ -1,4 +1,4 @@
-# Portfolio Control Center — ETAPA 6 / Avance 4 — Meta mensual CLARO
+# Portfolio Control Center — ETAPA 6 / Avance 4 — Meta mensual CLIENTE_A
 
 ## Objetivo
 
@@ -16,11 +16,11 @@ La fuente validada es `base-goals.xlsx` (`baseGoals`) con las columnas:
 Para V1 la regla canonical validada es:
 
 - `base-goals.xlsx` es el catálogo vigente de metas por cartera;
-- `CARTERA = CLARO`;
-- debe existir una única fila CLARO con `META_PAGOS` válida en el snapshot actual del archivo;
+- `CARTERA = CLIENTE_A`;
+- debe existir una única fila CLIENTE_A con `META_PAGOS` válida en el snapshot actual del archivo;
 - `AÑO` y `ASIGNACIÓN` se conservan como metadata de la fila fuente, pero **no** determinan la campaña Analytics destino;
 - la campaña destino la define `--campaign` (`YYYY-MM`);
-- `target_recovered_amount = META_PAGOS` de la fila vigente de CLARO y se reutiliza para todas las campañas mientras el archivo fuente mantenga esa meta.
+- `target_recovered_amount = META_PAGOS` de la fila vigente de CLIENTE_A y se reutiliza para todas las campañas mientras el archivo fuente mantenga esa meta.
 
 `META_EFECTIVIDAD` no se persiste todavía como regla canonical porque el
 producto define cumplimiento y ritmo a partir de la meta monetaria.
@@ -30,13 +30,13 @@ producto define cumplimiento y ritmo a partir de la meta monetaria.
 ```text
 base-goals.xlsx
     ↓
-export_claro_goals_snapshot_sql.py
+export_cliente_a_goals_snapshot_sql.py
     ↓
 SQL autocontenido
     ↓
-staging.claro_goal_monthly
+staging.cliente_a_goal_monthly
     ↓
-etl.usp_load_claro_target_monthly
+etl.usp_load_cliente_a_target_monthly
     ↓
 analytics.fact_target_monthly
     ↓
@@ -54,7 +54,7 @@ se hardcodea: siempre se lee del Excel actual.
 
 ## Grain
 
-`staging.claro_goal_monthly`:
+`staging.cliente_a_goal_monthly`:
 
 `source_code + campaign_code`
 
@@ -75,7 +75,7 @@ pip install -r scripts/analytics/requirements.txt
 Generar el SQL:
 
 ```bash
-python scripts/analytics/export_claro_goals_snapshot_sql.py \
+python scripts/analytics/export_cliente_a_goals_snapshot_sql.py \
   --input /ruta/base-goals.xlsx \
   --campaign 2026-08
 ```
@@ -83,16 +83,16 @@ python scripts/analytics/export_claro_goals_snapshot_sql.py \
 El script busca primero la tabla Excel `baseGoals`. Si no existe como tabla
 estructurada, busca una hoja que contenga los encabezados requeridos.
 
-Para `CARTERA = CLARO` exige exactamente una fila con `META_PAGOS` válida. Si
-el archivo llegara a contener varias filas CLARO, aborta por ambigüedad en vez
+Para `CARTERA = CLIENTE_A` exige exactamente una fila con `META_PAGOS` válida. Si
+el archivo llegara a contener varias filas CLIENTE_A, aborta por ambigüedad en vez
 de sumarlas o elegir una silenciosamente; esa situación requerirá validar una
 nueva regla de vigencia antes de cambiar el adaptador.
 
-Después ejecutar en `aval_analytics`:
+Después ejecutar en `legacy_crm_analytics`:
 
-1. `database/analytics/011_portfolio_v1_claro_target_support.sql`;
-2. el `/tmp/claro_goal_snapshot_2026-08.sql` generado;
-3. `database/analytics/validation/claro_target_monthly_etl_validation.sql`.
+1. `database/analytics/011_portfolio_v1_cliente_a_target_support.sql`;
+2. el `/tmp/cliente_a_goal_snapshot_2026-08.sql` generado;
+3. `database/analytics/validation/cliente_a_target_monthly_etl_validation.sql`.
 
 ## Curva esperada
 
@@ -122,7 +122,7 @@ nacionales del Perú y recalcula los ordinales hábiles del mes.
 El mismo stage puede procesarse varias veces. El loader hace `UPDATE/INSERT`
 sobre la única meta campaña-level y mantiene un watermark independiente:
 
-`CLARO_TARGET_MONTHLY`.
+`CLIENTE_A_TARGET_MONTHLY`.
 
 ## Alcance deliberadamente fuera
 

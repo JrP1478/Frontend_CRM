@@ -20,7 +20,7 @@ export const suite = defineSuite('auth.mapper', [
       nombre: 'Carlos',
       apellido: 'Ramírez López',
       username: 'cramirez',
-      email: 'carlos@avalperu.pe',
+      email: 'carlos@legacy_crmperu.pe',
       perfil: 'Administrador Base Datos',
       perfilId: 9,
     });

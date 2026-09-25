@@ -12,7 +12,7 @@ export const suite = defineSuite('clienteOptions.utils', [
       createCliente({
         id_cliente: '95',
         id_grupo: 156,
-        nombre: 'CLARO',
+        nombre: 'CLIENTE_A',
       }),
       createCliente({
         id_cliente: '12',
@@ -22,7 +22,7 @@ export const suite = defineSuite('clienteOptions.utils', [
     ]);
 
     assert.deepEqual(options, [
-      { id: '95:156', label: 'CLARO' },
+      { id: '95:156', label: 'CLIENTE_A' },
       { id: '12:20', label: 'MOVISTAR' },
     ]);
   }),
@@ -31,18 +31,18 @@ export const suite = defineSuite('clienteOptions.utils', [
       createCliente({
         id_cliente: '27',
         id_grupo: 22,
-        nombre: 'BACKUS',
+        nombre: 'CLIENTE_F',
       }),
       createCliente({
         id_cliente: '27',
         id_grupo: 168,
-        nombre: 'BACKUS',
+        nombre: 'CLIENTE_F',
       }),
     ]);
 
     assert.deepEqual(options, [
-      { id: '27:22', label: 'BACKUS (Grupo 22)' },
-      { id: '27:168', label: 'BACKUS (Grupo 168)' },
+      { id: '27:22', label: 'CLIENTE_F (Grupo 22)' },
+      { id: '27:168', label: 'CLIENTE_F (Grupo 168)' },
     ]);
   }),
   test('mantiene una colección vacía cuando no hay clientes', () => {

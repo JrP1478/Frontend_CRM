@@ -55,7 +55,7 @@ export const suite = defineSuite(
         assert.equal(adminSignal.value?.aborted, true);
 
         governmentDeferred.resolve({
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           assignedPortfolio: 200,
         });
 
@@ -64,14 +64,14 @@ export const suite = defineSuite(
           {
             status: 'success',
             data: {
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
               assignedPortfolio: 200,
             },
           }
         );
 
         adminDeferred.resolve({
-          businessUnit: 'CLARO ADMINISTRATIVO',
+          businessUnit: 'CLIENTE_A ADMINISTRATIVO',
           assignedPortfolio: 100,
         });
 
@@ -99,11 +99,11 @@ export const suite = defineSuite(
         );
 
         adminDeferred.resolve({
-          businessUnit: 'CLARO ADMINISTRATIVO',
+          businessUnit: 'CLIENTE_A ADMINISTRATIVO',
           assignedPortfolio: 100,
         });
         governmentDeferred.resolve({
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           assignedPortfolio: 200,
         });
 

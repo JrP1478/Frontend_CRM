@@ -1,11 +1,11 @@
 import type { DocumentoApi } from '@features/ficha-deudor/shared/types';
 import type { FichaDeudorGestionFormParams } from '@features/ficha-deudor/shared/types/fichaDeudor.types';
 import type { PaletaRespuestaOption } from '@features/ficha-deudor/shared/utils/selectOptions.utils';
-import type { GestionFormClaro } from '@features/ficha-deudor/modules/gestion/types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '@features/ficha-deudor/modules/gestion/types/fichaGestionForm.types';
 
 export const createGestionForm = (
-  overrides: Partial<GestionFormClaro> = {}
-): GestionFormClaro => ({
+  overrides: Partial<GestionFormClienteA> = {}
+): GestionFormClienteA => ({
   nombreContacto: ' Ana Torres ',
   cargo: ' Titular ',
   np0: '10',
@@ -25,7 +25,7 @@ export const createGestionForm = (
   horaGestion: '09:15',
   gestionTerminada: false,
   observaciones: ' Confirmó el compromiso. ',
-  estadoGestionClaro: '50',
+  estadoGestionClienteA: '50',
   motivoNoPago: '60',
   ...overrides,
 });

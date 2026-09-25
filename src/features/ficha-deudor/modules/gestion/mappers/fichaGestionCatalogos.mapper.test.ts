@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { defineSuite, test } from '../../../../../test/testHarness';
 import {
-  mapGestionEstadoClaro,
+  mapGestionEstadoClienteA,
   mapGestionEstados,
   mapGestionMotivoNoPago,
   mapGestionPaletaRespuesta,
@@ -57,9 +57,9 @@ export const suite = defineSuite('fichaGestionCatalogos.mapper', [
       ]
     );
   }),
-  test('mapea catálogos Claro y tolera respuestas vacías', () => {
+  test('mapea catálogos ClienteA y tolera respuestas vacías', () => {
     assert.deepEqual(
-      mapGestionEstadoClaro([
+      mapGestionEstadoClienteA([
         {
           nId_OpeCodCliOut: 7,
           cNombre_OpeCodCliOut: 'PROMESA',

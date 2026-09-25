@@ -20,14 +20,14 @@ export const suite = defineSuite(
             {
               nId_Cliente: 178,
               cCli_Nombre:
-                ' ADEX INSTITUTO ',
+                ' CLIENTE_C INSTITUTO ',
             },
           ]),
           [
             {
               idCliente: 178,
               nombreCliente:
-                'ADEX INSTITUTO',
+                'CLIENTE_C INSTITUTO',
             },
           ]
         );

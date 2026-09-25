@@ -90,7 +90,7 @@ export const suite = defineSuite(
   'moduloMaintenance.application',
   [
     test(
-      'registra primero en SISGES y después sincroniza Analytics cuando el módulo es Power BI',
+      'registra primero en CRM y después sincroniza Analytics cuando el módulo es Power BI',
       async () => {
         const calls: string[] = [];
         const dependencies =
@@ -135,7 +135,7 @@ export const suite = defineSuite(
       }
     ),
     test(
-      'distingue un fallo de Analytics después de persistir correctamente en SISGES',
+      'distingue un fallo de Analytics después de persistir correctamente en CRM',
       async () => {
         const calls: string[] = [];
         const dependencies = {
@@ -168,7 +168,7 @@ export const suite = defineSuite(
               /Analytics no disponible/
             );
             assert.equal(
-              error.hasPersistedSisgesChanges,
+              error.hasPersistedCrmChanges,
               true
             );
             return true;
@@ -182,7 +182,7 @@ export const suite = defineSuite(
       }
     ),
     test(
-      'actualiza SISGES antes de sincronizar la configuración completa de Power BI',
+      'actualiza CRM antes de sincronizar la configuración completa de Power BI',
       async () => {
         const calls: string[] = [];
         const dependencies =

@@ -18,7 +18,7 @@ export const LoginPage: React.FC = () => {
     <div className="login-page">
       <div className="login-page__container">
         <div className="login-page__brand">
-          <span className="login-page__logo-text">AVAL</span>
+          <span className="login-page__logo-text">LEGACY_CRM</span>
           <span className="login-page__logo-sub">PERÚ</span>
         </div>
 

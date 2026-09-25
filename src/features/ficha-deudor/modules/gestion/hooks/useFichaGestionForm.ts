@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
-import type { GestionFormClaro } from '../types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../types/fichaGestionForm.types';
 
 
-const INITIAL_FICHA_GESTION_FORM: GestionFormClaro = {
+const INITIAL_FICHA_GESTION_FORM: GestionFormClienteA = {
   nombreContacto: '',
   cargo: '',
   np0: '',
@@ -22,19 +22,19 @@ const INITIAL_FICHA_GESTION_FORM: GestionFormClaro = {
   horaGestion: '',
   gestionTerminada: false,
   observaciones: '',
-  estadoGestionClaro: '',
+  estadoGestionClienteA: '',
   motivoNoPago: '',
 };
 
 export const useFichaGestionForm = () => {
-  const [form, setForm] = useState<GestionFormClaro>(() => ({
+  const [form, setForm] = useState<GestionFormClienteA>(() => ({
     ...INITIAL_FICHA_GESTION_FORM,
   }));
 
   const setField = useCallback(
-    <K extends keyof GestionFormClaro>(
+    <K extends keyof GestionFormClienteA>(
       field: K,
-      value: GestionFormClaro[K]
+      value: GestionFormClienteA[K]
     ) => {
       setForm((prev) => ({
         ...prev,
@@ -44,7 +44,7 @@ export const useFichaGestionForm = () => {
     []
   );
 
-  const setFields = useCallback((fields: Partial<GestionFormClaro>) => {
+  const setFields = useCallback((fields: Partial<GestionFormClienteA>) => {
     setForm((prev) => ({
       ...prev,
       ...fields,

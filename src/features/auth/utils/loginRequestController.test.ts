@@ -31,7 +31,7 @@ const successResponse = (username: string): LoginResponse => ({
     nombre: 'Carlos',
     apellido: 'Ramírez',
     username,
-    email: 'c.ramirez@avalperu.pe',
+    email: 'c.ramirez@legacy_crmperu.pe',
     perfil: 'GESTOR',
     perfilId: 2,
   },

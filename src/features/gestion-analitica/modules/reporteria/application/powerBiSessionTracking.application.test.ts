@@ -40,7 +40,7 @@ export const suite = defineSuite(
         const opened = await startPowerBiSession(
           {
             optionId: 47,
-            client: { clientId: 95, name: 'CLARO' },
+            client: { clientId: 95, name: 'CLIENTE_A' },
           },
           undefined,
           dependencies
@@ -64,7 +64,7 @@ export const suite = defineSuite(
             'open',
             {
               optionId: 47,
-              client: { clientId: 95, name: 'CLARO' },
+              client: { clientId: 95, name: 'CLIENTE_A' },
             },
           ],
           [

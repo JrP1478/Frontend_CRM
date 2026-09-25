@@ -114,7 +114,7 @@ export const suite = defineSuite(
               optionId: 23,
               clientIds: [95, 120],
               clients: [
-                { clientId: 95, name: '  CLARO  ' },
+                { clientId: 95, name: '  CLIENTE_A  ' },
               ],
             });
           }
@@ -126,7 +126,7 @@ export const suite = defineSuite(
           const result = await getAccesoAnalitica(23);
 
           assert.deepEqual(result.scopes, [
-            { crmClientId: 95, name: 'CLARO' },
+            { crmClientId: 95, name: 'CLIENTE_A' },
             { crmClientId: 120, name: 'Cartera 120' },
           ]);
         } finally {
@@ -143,7 +143,7 @@ export const suite = defineSuite(
           Response.json({
             optionId: 23,
             clients: [
-              { clientId: '95', name: 'CLARO' },
+              { clientId: '95', name: 'CLIENTE_A' },
             ],
           });
 
@@ -187,9 +187,9 @@ export const suite = defineSuite(
           Response.json({
             optionId: 27,
             clients: [
-              { clientId: 8, name: ' DIRECTV ' },
-              { clientId: 2, name: ' ADEX ' },
-              { clientId: 8, name: 'DIRECTV' },
+              { clientId: 8, name: ' CLIENTE_I ' },
+              { clientId: 2, name: ' CLIENTE_C ' },
+              { clientId: 8, name: 'CLIENTE_I' },
             ],
           });
 
@@ -197,8 +197,8 @@ export const suite = defineSuite(
           assert.deepEqual(
             await getAnalyticsReportClients(27),
             [
-              { clientId: 2, name: 'ADEX' },
-              { clientId: 8, name: 'DIRECTV' },
+              { clientId: 2, name: 'CLIENTE_C' },
+              { clientId: 8, name: 'CLIENTE_I' },
             ]
           );
         } finally {
@@ -361,7 +361,7 @@ export const suite = defineSuite(
             clientSelectionStatus: 'VALID',
             selectedClient: {
               clientId: 8,
-              name: ' DIRECTV ',
+              name: ' CLIENTE_I ',
             },
             embedUrl:
               ' https://app.powerbi.com/view?r=abc123 ',
@@ -374,14 +374,14 @@ export const suite = defineSuite(
               27,
               {
                 clientId: 8,
-                name: ' DIRECTV ',
+                name: ' CLIENTE_I ',
               }
             );
 
           assert.equal(requestCount, 1);
           assert.match(
             requestedUrl,
-            /\/v1\/Analitica\/Acceso\/Usuario\/Opciones\/27\/ContextoVisorPowerBi\?idCliente=8&reportClient=DIRECTV$/
+            /\/v1\/Analitica\/Acceso\/Usuario\/Opciones\/27\/ContextoVisorPowerBi\?idCliente=8&reportClient=CLIENTE_I$/
           );
           assert.deepEqual(result, {
             optionId: 27,
@@ -390,7 +390,7 @@ export const suite = defineSuite(
             clientSelectionStatus: 'VALID',
             selectedClient: {
               clientId: 8,
-              name: 'DIRECTV',
+              name: 'CLIENTE_I',
             },
             embedUrl:
               'https://app.powerbi.com/view?r=abc123',
@@ -457,7 +457,7 @@ export const suite = defineSuite(
                 27,
                 {
                   clientId: 8,
-                  name: 'DIRECTV',
+                  name: 'CLIENTE_I',
                 }
               ),
             /inconsistente/
@@ -483,7 +483,7 @@ export const suite = defineSuite(
             () =>
               getAnalyticsPowerBiViewerContext(27, {
                 clientId: 0,
-                name: 'DIRECTV',
+                name: 'CLIENTE_I',
               }),
             /selección de cartera no es válida/
           );

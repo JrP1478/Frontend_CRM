@@ -82,11 +82,11 @@ oficial.
 
 ## Ejecución
 
-En `aval_analytics`:
+En `legacy_crm_analytics`:
 
 ```text
 1. database/analytics/013_portfolio_v1_peru_business_calendar.sql
-2. database/analytics/validation/claro_business_calendar_validation.sql
+2. database/analytics/validation/cliente_a_business_calendar_validation.sql
 ```
 
 El segundo script debe finalizar con:

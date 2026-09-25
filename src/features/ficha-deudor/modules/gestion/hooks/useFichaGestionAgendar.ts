@@ -10,7 +10,7 @@ import { FICHA_GESTION_MESSAGES } from '../constants/fichaGestionMessages.consta
 import { buildAgendaRequest } from '../services/fichaGestionAgendar.service';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
   SetGestionField,
 } from '../types/fichaGestionForm.types';
 import { useAutoClearValidationErrors } from './useAutoClearValidationErrors';
@@ -19,7 +19,7 @@ import { getErrorMessage } from '../../../shared/utils/getErrorMessage';
 import { useAsyncMutation } from '../../../../../shared/hooks/useAsyncMutation';
 
 interface UseFichaGestionAgendarParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   params: FichaDeudorGestionFormParams;
   deudorNombre: string;

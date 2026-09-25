@@ -2,14 +2,14 @@ import type {
   GestionEstadoApi,
   GestionTipoApi,
   GestionPaletaRespuestaApi,
-  GestionEstadoClaroApi,
+  GestionEstadoClienteAApi,
   GestionMotivoNoPagoApi,
 } from '../types/fichaGestionApi.types';
 import type {
   GestionEstadoList,
   GestionTipoList,
   GestionPaletaRespuestaList,
-  GestionEstadoClaroList,
+  GestionEstadoClienteAList,
   GestionMotivoNoPagoList,
 } from '../types/fichaGestionCatalogos.types';
 
@@ -41,9 +41,9 @@ export const mapGestionPaletaRespuesta = (
   }));
 };
 
-export const mapGestionEstadoClaro = (
-  data: GestionEstadoClaroApi[] | null | undefined
-): GestionEstadoClaroList[] => {
+export const mapGestionEstadoClienteA = (
+  data: GestionEstadoClienteAApi[] | null | undefined
+): GestionEstadoClienteAList[] => {
   return (data ?? []).map((item) => ({
     id: String(item.nId_OpeCodCliOut),
     nombre: item.cNombre_OpeCodCliOut,

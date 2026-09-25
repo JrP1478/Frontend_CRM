@@ -6,7 +6,7 @@ import {
   MODAL_CREAR_REPORTAR_CASO_LABELS,
   MODAL_CREAR_REPORTAR_CASO_LAYOUT,
   MODAL_CREAR_REPORTAR_CASO_PLACEHOLDERS,
-  REPORTAR_CASO_MAF_OPTIONS,
+  REPORTAR_CASO_CLIENTE_B_OPTIONS,
   REPORTAR_CASO_TIPO_SINIESTRO_OPTIONS,
 } from '../constants/modalCrearReportarCaso.constants';
 import type { ReportarCasoFormData } from '../types/reportarCaso.types';
@@ -28,7 +28,7 @@ export const ReportarCasoFormFields: React.FC<
     <SelectField
       label={MODAL_CREAR_REPORTAR_CASO_LABELS.caso}
       layout="inline"
-      options={REPORTAR_CASO_MAF_OPTIONS}
+      options={REPORTAR_CASO_CLIENTE_B_OPTIONS}
       value={form.caso}
       onChange={(value) => onChange('caso', String(value))}
       hidePlaceholder

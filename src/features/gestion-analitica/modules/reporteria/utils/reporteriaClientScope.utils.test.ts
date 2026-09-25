@@ -13,15 +13,15 @@ import {
 const clients = [
   {
     clientId: 73,
-    name: 'ORIFLAME',
+    name: 'CLIENTE_O',
   },
   {
     clientId: 73,
-    name: 'ORIFLAME ADELANTADA',
+    name: 'CLIENTE_O ADELANTADA',
   },
   {
     clientId: 52,
-    name: 'NATURA',
+    name: 'CLIENTE_L',
   },
 ];
 
@@ -34,13 +34,13 @@ export const suite = defineSuite(
         const selection =
           parseReportClientSelection(
             new URLSearchParams(
-              'clientId=73&reportClient=ORIFLAME+ADELANTADA'
+              'clientId=73&reportClient=CLIENTE_O+ADELANTADA'
             )
           );
 
         assert.deepEqual(selection, {
           clientId: 73,
-          name: 'ORIFLAME ADELANTADA',
+          name: 'CLIENTE_O ADELANTADA',
         });
       }
     ),
@@ -50,7 +50,7 @@ export const suite = defineSuite(
         assert.equal(
           parseReportClientSelection(
             new URLSearchParams(
-              'clientId=0&reportClient=NATURA'
+              'clientId=0&reportClient=CLIENTE_L'
             )
           ),
           null
@@ -78,7 +78,7 @@ export const suite = defineSuite(
           ),
           {
             clientId: 73,
-            name: 'ORIFLAME ADELANTADA',
+            name: 'CLIENTE_O ADELANTADA',
           }
         );
 
@@ -87,7 +87,7 @@ export const suite = defineSuite(
             clients,
             {
               clientId: 73,
-              name: 'NATURA',
+              name: 'CLIENTE_L',
             }
           ),
           null

@@ -22,9 +22,9 @@ const FILTER_OPTIONS: CentroControlCarteraFilterOptions = {
   availableDateTo: '2026-08-31',
   portfolio: { id: '95' },
   businessUnits: [
-    { id: 'CLARO GOBIERNO', label: 'CLARO GOBIERNO' },
+    { id: 'CLIENTE_A GOBIERNO', label: 'CLIENTE_A GOBIERNO' },
   ],
-  selectedBusinessUnit: 'CLARO GOBIERNO',
+  selectedBusinessUnit: 'CLIENTE_A GOBIERNO',
   subPortfolios: [
     { id: '20', label: 'Subcartera vigente' },
   ],
@@ -55,7 +55,7 @@ const FILTER_OPTIONS: CentroControlCarteraFilterOptions = {
 };
 
 const CONTEXT: PortfolioOperationalContext = {
-  businessUnit: 'CLARO GOBIERNO',
+  businessUnit: 'CLIENTE_A GOBIERNO',
   campaignId: '2026-08',
   dateFrom: '2026-08-01',
   dateTo: '2026-08-31',

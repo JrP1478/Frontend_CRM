@@ -22,20 +22,20 @@ interface GestionForm {
   observaciones: string;
 }
 
-export type GestionFormClaro = GestionForm & {
-  estadoGestionClaro: string;
+export type GestionFormClienteA = GestionForm & {
+  estadoGestionClienteA: string;
   motivoNoPago: string;
 };
 
-export type SetGestionField = <K extends keyof GestionFormClaro>(
+export type SetGestionField = <K extends keyof GestionFormClienteA>(
   field: K,
-  value: GestionFormClaro[K]
+  value: GestionFormClienteA[K]
 ) => void;
 
-export type SetGestionFields = (fields: Partial<GestionFormClaro>) => void;
+export type SetGestionFields = (fields: Partial<GestionFormClienteA>) => void;
 
 export type GestionFeedback = OperationFeedback;
 
 export type FichaGestionValidationErrors = Partial<
-  Record<keyof GestionFormClaro | 'montoCompromiso' | 'documentos', string>
+  Record<keyof GestionFormClienteA | 'montoCompromiso' | 'documentos', string>
 >;

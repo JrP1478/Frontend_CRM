@@ -69,7 +69,7 @@ export const suite = defineSuite(
                   sDescripcionOpcion: '',
                   sUrlBI: 'https://app.powerbi.com/view?r=demo',
                   sImagenOpcion: '/logos/demo.webp',
-                  sEmailOpcion: 'reportes@avalperu.com',
+                  sEmailOpcion: 'reportes@legacy_crmperu.com',
                   sIcono: '',
                   nTipo: 3,
                   nId_OpcionPadre: 2,
@@ -164,7 +164,7 @@ export const suite = defineSuite(
           );
           assert.equal(
             result.options[0]?.email,
-            'reportes@avalperu.com'
+            'reportes@legacy_crmperu.com'
           );
           assert.deepEqual(
             result.userGroupAssignments[0],

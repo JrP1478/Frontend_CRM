@@ -10,7 +10,7 @@ export const MODAL_EDITAR_DIRECCION_INITIAL_FORM: DireccionEditFormData = {
   comentario: '',
   llegoDeBase: false,
   tipoDeudor: '',
-  nombreAval: '',
+  nombreLegacyCrm: '',
   estado: true,
 };
 

@@ -1,13 +1,13 @@
 import type React from 'react';
 
 import {
-  SisgesIcon,
-  type SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIcon,
+  type CrmIconName,
+} from '@shared/icons/crm';
 
 export interface PortfolioPromiseSummaryItem {
   key: string;
-  icon: SisgesIconName;
+  icon: CrmIconName;
   label: string;
   value: string;
   className?: string;
@@ -28,7 +28,7 @@ export const PortfolioPromiseSummary: React.FC<
           className={`${className}__icon`}
           aria-hidden="true"
         >
-          <SisgesIcon name={item.icon} />
+          <CrmIcon name={item.icon} />
         </span>
         <div>
           <span>{item.label}</span>

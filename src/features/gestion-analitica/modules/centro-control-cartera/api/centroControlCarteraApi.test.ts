@@ -19,7 +19,7 @@ import {
 } from './centroControlCarteraApi';
 
 const OPERATIONAL_CONTEXT = {
-  businessUnit: 'CLARO GOBIERNO',
+  businessUnit: 'CLIENTE_A GOBIERNO',
   campaignId: '2026-08',
   dateFrom: '2026-08-05',
   dateTo: '2026-08-13',
@@ -33,7 +33,7 @@ export const suite = defineSuite(
       'construye Bootstrap con el contexto canonico sin propagar supervisor',
       () => {
         const endpoint = buildInicializacionCarteraEndpoint({
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           dateFrom: '2026-08-01',
           dateTo: '2026-08-13',
           subPortfolioId: '99',
@@ -43,7 +43,7 @@ export const suite = defineSuite(
 
         assert.equal(
           endpoint,
-          '/v1/Analitica/CentroControlCartera/Inicializacion?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&fechaDesde=2026-08-01&fechaHasta=2026-08-13&idSubCartera=99'
+          '/v1/Analitica/CentroControlCartera/Inicializacion?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&fechaDesde=2026-08-01&fechaHasta=2026-08-13&idSubCartera=99'
         );
       }
     ),
@@ -51,7 +51,7 @@ export const suite = defineSuite(
       'construye Overview con el contexto canonico y normaliza textos de query',
       () => {
         const endpoint = buildPanoramaCarteraEndpoint({
-          businessUnit: ' CLARO GOBIERNO ',
+          businessUnit: ' CLIENTE_A GOBIERNO ',
           dateFrom: ' 2026-08-01 ',
           dateTo: ' 2026-08-13 ',
           subPortfolioId: ' 99 ',
@@ -61,7 +61,7 @@ export const suite = defineSuite(
 
         assert.equal(
           endpoint,
-          '/v1/Analitica/CentroControlCartera/Panorama?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&fechaDesde=2026-08-01&fechaHasta=2026-08-13&idSubCartera=99'
+          '/v1/Analitica/CentroControlCartera/Panorama?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&fechaDesde=2026-08-01&fechaHasta=2026-08-13&idSubCartera=99'
         );
       }
     ),
@@ -93,7 +93,7 @@ export const suite = defineSuite(
         assert.equal(
           buildPromesasCarteraVencidasEndpoint(
             {
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
               campaignId: '2026-08',
               subPortfolioId: '29',
             },
@@ -105,7 +105,7 @@ export const suite = defineSuite(
               sortDirection: 'desc',
             }
           ),
-          '/v1/Analitica/CentroControlCartera/Promesas/Vencidas?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&idSubCartera=29&pagina=2&tamanoPagina=25&antiguedad=4-7&ordenarPor=diasVencimiento&direccionOrden=desc'
+          '/v1/Analitica/CentroControlCartera/Promesas/Vencidas?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&idSubCartera=29&pagina=2&tamanoPagina=25&antiguedad=4-7&ordenarPor=diasVencimiento&direccionOrden=desc'
         );
       }
     ),
@@ -137,7 +137,7 @@ export const suite = defineSuite(
         assert.equal(
           buildPromesasCarteraVenceHoyEndpoint(
             {
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
               campaignId: '2026-08',
               subPortfolioId: '29',
             },
@@ -149,7 +149,7 @@ export const suite = defineSuite(
               sortDirection: 'desc',
             }
           ),
-          '/v1/Analitica/CentroControlCartera/Promesas/VenceHoy?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&idSubCartera=29&pagina=1&tamanoPagina=10&estado=pendiente&ordenarPor=montoPendiente&direccionOrden=desc'
+          '/v1/Analitica/CentroControlCartera/Promesas/VenceHoy?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&idSubCartera=29&pagina=1&tamanoPagina=10&estado=pendiente&ordenarPor=montoPendiente&direccionOrden=desc'
         );
       }
     ),
@@ -159,7 +159,7 @@ export const suite = defineSuite(
         assert.equal(
           buildSeguimientoPromesasCarteraEndpoint(
             {
-              businessUnit: 'CLARO CORPORATIVO',
+              businessUnit: 'CLIENTE_A CORPORATIVO',
               campaignId: '2026-09',
               subPortfolioId: '602',
             },
@@ -172,7 +172,7 @@ export const suite = defineSuite(
               sortDirection: 'desc',
             }
           ),
-          '/v1/Analitica/CentroControlCartera/Promesas/Seguimiento?campana=2026-09&unidadNegocio=CLARO+CORPORATIVO&idSubCartera=602&fechaVencimiento=2026-09-14&pagina=2&tamanoPagina=10&estado=cumplida&ordenarPor=montoPendiente&direccionOrden=desc'
+          '/v1/Analitica/CentroControlCartera/Promesas/Seguimiento?campana=2026-09&unidadNegocio=CLIENTE_A+CORPORATIVO&idSubCartera=602&fechaVencimiento=2026-09-14&pagina=2&tamanoPagina=10&estado=cumplida&ordenarPor=montoPendiente&direccionOrden=desc'
         );
       }
     ),
@@ -183,7 +183,7 @@ export const suite = defineSuite(
           buildRendimientoSupervisorCarteraEndpoint(
             OPERATIONAL_CONTEXT
           ),
-          '/v1/Analitica/CentroControlCartera/RendimientoSupervisor?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29'
+          '/v1/Analitica/CentroControlCartera/RendimientoSupervisor?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29'
         );
       }
     ),
@@ -195,7 +195,7 @@ export const suite = defineSuite(
             OPERATIONAL_CONTEXT,
             '1'
           ),
-          '/v1/Analitica/CentroControlCartera/RendimientoAsesor?campana=2026-08&unidadNegocio=CLARO+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29&idSupervisor=1'
+          '/v1/Analitica/CentroControlCartera/RendimientoAsesor?campana=2026-08&unidadNegocio=CLIENTE_A+GOBIERNO&fechaDesde=2026-08-05&fechaHasta=2026-08-13&idSubCartera=29&idSupervisor=1'
         );
       }
     ),

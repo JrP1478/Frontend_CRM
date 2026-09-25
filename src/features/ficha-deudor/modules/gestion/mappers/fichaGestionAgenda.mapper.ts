@@ -7,10 +7,10 @@ import {
 import { toRequiredId } from '../../../shared/utils/number.utils';
 import { isSinDatoOption } from '../validations/fichaGestionAgendaValidation';
 import type { CreateAgendaPayload } from '../types/fichaGestionApi.types';
-import type { GestionFormClaro } from '../types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../types/fichaGestionForm.types';
 
 interface BuildCreateAgendaPayloadParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   params: FichaDeudorGestionFormParams;
   deudorNombre: string;
   carteraNombre: string;

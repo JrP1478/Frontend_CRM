@@ -20,22 +20,22 @@ export const suite = defineSuite(
           mapGrupo({
             nId_Grupo: 219,
             cNombre_Grupo:
-              ' ADEX INSTITUTO ',
+              ' CLIENTE_C INSTITUTO ',
             cSigla_Grupo:
-              'ADEX INSTITUTO',
+              'CLIENTE_C INSTITUTO',
             bEstado: true,
             nCant_Grupo: 0,
             nid_cliente: 178,
             cCli_Nombre:
-              ' ADEX INSTITUTO ',
+              ' CLIENTE_C INSTITUTO ',
           }),
           {
             idGrupo: 219,
             nombreGrupo:
-              'ADEX INSTITUTO',
+              'CLIENTE_C INSTITUTO',
             idCliente: 178,
             cliente:
-              'ADEX INSTITUTO',
+              'CLIENTE_C INSTITUTO',
             estado: 'Activo',
           }
         );

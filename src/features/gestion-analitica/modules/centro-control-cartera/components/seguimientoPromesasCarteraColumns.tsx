@@ -1,5 +1,5 @@
 import type { Column } from '@shared/types';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   SeguimientoPromesaCarteraItem,
@@ -105,12 +105,12 @@ export const buildSeguimientoPromesasCarteraColumns = ({
           <div className="portfolio-promise-tracking-activity">
             <div className="portfolio-promise-tracking-activity__counts">
               <span className="portfolio-promise-tracking-metric is-active">
-                <SisgesIcon name="history" />
+                <CrmIcon name="history" />
                 <strong>{formatPortfolioInteger(item.managementCount)}</strong>
                 <span>gestiones</span>
               </span>
               <span className="portfolio-promise-tracking-metric">
-                <SisgesIcon name="phone" />
+                <CrmIcon name="phone" />
                 <strong>{formatPortfolioInteger(item.callCount)}</strong>
                 <span>llamadas</span>
               </span>

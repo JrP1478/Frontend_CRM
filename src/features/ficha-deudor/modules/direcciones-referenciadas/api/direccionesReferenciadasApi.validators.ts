@@ -45,7 +45,7 @@ export const isDireccionByIdApi =
   createObjectGuard<DireccionByIdApi>({
     nId_PersDirecc: isInteger,
     cDirecc_Nomb: isString,
-    nombreAval: isString,
+    nombreLegacyCrm: isString,
     nId_PersRefUbi: isInteger,
     cDirecc_Coment: isString,
     bEstado: isOptionalNullableBoolean,

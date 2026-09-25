@@ -1,6 +1,6 @@
 import {
-  normalizeSisgesIconName,
-} from '@shared/icons/sisges';
+  normalizeCrmIconName,
+} from '@shared/icons/crm';
 
 import {
   getOptionRoute,
@@ -268,7 +268,7 @@ export const buildAccessControlSnapshot = (
       image: option.image,
       email: option.email?.trim() || null,
       icon:
-        normalizeSisgesIconName(
+        normalizeCrmIconName(
           option.icon
         ),
       type: option.type,

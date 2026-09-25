@@ -116,9 +116,9 @@ Se conserva como snapshot cargado y además debe cumplir conceptualmente:
 
 `management_events_en_rango / managed_snapshot_del_último_corte`
 
-No confundir con intensidad masiva por canal de Power BI CLARO.
+No confundir con intensidad masiva por canal de Power BI CLIENTE_A.
 
-### Contactabilidad CLARO
+### Contactabilidad CLIENTE_A
 
 `contacted_snapshot / assigned_snapshot`
 
@@ -402,45 +402,45 @@ publicarse para un año cuyo calendario oficial aún no haya sido cargado y
 validado.
 
 La meta mensual V1 se carga desde `base-goals.xlsx` mediante el adaptador
-`CLARO_BASE_GOALS` hacia `analytics.fact_target_monthly`. La carga es a nivel
+`CLIENTE_A_BASE_GOALS` hacia `analytics.fact_target_monthly`. La carga es a nivel
 campaña (`portfolio_key IS NULL`); no se reparte la meta entre supervisores,
 asesores o carteras sin una regla de negocio validada.
 
-Para CLARO, `base-goals.xlsx` representa la meta vigente por cartera. La
+Para CLIENTE_A, `base-goals.xlsx` representa la meta vigente por cartera. La
 campaña Analytics (`YYYY-MM`) la determina el proceso que solicita la carga;
 los campos fuente `AÑO` y `ASIGNACIÓN` no se usan para filtrar esa campaña.
-Mientras exista una única fila CLARO vigente, su `META_PAGOS` se reutiliza en
+Mientras exista una única fila CLIENTE_A vigente, su `META_PAGOS` se reutiliza en
 las campañas sucesivas y el monto siempre se vuelve a leer del archivo fuente.
 
 ---
 
-## 9. Scope CLARO V1
+## 9. Scope CLIENTE_A V1
 
-El BI CLARO analizado usa:
+El BI CLIENTE_A analizado usa:
 
-`PBI_CLARO_CORP_ADMINISTRATIVO`.
+`PBI_CLIENTE_A_CORP_ADMINISTRATIVO`.
 
 GESTION-COB2, en cambio, contiene tanto:
 
-- CLARO CORPORATIVO;
-- CLARO GOBIERNO;
+- CLIENTE_A CORPORATIVO;
+- CLIENTE_A GOBIERNO;
 - otros clientes.
 
 Para cuadrar el producto V1 con el BI actual:
 
 1. tomar el conjunto de carteras de
-   `PBI_CLARO_CORP_ADMINISTRATIVO`;
+   `PBI_CLIENTE_A_CORP_ADMINISTRATIVO`;
 2. consumir `vw_bi_gerencia_gestiones_pagos`;
-3. restringir a `CLARO CORPORATIVO`;
+3. restringir a `CLIENTE_A CORPORATIVO`;
 4. restringir además a las mismas carteras del snapshot.
 
 No usar simplemente:
 
-`cCli_Nombre LIKE '%CLARO%'`
+`cCli_Nombre LIKE '%CLIENTE_A%'`
 
-porque incluiría CLARO GOBIERNO y alteraría los KPIs del alcance actual.
+porque incluiría CLIENTE_A GOBIERNO y alteraría los KPIs del alcance actual.
 
-Esta regla pertenecerá al mapping de fuente CLARO dentro del ETL, nunca a
+Esta regla pertenecerá al mapping de fuente CLIENTE_A dentro del ETL, nunca a
 React.
 
 ---
@@ -499,7 +499,7 @@ a:
 - `GET /portfolio/advisors`
 - `GET /portfolio/promises/attention`
 
-La API no expondrá nombres de tablas Power BI ni lógica específica de CLARO.
+La API no expondrá nombres de tablas Power BI ni lógica específica de CLIENTE_A.
 
 ---
 
@@ -507,7 +507,7 @@ La API no expondrá nombres de tablas Power BI ni lógica específica de CLARO.
 
 El archivo:
 
-`database/analytics/validation/claro_portfolio_v1_source_validation.sql`
+`database/analytics/validation/cliente_a_portfolio_v1_source_validation.sql`
 
 genera una línea base directamente desde las fuentes actuales para la campaña
 del mes en curso.

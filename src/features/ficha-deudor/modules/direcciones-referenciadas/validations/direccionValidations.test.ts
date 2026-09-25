@@ -30,7 +30,7 @@ const createEditForm = (
 ): DireccionEditFormData => ({
   ...createForm(),
   id: '10',
-  nombreAval: '',
+  nombreLegacyCrm: '',
   estado: true,
   ...overrides,
 });

@@ -19,7 +19,7 @@ const usuariosMock: Record<string, { usuario: Usuario; password: string }> = {
       nombre: 'Carlos',
       apellido: 'Ramírez',
       username: 'admin',
-      email: 'c.ramirez@avalperu.pe',
+      email: 'c.ramirez@legacy_crmperu.pe',
       perfil: 'Administrador Base Datos',
       perfilId: 9,
     },
@@ -31,7 +31,7 @@ const usuariosMock: Record<string, { usuario: Usuario; password: string }> = {
       nombre: 'María',
       apellido: 'López',
       username: 'gestor1',
-      email: 'm.lopez@avalperu.pe',
+      email: 'm.lopez@legacy_crmperu.pe',
       perfil: 'GESTOR',
       perfilId: 2,
     },
@@ -43,7 +43,7 @@ const usuariosMock: Record<string, { usuario: Usuario; password: string }> = {
       nombre: 'Juan',
       apellido: 'Pérez',
       username: 'gestor2',
-      email: 'j.perez@avalperu.pe',
+      email: 'j.perez@legacy_crmperu.pe',
       perfil: 'GESTOR',
       perfilId: 5,
     },
@@ -58,7 +58,7 @@ const clientesMock: Cliente[] = [
   {
     id_cliente: '95',
     id_grupo: 156,
-    nombre: 'CLARO CORPORATIVO',
+    nombre: 'CLIENTE_A CORPORATIVO',
   },
 ];
 

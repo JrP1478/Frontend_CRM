@@ -4,7 +4,7 @@ import type { FichaGestionDatosPrincipalesCatalogos } from './fichaGestionCatalo
 import type {
   FichaGestionValidationErrors,
   GestionFeedback,
-  GestionFormClaro,
+  GestionFormClienteA,
   SetGestionField,
   SetGestionFields,
 } from './fichaGestionForm.types';
@@ -23,7 +23,7 @@ export interface FichaGestionTelefonoSearchProps {
 
 export interface FichaGestionDatosPrincipalesProps {
   idCliente: string;
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   handleNP0Change: (value: string) => void;
   handleNP1Change: (value: string) => void;
@@ -32,7 +32,7 @@ export interface FichaGestionDatosPrincipalesProps {
 }
 
 export interface FichaGestionAccionesTomarProps {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   setFields: SetGestionFields;
   usuarioActual: string;
@@ -44,15 +44,15 @@ export interface FichaGestionAccionesTomarProps {
 }
 
 export interface FichaGestionResultadosLlamadaProps {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   validationErrors?: FichaGestionValidationErrors;
   feedback?: GestionFeedback | null;
   onCloseFeedback?: () => void;
-  mostrarCamposClaro: boolean;
-  estadoGestionClaroOptions: SelectOption[];
-  isLoadingEstadoGestionClaro: boolean;
-  errorEstadoGestionClaro?: string | null;
+  mostrarCamposClienteA: boolean;
+  estadoGestionClienteAOptions: SelectOption[];
+  isLoadingEstadoGestionClienteA: boolean;
+  errorEstadoGestionClienteA?: string | null;
   motivoNoPagoOptions: SelectOption[];
   isLoadingMotivoNoPago: boolean;
   errorMotivoNoPago?: string | null;

@@ -28,7 +28,7 @@ entender si:
 1. cobertura de supervisor actual;
 2. estabilidad asesor -> supervisor;
 3. evidencia histórica de los asesores sin supervisor;
-4. objetos de aval_reporteria con campos supervisor/coordinador/jefe/lider;
+4. objetos de legacy_crm_reporteria con campos supervisor/coordinador/jefe/lider;
 5. objetos que además tienen ID/DNI de asesor;
 6. columnas de candidatos prioritarios.
 

@@ -1,13 +1,13 @@
 import type {
-  SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIconName,
+} from '@shared/icons/crm';
 
 import type {
   MenuModuloAction,
 } from '../constants/menuModuloActions.constants';
 
 export type MenuModuloIconName =
-  SisgesIconName;
+  CrmIconName;
 
 export interface MenuModulo {
   key: string;

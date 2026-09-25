@@ -1,5 +1,5 @@
 import {
-  REPORTAR_CASO_MAF_VALUE,
+  REPORTAR_CASO_CLIENTE_B_VALUE,
   REPORTAR_CASO_TIPO_SINIESTRO_OPTIONS,
 } from '../constants/modalCrearReportarCaso.constants';
 import type { ReportarCasoFormData } from '../types/reportarCaso.types';
@@ -18,7 +18,7 @@ const isValidTipoSiniestro = (value: string): boolean =>
 export const hasRequiredReportarCasoSelections = (
   data: Pick<ReportarCasoFormData, 'caso' | 'tipoSiniestro'>
 ): boolean =>
-  data.caso.trim() === REPORTAR_CASO_MAF_VALUE &&
+  data.caso.trim() === REPORTAR_CASO_CLIENTE_B_VALUE &&
   isValidTipoSiniestro(data.tipoSiniestro);
 
 export const validateReportarCasoForm = (
@@ -26,7 +26,7 @@ export const validateReportarCasoForm = (
 ): ReportarCasoFormErrors => {
   const errors: ReportarCasoFormErrors = {};
 
-  if (data.caso.trim() !== REPORTAR_CASO_MAF_VALUE) {
+  if (data.caso.trim() !== REPORTAR_CASO_CLIENTE_B_VALUE) {
     errors.caso = 'Debe seleccionar el caso a reportar';
   }
 

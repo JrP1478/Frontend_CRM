@@ -1,5 +1,5 @@
 import type {
-  GestionFormClaro,
+  GestionFormClienteA,
   SetGestionField,
 } from '../types/fichaGestionForm.types';
 import type {
@@ -11,7 +11,7 @@ import { useFichaGestionAgendar } from './useFichaGestionAgendar';
 import { useFichaGestionGuardar } from './useFichaGestionGuardar';
 
 interface UseFichaGestionActionsParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   params: FichaDeudorGestionFormParams;
   deudorNombre: string;
@@ -20,12 +20,12 @@ interface UseFichaGestionActionsParams {
   np2Options: PaletaRespuestaOption[];
   documentosFiltrados: DocumentoApi[];
   np1TipoContacto: number;
-  requiereCamposClaro: boolean;
+  requiereCamposClienteA: boolean;
   onGestionGuardada?: (
     gestionTerminada: boolean
   ) => void;
   onSubmit?: (
-    data: GestionFormClaro,
+    data: GestionFormClienteA,
     fechaFinGestion: string
   ) => void;
   onSaveError?: (message: string) => void;
@@ -41,7 +41,7 @@ export const useFichaGestionActions = ({
   np2Options,
   documentosFiltrados,
   np1TipoContacto,
-  requiereCamposClaro,
+  requiereCamposClienteA,
   onGestionGuardada,
   onSaveError,
   onSubmit,
@@ -72,7 +72,7 @@ export const useFichaGestionActions = ({
     params,
     documentosFiltrados,
     np1TipoContacto,
-    requiereCamposClaro,
+    requiereCamposClienteA,
     onGestionGuardada,
     onError: onSaveError,
     onSubmit,

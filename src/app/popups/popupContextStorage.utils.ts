@@ -39,7 +39,7 @@ export const getPopupContextStorageKey = (
   popupType: FichaDeudorPopupType,
   popupId: string
 ): string => {
-  return `avalperu_popup_context:${popupType}:${popupId}`;
+  return `legacy_crmperu_popup_context:${popupType}:${popupId}`;
 };
 
 const isStoredPopupContextEnvelope = (

@@ -9,7 +9,7 @@ import {
   SelectField,
 } from '@shared/components/ui';
 import { useClientSideTable } from '@shared/hooks/useClientSideTable';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 import type { Column } from '@shared/types';
 
 import { AnalyticsPanel } from '../../../shared/components';
@@ -128,7 +128,7 @@ const COLUMNS: Column<SesionBiTableRow>[] = [
     filterable: false,
     render: () => (
       <span className="sessions-bi-table__chevron" aria-hidden="true">
-        <SisgesIcon name="chevron-right" width={16} height={16} />
+        <CrmIcon name="chevron-right" width={16} height={16} />
       </span>
     ),
   },
@@ -173,7 +173,7 @@ export const SesionesBiSessionsTable = ({
       className="analytics-data-panel sessions-bi-detail-panel"
       headerClassName="analytics-data-panel__header sessions-bi-detail-panel__header"
       iconClassName="analytics-heading-icon"
-      icon={<SisgesIcon name="audit" />}
+      icon={<CrmIcon name="audit" />}
       eyebrow="Trazabilidad"
       title="Detalle de sesiones"
       description="Selecciona una fila para revisar la secuencia de actividad."

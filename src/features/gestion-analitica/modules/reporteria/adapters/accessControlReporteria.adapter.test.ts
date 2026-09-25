@@ -25,12 +25,12 @@ const buildOption = (
   overrides: Partial<AuthorizedOption>
 ): AuthorizedOption => ({
   id: 26,
-  code: 'mBackusCobranza',
-  name: 'Backus Cobranza',
+  code: 'mClienteFCobranza',
+  name: 'ClienteF Cobranza',
   description: 'Seguimiento de cobranza.',
   urlBI: 'https://app.powerbi.com/view?r=demo',
   image: '/logos/backus.webp',
-  email: 'ngutierrez@avalperu.com',
+  email: 'ngutierrez@legacy_crmperu.com',
   icon: 'analytics',
   type: 4,
   parentId: 25,
@@ -123,13 +123,13 @@ export const suite = defineSuite(
         );
         assert.deepEqual(catalog.reports[0], {
           id: 26,
-          code: 'mBackusCobranza',
-          name: 'Backus Cobranza',
+          code: 'mClienteFCobranza',
+          name: 'ClienteF Cobranza',
           description: 'Seguimiento de cobranza.',
           serviceUrl:
             'https://app.powerbi.com/view?r=demo',
           image: '/logos/backus.webp',
-          email: 'ngutierrez@avalperu.com',
+          email: 'ngutierrez@legacy_crmperu.com',
           icon: 'analytics',
         });
       }

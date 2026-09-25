@@ -29,7 +29,7 @@ export const suite = defineSuite(
             27,
             {
               clientId: 73,
-              name: 'ORIFLAME ADELANTADA',
+              name: 'CLIENTE_O ADELANTADA',
             }
           );
 
@@ -48,7 +48,7 @@ export const suite = defineSuite(
         );
         assert.equal(
           url.searchParams.get('reportClient'),
-          'ORIFLAME ADELANTADA'
+          'CLIENTE_O ADELANTADA'
         );
       }
     ),

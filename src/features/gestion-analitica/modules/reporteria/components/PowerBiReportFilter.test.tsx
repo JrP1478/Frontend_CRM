@@ -27,13 +27,13 @@ const buildReport = (
   description: '',
   serviceUrl: 'https://app.powerbi.com/view?r=demo',
   image: null,
-  email: 'reportes@avalperu.com',
+  email: 'reportes@legacy_crmperu.com',
   icon: 'analytics',
 });
 
 const reports = [
   buildReport(26, 'AMERICATEL'),
-  buildReport(27, 'BACKUS COBRANZA'),
+  buildReport(27, 'CLIENTE_F COBRANZA'),
 ];
 
 export const suite = defineSuite(

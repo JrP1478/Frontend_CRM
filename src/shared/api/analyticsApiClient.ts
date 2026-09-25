@@ -36,13 +36,13 @@ const getStoredCrmClientId = (): number | null => {
     : null;
 };
 
-interface StoredSisgesAnalyticsContext {
+interface StoredCrmAnalyticsContext {
   userId: number | null;
   groupId: number | null;
 }
 
-const EMPTY_SISGES_ANALYTICS_CONTEXT:
-  StoredSisgesAnalyticsContext = {
+const EMPTY_CRM_ANALYTICS_CONTEXT:
+  StoredCrmAnalyticsContext = {
     userId: null,
     groupId: null,
   };
@@ -58,10 +58,10 @@ const toPositiveSafeInteger = (
     : null;
 };
 
-const getStoredSisgesAnalyticsContext =
-  (): StoredSisgesAnalyticsContext => {
+const getStoredCrmAnalyticsContext =
+  (): StoredCrmAnalyticsContext => {
     if (typeof localStorage === 'undefined') {
-      return EMPTY_SISGES_ANALYTICS_CONTEXT;
+      return EMPTY_CRM_ANALYTICS_CONTEXT;
     }
 
     try {
@@ -70,7 +70,7 @@ const getStoredSisgesAnalyticsContext =
       );
 
       if (!rawState) {
-        return EMPTY_SISGES_ANALYTICS_CONTEXT;
+        return EMPTY_CRM_ANALYTICS_CONTEXT;
       }
 
       const state = JSON.parse(rawState) as {
@@ -91,7 +91,7 @@ const getStoredSisgesAnalyticsContext =
         ),
       };
     } catch {
-      return EMPTY_SISGES_ANALYTICS_CONTEXT;
+      return EMPTY_CRM_ANALYTICS_CONTEXT;
     }
   };
 
@@ -127,17 +127,17 @@ const appendSelectedCrmClient = (
 const getAnalyticsIdentityHeaders =
   (): Record<string, string> => {
     const { userId, groupId } =
-      getStoredSisgesAnalyticsContext();
+      getStoredCrmAnalyticsContext();
 
     const headers: Record<string, string> = {};
 
     if (userId !== null) {
-      headers['X-Sisges-User-Id'] =
+      headers['X-Crm-User-Id'] =
         String(userId);
     }
 
     if (groupId !== null) {
-      headers['X-Sisges-Group-Id'] =
+      headers['X-Crm-Group-Id'] =
         String(groupId);
     }
 

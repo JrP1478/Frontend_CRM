@@ -5,7 +5,7 @@ import { useFichaGestionActions } from './useFichaGestionActions';
 import { useFichaGestionCatalogos } from './useFichaGestionCatalogos';
 import { useFichaGestionForm } from './useFichaGestionForm';
 import type { FichaGestionViewModel } from '../types/fichaGestionViewModel.types';
-import type { GestionFormClaro } from '../types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../types/fichaGestionForm.types';
 import type { FichaDeudorGestionFormParams } from '../../../shared/types/fichaDeudor.types';
 import { useFichaGestionDerivedValues } from './useFichaGestionDerivedValues';
 import { useSyncTelefonoSeleccionado } from './useSyncTelefonoSeleccionado';
@@ -29,7 +29,7 @@ interface UseFichaGestionViewModelParams {
     gestionTerminada: boolean
   ) => void;
   onSubmit?: (
-    data: GestionFormClaro,
+    data: GestionFormClienteA,
     fechaFinGestion: string
   ) => void;
 }
@@ -108,7 +108,7 @@ export const useFichaGestionViewModel = ({
 
   const {
     usuarioActual,
-    mostrarCamposClaro,
+    mostrarCamposClienteA,
     np1TipoContacto,
   } = useFichaGestionDerivedValues({
     idCliente,
@@ -121,7 +121,7 @@ export const useFichaGestionViewModel = ({
 
   const handleGestionRegistrada = useCallback(
     (
-      data: GestionFormClaro,
+      data: GestionFormClienteA,
       fechaFinGestion: string
     ) => {
       resetForm();
@@ -175,7 +175,7 @@ export const useFichaGestionViewModel = ({
     np2Options,
     documentosFiltrados,
     np1TipoContacto,
-    requiereCamposClaro: mostrarCamposClaro,
+    requiereCamposClienteA: mostrarCamposClienteA,
     onGestionGuardada,
     onSubmit: handleGestionRegistrada,
     onSaveError: handleGestionError,
@@ -221,7 +221,7 @@ export const useFichaGestionViewModel = ({
     validationErrors,
     feedback,
     handleCloseFeedback,
-    mostrarCamposClaro,
+    mostrarCamposClienteA,
     handleGuardarGestion,
     isSaving,
   });

@@ -64,10 +64,10 @@ const POPUP_COMPONENTS = {
       )
   ),
 
-  'adicional-maf': lazy(
+  'adicional-cliente_b': lazy(
     () =>
       import(
-        '@features/ficha-deudor/modules/adicional-maf/components/AdicionalMafPopup'
+        '@features/ficha-deudor/modules/adicional-cliente_b/components/AdicionalClienteBPopup'
       )
   ),
 

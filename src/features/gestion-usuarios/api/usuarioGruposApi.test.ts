@@ -52,7 +52,7 @@ export const suite = defineSuite(
                 nId_Usuario: 16068,
                 nid_grupo: 219,
                 cNombre_Grupo:
-                  'ADEX INSTITUTO',
+                  'CLIENTE_C INSTITUTO',
               },
             ],
           });
@@ -69,7 +69,7 @@ export const suite = defineSuite(
               idUsuarioGrupo: 9001,
               idUsuario: 16068,
               idGrupo: 219,
-              nombre: 'ADEX INSTITUTO',
+              nombre: 'CLIENTE_C INSTITUTO',
             },
           ]);
 
@@ -179,7 +179,7 @@ export const suite = defineSuite(
               idUsuarioGrupo: null,
               idUsuario: 16068,
               idGrupo: 219,
-              nombre: 'ADEX INSTITUTO',
+              nombre: 'CLIENTE_C INSTITUTO',
             }),
           /No se pudo identificar la asignación/i
         );
@@ -223,7 +223,7 @@ export const suite = defineSuite(
             idUsuarioGrupo: 9001,
             idUsuario: 16068,
             idGrupo: 219,
-            nombre: 'ADEX INSTITUTO',
+            nombre: 'CLIENTE_C INSTITUTO',
           });
 
           assert.equal(
@@ -295,7 +295,7 @@ export const suite = defineSuite(
             idUsuarioGrupo: 38029,
             idUsuario: 16068,
             idGrupo: 156,
-            nombre: 'CLARO CORPORATIVO',
+            nombre: 'CLIENTE_A CORPORATIVO',
           });
 
           assert.equal(

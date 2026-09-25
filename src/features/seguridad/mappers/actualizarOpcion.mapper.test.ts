@@ -287,9 +287,9 @@ export const suite = defineSuite(
           buildUpdateOpcionRequests(
             rootDetail,
             {
-              nombre: 'Root SISGES',
+              nombre: 'Root CRM',
               descripcion: '',
-              codigo: 'RootSisges',
+              codigo: 'RootCrm',
               icono: '',
               esPowerBI: false,
               urlBI: '',
@@ -323,7 +323,7 @@ export const suite = defineSuite(
         );
         assert.equal(
           rootRequest.sUrlOpcion,
-          'RootSisges/'
+          'RootCrm/'
         );
 
         const childRouteRequest =
@@ -335,7 +335,7 @@ export const suite = defineSuite(
         assert.ok(childRouteRequest);
         assert.equal(
           childRouteRequest.sUrlOpcion,
-          'RootSisges/mSeguridad/mMantenerPerfil/'
+          'RootCrm/mSeguridad/mMantenerPerfil/'
         );
       }
     ),
@@ -650,12 +650,12 @@ export const suite = defineSuite(
 
         const powerBi = createModule({
           idModulo: 26,
-          nombre: 'Backus Cobranza',
-          codigo: 'mBackusCobranza',
-          ruta: 'root/mGestionAnalitica/mReporteria/mBackusCobranza/',
+          nombre: 'ClienteF Cobranza',
+          codigo: 'mClienteFCobranza',
+          ruta: 'root/mGestionAnalitica/mReporteria/mClienteFCobranza/',
           urlBI: 'https://app.powerbi.com/view?r=anterior',
-          imagenOpcion: '/imgs_webp/logo-backus-cre.webp',
-          emailOpcion: 'anterior@avalperu.com',
+          imagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+          emailOpcion: 'anterior@legacy_crmperu.com',
           icono: 'analytics',
           tipo: 4,
           idPadre: 25,
@@ -665,14 +665,14 @@ export const suite = defineSuite(
         const powerBiDetail: OpcionApi = {
           ...detail,
           nId_Opcion: 26,
-          sCodigoOpcion: 'mBackusCobranza',
-          sNombreOpcion: 'Backus Cobranza',
+          sCodigoOpcion: 'mClienteFCobranza',
+          sNombreOpcion: 'ClienteF Cobranza',
           sDescripcionOpcion: 'Seguimiento de cobranza.',
           sUrlOpcion: powerBi.ruta,
           sUrlBI: 'https://app.powerbi.com/view?r=anterior',
           sIcono: 'analytics',
-          sImagenOpcion: '/imgs_webp/logo-backus-cre.webp',
-          sEmailOpcion: 'anterior@avalperu.com',
+          sImagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+          sEmailOpcion: 'anterior@legacy_crmperu.com',
           nTipo: 4,
           nId_OpcionPadre: 25,
           sCodigoOpcionPadre: 'mReporteria',
@@ -683,14 +683,14 @@ export const suite = defineSuite(
         const request = buildUpdateOpcionRequests(
           powerBiDetail,
           {
-            nombre: 'Backus Cobranza',
+            nombre: 'ClienteF Cobranza',
             descripcion: 'Seguimiento de cobranza.',
-            codigo: 'mBackusCobranza',
+            codigo: 'mClienteFCobranza',
             icono: 'database',
             esPowerBI: true,
             urlBI: 'https://app.powerbi.com/view?r=nuevo',
-            imagenOpcion: '/imgs_webp/logo-backus.webp',
-            emailOpcion: 'nuevo@avalperu.com',
+            imagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+            emailOpcion: 'nuevo@legacy_crmperu.com',
             padreId: 25,
             orden: 1,
             visible: true,
@@ -709,11 +709,11 @@ export const suite = defineSuite(
         );
         assert.equal(
           request.sImagenOpcion,
-          '/imgs_webp/logo-backus.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           request.sEmailOpcion,
-          'nuevo@avalperu.com'
+          'nuevo@legacy_crmperu.com'
         );
         assert.equal(
           request.sIcono,

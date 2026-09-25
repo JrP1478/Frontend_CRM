@@ -24,7 +24,7 @@ export const mapDireccionByIdApiToEditFormData = (
   comentario: toStringValue(entity.cDirecc_Coment),
   llegoDeBase: toBooleanValue(entity.bOrigen_Base),
   tipoDeudor: toStringValue(entity.cTipoCoDeudor),
-  nombreAval: toStringValue(entity.nombreAval),
+  nombreLegacyCrm: toStringValue(entity.nombreLegacyCrm),
   estado:
     entity.bEstado === null || entity.bEstado === undefined
       ? true

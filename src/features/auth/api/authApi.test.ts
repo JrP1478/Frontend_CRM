@@ -446,7 +446,7 @@ export const suite = defineSuite('authApi', [
           response: [
             {
               nId_Cliente: 178,
-              cCli_Nombre: ' ADEX INSTITUTO ',
+              cCli_Nombre: ' CLIENTE_C INSTITUTO ',
               swt_estadoGest: 0,
               ntip_campanna: 0,
               nId_Grupo: 219,
@@ -454,7 +454,7 @@ export const suite = defineSuite('authApi', [
             },
             {
               nId_Cliente: 95,
-              cCli_Nombre: 'CLARO CORPORATIVO',
+              cCli_Nombre: 'CLIENTE_A CORPORATIVO',
               swt_estadoGest: 1,
               ntip_campanna: 1,
               nId_Grupo: 156,
@@ -473,12 +473,12 @@ export const suite = defineSuite('authApi', [
             {
               id_cliente: '178',
               id_grupo: 219,
-              nombre: 'ADEX INSTITUTO',
+              nombre: 'CLIENTE_C INSTITUTO',
             },
             {
               id_cliente: '95',
               id_grupo: 156,
-              nombre: 'CLARO CORPORATIVO',
+              nombre: 'CLIENTE_A CORPORATIVO',
             },
           ]);
           assert.equal(
@@ -508,7 +508,7 @@ export const suite = defineSuite('authApi', [
           response: [
             {
               nId_Cliente: 95,
-              cCli_Nombre: 'CLARO CORPORATIVO',
+              cCli_Nombre: 'CLIENTE_A CORPORATIVO',
               nId_Grupo: 0,
             },
           ],

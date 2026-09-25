@@ -68,7 +68,7 @@ export const suite = defineSuite(
         items: ITEMS,
         crmClientId: 95,
         context: {
-          businessUnit: 'CLARO CORPORATIVO',
+          businessUnit: 'CLIENTE_A CORPORATIVO',
           campaignId: '2026-09',
           subPortfolioId: '602',
         },
@@ -119,7 +119,7 @@ export const suite = defineSuite(
         items: [],
         crmClientId: 95,
         context: {
-          businessUnit: 'CLARO CORPORATIVO',
+          businessUnit: 'CLIENTE_A CORPORATIVO',
           campaignId: '2026-09',
           subPortfolioId: null,
         },

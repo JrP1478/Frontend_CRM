@@ -502,20 +502,20 @@
 }
 
 /* =========================================================
-   SELECTOR VISUAL DE ICONOS SISGES
+   SELECTOR VISUAL DE ICONOS CRM
    ========================================================= */
 
-.sisges-icon-picker__field-content {
+.crm-icon-picker__field-content {
   min-width: 0;
   flex: 1;
 }
 
-.sisges-icon-picker {
+.crm-icon-picker {
   width: 100%;
   position: relative;
 }
 
-.sisges-icon-picker__trigger {
+.crm-icon-picker__trigger {
   width: 100%;
   min-height: 42px;
 
@@ -539,28 +539,28 @@
     background 150ms ease;
 }
 
-.sisges-icon-picker__trigger:hover:not(:disabled) {
+.crm-icon-picker__trigger:hover:not(:disabled) {
   border-color: var(--ap-navy);
   background: var(--ap-gray-50);
 }
 
-.sisges-icon-picker__trigger:focus-visible,
-.sisges-icon-picker__trigger--open {
+.crm-icon-picker__trigger:focus-visible,
+.crm-icon-picker__trigger--open {
   outline: none;
   border-color: var(--ap-red);
   box-shadow: 0 0 0 3px rgba(190, 20, 45, 0.12);
 }
 
-.sisges-icon-picker__trigger--error {
+.crm-icon-picker__trigger--error {
   border-color: var(--ap-red);
 }
 
-.sisges-icon-picker__trigger:disabled {
+.crm-icon-picker__trigger:disabled {
   cursor: not-allowed;
   opacity: 0.65;
 }
 
-.sisges-icon-picker__selection-icon {
+.crm-icon-picker__selection-icon {
   width: 32px;
   height: 32px;
 
@@ -575,14 +575,14 @@
   border-radius: 6px;
 }
 
-.sisges-icon-picker__empty-symbol {
+.crm-icon-picker__empty-symbol {
   color: var(--ap-text-muted);
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
 }
 
-.sisges-icon-picker__selection-copy {
+.crm-icon-picker__selection-copy {
   min-width: 0;
 
   display: flex;
@@ -591,7 +591,7 @@
   gap: 2px;
 }
 
-.sisges-icon-picker__selection-label {
+.crm-icon-picker__selection-label {
   overflow: hidden;
 
   color: var(--ap-navy);
@@ -603,7 +603,7 @@
   white-space: nowrap;
 }
 
-.sisges-icon-picker__selection-help {
+.crm-icon-picker__selection-help {
   overflow: hidden;
 
   color: var(--ap-text-muted);
@@ -614,7 +614,7 @@
   white-space: nowrap;
 }
 
-.sisges-icon-picker__chevron {
+.crm-icon-picker__chevron {
   flex: 0 0 auto;
 
   color: var(--ap-text-muted);
@@ -622,7 +622,7 @@
   font-size: 8px;
 }
 
-.sisges-icon-picker__panel {
+.crm-icon-picker__panel {
   margin-top: 8px;
   padding: 10px;
 
@@ -632,7 +632,7 @@
   box-shadow: 0 12px 28px rgba(26, 37, 64, 0.13);
 }
 
-.sisges-icon-picker__filters {
+.crm-icon-picker__filters {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 150px;
   gap: 8px;
@@ -640,13 +640,13 @@
   margin-bottom: 10px;
 }
 
-.sisges-icon-picker__search,
-.sisges-icon-picker__category {
+.crm-icon-picker__search,
+.crm-icon-picker__category {
   min-width: 0;
 }
 
-.sisges-icon-picker__search input,
-.sisges-icon-picker__category select {
+.crm-icon-picker__search input,
+.crm-icon-picker__category select {
   width: 100%;
   min-height: 34px;
 
@@ -661,14 +661,14 @@
   font-size: 11px;
 }
 
-.sisges-icon-picker__search input:focus,
-.sisges-icon-picker__category select:focus {
+.crm-icon-picker__search input:focus,
+.crm-icon-picker__category select:focus {
   outline: none;
   border-color: var(--ap-red);
   box-shadow: 0 0 0 2px rgba(190, 20, 45, 0.1);
 }
 
-.sisges-icon-picker__grid {
+.crm-icon-picker__grid {
   max-height: 292px;
 
   display: grid;
@@ -682,7 +682,7 @@
   overscroll-behavior: contain;
 }
 
-.sisges-icon-picker__option {
+.crm-icon-picker__option {
   min-width: 0;
   min-height: 78px;
 
@@ -707,8 +707,8 @@
     transform 130ms ease;
 }
 
-.sisges-icon-picker__option:hover,
-.sisges-icon-picker__option:focus-visible {
+.crm-icon-picker__option:hover,
+.crm-icon-picker__option:focus-visible {
   outline: none;
   color: var(--ap-navy);
   background: var(--ap-gray-50);
@@ -716,14 +716,14 @@
   transform: translateY(-1px);
 }
 
-.sisges-icon-picker__option--selected {
+.crm-icon-picker__option--selected {
   color: var(--ap-red);
   background: #fff5f6;
   border-color: var(--ap-red);
   box-shadow: inset 0 0 0 1px var(--ap-red);
 }
 
-.sisges-icon-picker__option-icon {
+.crm-icon-picker__option-icon {
   height: 28px;
 
   display: inline-flex;
@@ -731,14 +731,14 @@
   justify-content: center;
 }
 
-.sisges-icon-picker__option-icon--empty {
+.crm-icon-picker__option-icon--empty {
   color: var(--ap-text-muted);
 
   font-size: 22px;
   line-height: 1;
 }
 
-.sisges-icon-picker__option-label {
+.crm-icon-picker__option-label {
   width: 100%;
 
   display: -webkit-box;
@@ -753,7 +753,7 @@
   -webkit-line-clamp: 2;
 }
 
-.sisges-icon-picker__empty-message {
+.crm-icon-picker__empty-message {
   margin: 8px 0 2px;
   padding: 16px;
 
@@ -765,17 +765,17 @@
   text-align: center;
 }
 
-.sisges-icon-picker__required {
+.crm-icon-picker__required {
   margin-left: 4px;
   color: var(--ap-red);
 }
 
 @media (max-width: 620px) {
-  .sisges-icon-picker__filters {
+  .crm-icon-picker__filters {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .sisges-icon-picker__grid {
+  .crm-icon-picker__grid {
     grid-template-columns:
       repeat(3, minmax(0, 1fr));
   }

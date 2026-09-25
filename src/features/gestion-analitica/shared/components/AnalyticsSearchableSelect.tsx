@@ -7,7 +7,7 @@ import {
 } from 'react';
 
 import { InputField } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   AnalyticsSearchableSelectOption,
@@ -145,7 +145,7 @@ export const AnalyticsSearchableSelect = ({
           className="analytics-searchable-select__chevron"
           aria-hidden="true"
         >
-          <SisgesIcon name="chevron-right" width={14} height={14} />
+          <CrmIcon name="chevron-right" width={14} height={14} />
         </span>
       </button>
 
@@ -165,7 +165,7 @@ export const AnalyticsSearchableSelect = ({
               className="analytics-searchable-select__search-icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="search" width={15} height={15} />
+              <CrmIcon name="search" width={15} height={15} />
             </span>
             <InputField
               type="search"

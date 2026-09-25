@@ -34,7 +34,7 @@ export const suite = defineSuite(
           true
         );
         assert.equal(
-          isFichaDeudorPopupType('adicional-maf'),
+          isFichaDeudorPopupType('adicional-cliente_b'),
           true
         );
         assert.equal(
@@ -89,7 +89,7 @@ export const suite = defineSuite(
         );
         assert.equal(
           isFichaDeudorPopupContext(
-            'adicional-maf',
+            'adicional-cliente_b',
             {
               ...baseContext,
               idCartera: '4',
@@ -141,7 +141,7 @@ export const suite = defineSuite(
         );
         assert.equal(
           isFichaDeudorPopupContext(
-            'adicional-maf',
+            'adicional-cliente_b',
             {
               ...baseContext,
             }

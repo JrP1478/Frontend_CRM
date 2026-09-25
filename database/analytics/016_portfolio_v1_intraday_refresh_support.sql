@@ -1,14 +1,14 @@
 /*
 Portfolio Control Center - soporte de refresco intradia
-Motor objetivo: SQL Server / aval_analytics
+Motor objetivo: SQL Server / legacy_crm_analytics
 
 Objetivos
-- Registrar la ultima corrida CORTO de aval_reporteria consumida por Analytics.
+- Registrar la ultima corrida CORTO de legacy_crm_reporteria consumida por Analytics.
 - Mantener una bitacora persistente del refresco intradia.
-- No ejecutar ETL pesado si aval_reporteria no publico una corrida CORTO/HECHO nueva.
+- No ejecutar ETL pesado si legacy_crm_reporteria no publico una corrida CORTO/HECHO nueva.
 
 IMPORTANTE
-- La senal canonical upstream es aval_reporteria.dbo.pbi_ciclo_ejecucion.
+- La senal canonical upstream es legacy_crm_reporteria.dbo.pbi_ciclo_ejecucion.
 - source_as_of_at sigue viniendo de los ETL LIVE/ADVISOR; id_corrida solo decide
   si existe una nueva version estable que vale la pena consumir.
 */
@@ -21,7 +21,7 @@ IF NOT EXISTS
 (
     SELECT 1
     FROM etl.watermark
-    WHERE source_code = 'CLARO_INTRADAY_UPSTREAM'
+    WHERE source_code = 'CLIENTE_A_INTRADAY_UPSTREAM'
 )
 BEGIN
     INSERT INTO etl.watermark
@@ -31,7 +31,7 @@ BEGIN
     )
     VALUES
     (
-        'CLARO_INTRADAY_UPSTREAM',
+        'CLIENTE_A_INTRADAY_UPSTREAM',
         0
     );
 END;

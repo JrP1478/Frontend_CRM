@@ -2,10 +2,10 @@ import type { SelectOption } from '@shared/types';
 
 import type { ReportarCasoFormData } from '../types/reportarCaso.types';
 
-export const REPORTAR_CASO_MAF_VALUE = 'Reportar Caso MAF' as const;
+export const REPORTAR_CASO_CLIENTE_B_VALUE = 'Reportar Caso CLIENTE_B' as const;
 
 export const MODAL_CREAR_REPORTAR_CASO_INITIAL_FORM: ReportarCasoFormData = {
-  caso: REPORTAR_CASO_MAF_VALUE,
+  caso: REPORTAR_CASO_CLIENTE_B_VALUE,
   descripcion: '',
   tipoSiniestro: '',
 };
@@ -18,7 +18,7 @@ export const MODAL_CREAR_REPORTAR_CASO_TEXTS = {
 } as const;
 
 export const MODAL_CREAR_REPORTAR_CASO_LABELS = {
-  caso: 'Reportar Caso MAF',
+  caso: 'Reportar Caso CLIENTE_B',
   descripcion: 'Descripción',
   tipoSiniestro: 'Tipo de Siniestro',
 } as const;
@@ -33,10 +33,10 @@ export const MODAL_CREAR_REPORTAR_CASO_LAYOUT = {
   descripcionRows: 4,
 } as const;
 
-export const REPORTAR_CASO_MAF_OPTIONS: SelectOption<string>[] = [
+export const REPORTAR_CASO_CLIENTE_B_OPTIONS: SelectOption<string>[] = [
   {
-    id: REPORTAR_CASO_MAF_VALUE,
-    label: REPORTAR_CASO_MAF_VALUE,
+    id: REPORTAR_CASO_CLIENTE_B_VALUE,
+    label: REPORTAR_CASO_CLIENTE_B_VALUE,
   },
 ];
 

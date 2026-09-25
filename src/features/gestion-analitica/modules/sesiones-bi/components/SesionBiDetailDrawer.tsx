@@ -3,7 +3,7 @@ import {
   Badge,
   ResourceState,
 } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   SesionBiDetail,
@@ -55,7 +55,7 @@ export const SesionBiDetailDrawer = ({
       open={open}
       title="Detalle de sesión"
       eyebrow="Trazabilidad"
-      icon={<SisgesIcon name="monitor" width={20} height={20} />}
+      icon={<CrmIcon name="monitor" width={20} height={20} />}
       ariaLabel="Detalle de sesión BI"
       width="md"
       contentClassName="sessions-bi-drawer__content"

@@ -14,7 +14,7 @@ export interface GestionPaletaRespuestaApi {
   nId_TipoContacto?: number | null;
 }
 
-export interface GestionEstadoClaroApi {
+export interface GestionEstadoClienteAApi {
   nId_OpeCodCliOut: number;
   cNombre_OpeCodCliOut: string;
 }
@@ -76,7 +76,7 @@ export interface CreateGestionOpeGesContratosPayload {
   cMINUTOGESTION: string;
   cOBSERVACION: string;
   cSISTEMA: string;
-  nESTADOGESTIONCLARO: number;
+  nESTADOGESTIONCLIENTE_A: number;
   nMOTIVONOPAGO: number;
   dFechaInicioGestion: string;
   dFechaFinGestion: string;

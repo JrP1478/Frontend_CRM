@@ -6,7 +6,7 @@ Motor: SQL Server
 Ejecutar en la base Analytics.
 
 Principios:
-- source_supervisor_id = aval_cob.dbo.av_Usuario.nId_Usuario
+- source_supervisor_id = legacy_crm_cob.dbo.av_Usuario.nId_Usuario
 - supervisor_document = DNI/cUsr_NroDoc
 - una sola relación current por advisor
 - asesores sin nid_UsuSuper permanecen sin bridge current

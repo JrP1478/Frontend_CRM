@@ -26,7 +26,7 @@ const buildReport = (id: number, name: string): PowerBiReport => ({
 
 const REPORTS = [
   buildReport(1, 'Gestión América'),
-  buildReport(2, 'Backus Cobranza'),
+  buildReport(2, 'ClienteF Cobranza'),
 ];
 
 export const suite = defineSuite(
@@ -47,7 +47,7 @@ export const suite = defineSuite(
       );
       assert.equal(
         resolvePowerBiReportSelectionLabel(REPORTS, [2]),
-        'Backus Cobranza'
+        'ClienteF Cobranza'
       );
       assert.equal(
         resolvePowerBiReportSelectionLabel(REPORTS, [1, 2]),

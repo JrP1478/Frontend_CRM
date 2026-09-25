@@ -4,7 +4,7 @@ import type {
   GestionTipoList,
   GestionPaletaRespuestaList,
   GestionPaletaRespuestaParams,
-  GestionEstadoClaroList,
+  GestionEstadoClienteAList,
   GestionMotivoNoPagoList,
 } from '../types/fichaGestionCatalogos.types';
 import type {
@@ -19,7 +19,7 @@ import {
   FICHA_GESTION_ERROR_MESSAGES,
 } from '../constants/fichaGestionApi.constants';
 import {
-  mapGestionEstadoClaro,
+  mapGestionEstadoClienteA,
   mapGestionEstados,
   mapGestionMotivoNoPago,
   mapGestionPaletaRespuesta,
@@ -33,7 +33,7 @@ import {
   isCreateAgendaResponse,
   isCreateGestionOpeGesContratosResponse,
   isGestionEstadoApi,
-  isGestionEstadoClaroApi,
+  isGestionEstadoClienteAApi,
   isGestionMotivoNoPagoApi,
   isGestionPaletaRespuestaApi,
   isGestionTipoApi,
@@ -122,27 +122,27 @@ export async function fetchGestionPaletaRespuesta(
   return mapGestionPaletaRespuesta(respuestas);
 }
 
-export async function fetchGestionEstadoGestionClaro(
+export async function fetchGestionEstadoGestionClienteA(
   { idCliente, idCartera }: FetchGestionClienteCarteraParams,
   signal?: AbortSignal
-): Promise<GestionEstadoClaroList[]> {
+): Promise<GestionEstadoClienteAList[]> {
   const params = new URLSearchParams({
     nId_Cliente: idCliente,
     nId_Cartera: idCartera,
   });
 
   const result = await apiClient<unknown>(
-    `${FICHA_GESTION_ENDPOINTS.ESTADO_GESTION_CLARO}?${params.toString()}`,
+    `${FICHA_GESTION_ENDPOINTS.ESTADO_GESTION_CLIENTE_A}?${params.toString()}`,
     { signal }
   );
 
-  const estadosClaro = unwrapApiArrayResponse(
+  const estadosClienteA = unwrapApiArrayResponse(
     result,
-    FICHA_GESTION_ERROR_MESSAGES.ESTADO_GESTION_CLARO,
-    isGestionEstadoClaroApi
+    FICHA_GESTION_ERROR_MESSAGES.ESTADO_GESTION_CLIENTE_A,
+    isGestionEstadoClienteAApi
   );
 
-  return mapGestionEstadoClaro(estadosClaro);
+  return mapGestionEstadoClienteA(estadosClienteA);
 }
 
 export async function fetchGestionMotivoNoPago(

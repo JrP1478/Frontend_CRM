@@ -6,7 +6,7 @@ import {
   ActionButton,
   ResourceState,
 } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsPageHeader } from '../shared/components';
 import { SesionBiDetailDrawer } from '../modules/sesiones-bi/components/SesionBiDetailDrawer';
@@ -41,7 +41,7 @@ const SesionesBiPage = () => {
         <AnalyticsPageHeader
           variant="hero"
           className="sessions-bi-page__header"
-          icon={<SisgesIcon name="analytics" />}
+          icon={<CrmIcon name="analytics" />}
           title="Sesiones BI"
           description="Trazabilidad de acceso y tiempo visible en los reportes Power BI. Identifica adopción, usuarios activos y sesiones que requieren revisión."
           actions={(
@@ -58,7 +58,7 @@ const SesionesBiPage = () => {
                 size="sm"
                 disabled={loading}
                 className="sessions-bi-refresh"
-                icon={<SisgesIcon name="refresh" width={16} height={16} />}
+                icon={<CrmIcon name="refresh" width={16} height={16} />}
                 onClick={refetch}
               />
             </>

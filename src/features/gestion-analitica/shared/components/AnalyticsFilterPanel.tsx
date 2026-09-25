@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { ActionButton } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsPanel } from './AnalyticsPanel';
 
@@ -29,7 +29,7 @@ export const AnalyticsFilterPanel = ({
     className={`analytics-filter-panel ${className}`.trim()}
     headerClassName="analytics-filter-panel__header"
     iconClassName="analytics-heading-icon"
-    icon={<SisgesIcon name="filter" />}
+    icon={<CrmIcon name="filter" />}
     title={title}
     actions={(
       <ActionButton

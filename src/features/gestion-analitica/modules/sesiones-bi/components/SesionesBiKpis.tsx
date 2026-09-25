@@ -1,4 +1,4 @@
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsKpiCard } from '../../../shared/components';
 import type { SesionesBiSummary } from '../domain/sesionesBi.types';
@@ -70,7 +70,7 @@ export const SesionesBiKpis = ({
           hint={card.hint}
           tone={card.tone}
           layout="stacked"
-          icon={<SisgesIcon name={card.icon} width={20} height={20} />}
+          icon={<CrmIcon name={card.icon} width={20} height={20} />}
         />
       ))}
     </section>

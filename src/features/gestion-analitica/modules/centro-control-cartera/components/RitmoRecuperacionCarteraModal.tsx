@@ -1,7 +1,7 @@
 import type React from 'react';
 
 import Modal from '@shared/components/modals/Modal';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   MetaCarteraProgress,
@@ -98,7 +98,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
             className="portfolio-recovery-modal__hero-icon"
             aria-hidden="true"
           >
-            <SisgesIcon name={statusIcon} />
+            <CrmIcon name={statusIcon} />
           </span>
           <div>
             <span className="portfolio-recovery-modal__eyebrow">
@@ -129,7 +129,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
               className="portfolio-recovery-metric__icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="money" />
+              <CrmIcon name="money" />
             </span>
             <div>
               <span>Recuperado</span>
@@ -144,7 +144,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
               className="portfolio-recovery-metric__icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="target" />
+              <CrmIcon name="target" />
             </span>
             <div>
               <span>Esperado al corte</span>
@@ -163,7 +163,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
               className="portfolio-recovery-metric__icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="analytics" />
+              <CrmIcon name="analytics" />
             </span>
             <div>
               <span>Brecha</span>
@@ -225,7 +225,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
           </div>
 
           <div className="portfolio-recovery-progress-card__formula">
-            <SisgesIcon name="analytics" aria-hidden="true" />
+            <CrmIcon name="analytics" aria-hidden="true" />
             <span>
               {formatPortfolioCompactCurrency(
                 recoveredAmount
@@ -250,7 +250,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
               className="portfolio-recovery-modal__summary-icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="target" />
+              <CrmIcon name="target" />
             </span>
             <div>
               <span>Meta mensual</span>
@@ -267,7 +267,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
               className="portfolio-recovery-modal__summary-icon"
               aria-hidden="true"
             >
-              <SisgesIcon name="bar-chart" />
+              <CrmIcon name="bar-chart" />
             </span>
             <div>
               <span>Avance de la meta mensual</span>
@@ -282,7 +282,7 @@ export const RitmoRecuperacionCarteraModal: React.FC<
 
         <aside className="portfolio-recovery-modal__explanation">
           <span aria-hidden="true">
-            <SisgesIcon name="history" />
+            <CrmIcon name="history" />
           </span>
           <div>
             <strong>¿Cómo se interpreta?</strong>

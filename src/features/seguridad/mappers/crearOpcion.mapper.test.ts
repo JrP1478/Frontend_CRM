@@ -177,14 +177,14 @@ export const suite = defineSuite(
 
         const request = buildCreateOpcionRequest(
           {
-            nombre: 'Backus Cobranza',
+            nombre: 'ClienteF Cobranza',
             descripcion: 'Seguimiento de cobranza.',
-            codigo: 'mBackusCobranza',
+            codigo: 'mClienteFCobranza',
             icono: 'database',
             esPowerBI: true,
             urlBI: 'https://app.powerbi.com/view?r=demo',
-            imagenOpcion: '/imgs_webp/logo-backus.webp',
-            emailOpcion: 'ngutierrez@avalperu.com',
+            imagenOpcion: '/imgs_webp/client-logo-placeholder.svg',
+            emailOpcion: 'ngutierrez@legacy_crmperu.com',
             // El mapper debe forzar Reportería aunque el formulario haya quedado con otro padre.
             padreId: 1,
             visible: true,
@@ -199,7 +199,7 @@ export const suite = defineSuite(
         assert.equal(request.nTipo, 4);
         assert.equal(
           request.sUrlOpcion,
-          'root/mGestionAnalitica/mReporteria/mBackusCobranza/'
+          'root/mGestionAnalitica/mReporteria/mClienteFCobranza/'
         );
         assert.equal(
           request.sUrlBI,
@@ -207,11 +207,11 @@ export const suite = defineSuite(
         );
         assert.equal(
           request.sImagenOpcion,
-          '/imgs_webp/logo-backus.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           request.sEmailOpcion,
-          'ngutierrez@avalperu.com'
+          'ngutierrez@legacy_crmperu.com'
         );
         assert.equal(request.sIcono, 'analytics');
       }

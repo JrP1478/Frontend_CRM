@@ -30,7 +30,7 @@ export const suite = defineSuite('authSession.guard', [
         }),
         clienteSeleccionada: createCliente({
           id_cliente: ' 95 ',
-          nombre: ' CLARO CORPORATIVO ',
+          nombre: ' CLIENTE_A CORPORATIVO ',
         }),
         isLoading: true,
         error: 'Error temporal',
@@ -110,7 +110,7 @@ export const suite = defineSuite('authSession.guard', [
       version: 1,
       clienteSeleccionada: {
         id_cliente: '95',
-        nombre: 'CLARO CORPORATIVO',
+        nombre: 'CLIENTE_A CORPORATIVO',
       },
     };
 

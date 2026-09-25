@@ -4,16 +4,16 @@ import type { ReactNode } from 'react';
 import Modal from '@shared/components/modals/Modal';
 import TableResourceState from '@shared/components/table/TableResourceState';
 import {
-  SisgesIcon,
-  type SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIcon,
+  type CrmIconName,
+} from '@shared/icons/crm';
 
 interface DetallePromesaCarteraModalFrameProps {
   isOpen: boolean;
   title: string;
   onClose: () => void;
   rootClassName: string;
-  introIcon: SisgesIconName;
+  introIcon: CrmIconName;
   eyebrow: string;
   heading: string;
   description: string;
@@ -53,7 +53,7 @@ export const DetallePromesaCarteraModalFrame: React.FC<
           className={`${rootClassName}__intro-icon`}
           aria-hidden="true"
         >
-          <SisgesIcon name={introIcon} />
+          <CrmIcon name={introIcon} />
         </span>
         <div>
           <span className={`${rootClassName}__eyebrow`}>

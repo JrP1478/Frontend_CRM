@@ -8,7 +8,7 @@ import type {
   CreateAgendaResponse,
   CreateGestionOpeGesContratosResponse,
   GestionEstadoApi,
-  GestionEstadoClaroApi,
+  GestionEstadoClienteAApi,
   GestionMotivoNoPagoApi,
   GestionPaletaRespuestaApi,
   GestionTipoApi,
@@ -31,8 +31,8 @@ export const isGestionPaletaRespuestaApi =
     nId_TipoContacto: isOptionalNullableInteger,
   });
 
-export const isGestionEstadoClaroApi =
-  createObjectGuard<GestionEstadoClaroApi>({
+export const isGestionEstadoClienteAApi =
+  createObjectGuard<GestionEstadoClienteAApi>({
     nId_OpeCodCliOut: isInteger,
     cNombre_OpeCodCliOut: isString,
   });

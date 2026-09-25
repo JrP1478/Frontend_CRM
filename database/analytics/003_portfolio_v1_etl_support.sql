@@ -1,6 +1,6 @@
 /*
 Portfolio Control Center - ETAPA 6 / Avance 1
-Soporte mínimo para ETL de snapshot CLARO
+Soporte mínimo para ETL de snapshot CLIENTE_A
 Motor: SQL Server
 
 Ejecutar DENTRO de la base Analytics, después de:

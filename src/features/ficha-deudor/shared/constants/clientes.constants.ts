@@ -1,1 +1,1 @@
-export const CLIENTE_CLARO_ID = '95';
+export const CLIENTE_CLIENTE_A_ID = '95';

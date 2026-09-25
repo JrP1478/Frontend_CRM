@@ -97,10 +97,10 @@ const createBootstrap = () => ({
     updatedAt: '2026-08-14T16:00:00Z',
     portfolio: { id: 95 },
     businessUnits: [
-      { code: 'CLARO ADMINISTRATIVO', name: 'CLARO ADMINISTRATIVO' },
-      { code: 'CLARO GOBIERNO', name: 'CLARO GOBIERNO' },
+      { code: 'CLIENTE_A ADMINISTRATIVO', name: 'CLIENTE_A ADMINISTRATIVO' },
+      { code: 'CLIENTE_A GOBIERNO', name: 'CLIENTE_A GOBIERNO' },
     ],
-    selectedBusinessUnit: 'CLARO GOBIERNO',
+    selectedBusinessUnit: 'CLIENTE_A GOBIERNO',
     campaigns: [
       {
         code: '2026-08',

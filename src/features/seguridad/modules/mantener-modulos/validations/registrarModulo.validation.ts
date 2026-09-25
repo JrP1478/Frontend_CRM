@@ -1,6 +1,6 @@
 import {
-  isSupportedSisgesIconValue,
-} from '@shared/icons/sisges';
+  isSupportedCrmIconValue,
+} from '@shared/icons/crm';
 
 import {
   isValidEmailValue,
@@ -152,12 +152,12 @@ const validateCommonModuloFields = (
 
   if (
     normalizedForm.icono &&
-    !isSupportedSisgesIconValue(
+    !isSupportedCrmIconValue(
       normalizedForm.icono
     )
   ) {
     errors.icono =
-      'Seleccione un icono válido del catálogo SISGES.';
+      'Seleccione un icono válido del catálogo CRM.';
   }
 
   if (!normalizedForm.codigo) {
@@ -292,7 +292,7 @@ const validateCommonModuloFields = (
 
     if (isImplemented) {
       errors.esPowerBI =
-        'Un módulo ya implementado en SISGES no puede convertirse en Power BI.';
+        'Un módulo ya implementado en CRM no puede convertirse en Power BI.';
     }
 
     if (

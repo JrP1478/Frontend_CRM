@@ -24,7 +24,7 @@ export const suite = defineSuite('reportarCasoValidations', [
   test('acepta el formulario completo', () => {
     assert.deepEqual(
       validateReportarCasoForm({
-        caso: 'Reportar Caso MAF',
+        caso: 'Reportar Caso CLIENTE_B',
         descripcion: 'Detalle del caso',
         tipoSiniestro: 'Caso Varios',
       }),
@@ -34,7 +34,7 @@ export const suite = defineSuite('reportarCasoValidations', [
   test('habilita el registro solo cuando ambos menús obligatorios tienen valor', () => {
     assert.equal(
       hasRequiredReportarCasoSelections({
-        caso: 'Reportar Caso MAF',
+        caso: 'Reportar Caso CLIENTE_B',
         tipoSiniestro: '',
       }),
       false
@@ -50,7 +50,7 @@ export const suite = defineSuite('reportarCasoValidations', [
 
     assert.equal(
       hasRequiredReportarCasoSelections({
-        caso: 'Reportar Caso MAF',
+        caso: 'Reportar Caso CLIENTE_B',
         tipoSiniestro: 'Caso Varios',
       }),
       true
@@ -71,7 +71,7 @@ export const suite = defineSuite('reportarCasoValidations', [
 
     assert.equal(
       hasRequiredReportarCasoSelections({
-        caso: 'Reportar Caso MAF',
+        caso: 'Reportar Caso CLIENTE_B',
         tipoSiniestro: 'Tipo desconocido',
       }),
       false

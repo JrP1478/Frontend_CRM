@@ -7,7 +7,7 @@ export const suite = defineSuite('flujo de preparación para guardar gestión', 
   test('detiene el flujo cuando no existen documentos', () => {
     const result = buildGestionSaveRequest({
       form: createGestionForm(), params: createFichaParams(), documentosFiltrados: [],
-      np1TipoContacto: 1, requiereCamposClaro: true,
+      np1TipoContacto: 1, requiereCamposClienteA: true,
       fechaFinGestion: '2026-08-04T09:17:00.000',
     });
     assert.equal(result.isValid, false);
@@ -18,7 +18,7 @@ export const suite = defineSuite('flujo de preparación para guardar gestión', 
     const result = buildGestionSaveRequest({
       form: createGestionForm(), params: createFichaParams(),
       documentosFiltrados: [createDocumento(101), createDocumento(202)],
-      np1TipoContacto: 1, requiereCamposClaro: true,
+      np1TipoContacto: 1, requiereCamposClienteA: true,
       fechaFinGestion: '2026-08-04T09:17:00.000',
     });
     assert.equal(result.isValid, true);

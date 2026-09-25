@@ -143,7 +143,7 @@ export const suite = defineSuite(
         const items = await loadAllSeguimientoPromesasCartera(
           95,
           {
-            businessUnit: 'CLARO CORPORATIVO',
+            businessUnit: 'CLIENTE_A CORPORATIVO',
             campaignId: '2026-09',
             subPortfolioId: '602',
           },

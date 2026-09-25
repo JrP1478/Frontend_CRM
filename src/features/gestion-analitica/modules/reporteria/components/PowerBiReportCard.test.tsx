@@ -23,8 +23,8 @@ const report: PowerBiReport = {
   name: 'AMERICATEL',
   description: 'Reporte de prueba.',
   serviceUrl: 'https://app.powerbi.com/view?r=demo',
-  image: '/imgs_webp/logo-entel.webp',
-  email: 'mparipanca@avalperu.com',
+  image: '/imgs_webp/client-logo-placeholder.svg',
+  email: 'mparipanca@legacy_crmperu.com',
   icon: 'analytics',
 };
 
@@ -46,7 +46,7 @@ export const suite = defineSuite(
         assert.match(html, />Disponible</);
         assert.match(
           html,
-          /mailto:mparipanca@avalperu\.com/
+          /mailto:mparipanca@legacy_crmperu\.com/
         );
       }
     ),

@@ -26,7 +26,7 @@ const row: UsuarioGrupoOpcionListado = {
   nombreCompleto:
     'Luis Pierre Martinez Zapana',
   idGrupo: 22,
-  grupo: 'BACKUS',
+  grupo: 'CLIENTE_F',
   idOpcion: 10,
   codigoOpcion: 'mMantenerPerfil',
   opcion: 'Mantener perfil',
@@ -90,7 +90,7 @@ export const suite = defineSuite(
           html,
           /Luis Pierre Martinez Zapana/
         );
-        assert.match(html, /BACKUS/);
+        assert.match(html, /CLIENTE_F/);
         assert.match(
           html,
           /Mantener perfil/

@@ -5,25 +5,25 @@ import {
   fetchGestionEstados,
   fetchGestionTipos,
   fetchGestionPaletaRespuesta,
-  fetchGestionEstadoGestionClaro,
+  fetchGestionEstadoGestionClienteA,
   fetchGestionMotivoNoPago,
 } from '../api/fichaGestionApi';
 import type {
   GestionEstadoList,
   GestionTipoList,
   GestionPaletaRespuestaList,
-  GestionEstadoClaroList,
+  GestionEstadoClienteAList,
   GestionMotivoNoPagoList,
 } from '../types/fichaGestionCatalogos.types';
 import {
-  CLIENTE_CLARO_ID,
+  CLIENTE_CLIENTE_A_ID,
   TIPO_GESTION_PALETA,
 } from '../constants/fichaGestion.constants';
 
 const resolveEmptyList = <T>() => Promise.resolve<T[]>([]);
 
-const isClienteClaro = (idCliente: string) => {
-  return String(idCliente) === CLIENTE_CLARO_ID;
+const isClienteClienteA = (idCliente: string) => {
+  return String(idCliente) === CLIENTE_CLIENTE_A_ID;
 };
 
 export function useGestionEstados(idCliente: string) {
@@ -87,17 +87,17 @@ export function useGestionPaletaRespuesta(
   ]);
 }
 
-export function useGestionEstadoGestionClaro(
+export function useGestionEstadoGestionClienteA(
   idCliente: string,
   idCartera: string
 ) {
   const fetcher = useCallback(
-    (signal: AbortSignal): Promise<GestionEstadoClaroList[]> => {
-      if (!isClienteClaro(idCliente) || !hasRequiredValues(idCartera)) {
-        return resolveEmptyList<GestionEstadoClaroList>();
+    (signal: AbortSignal): Promise<GestionEstadoClienteAList[]> => {
+      if (!isClienteClienteA(idCliente) || !hasRequiredValues(idCartera)) {
+        return resolveEmptyList<GestionEstadoClienteAList>();
       }
 
-      return fetchGestionEstadoGestionClaro({ idCliente, idCartera }, signal);
+      return fetchGestionEstadoGestionClienteA({ idCliente, idCartera }, signal);
     },
     [idCliente, idCartera]
   );
@@ -111,7 +111,7 @@ export function useGestionMotivoNoPago(
 ) {
   const fetcher = useCallback(
     (signal: AbortSignal): Promise<GestionMotivoNoPagoList[]> => {
-      if (!isClienteClaro(idCliente) || !hasRequiredValues(idCartera)) {
+      if (!isClienteClienteA(idCliente) || !hasRequiredValues(idCartera)) {
         return resolveEmptyList<GestionMotivoNoPagoList>();
       }
 

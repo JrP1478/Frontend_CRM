@@ -1,15 +1,15 @@
 /*
-Analytics Access - scope de grupos SISGES para Power BI / Reporteria
-Motor objetivo: SQL Server / aval_analytics
+Analytics Access - scope de grupos CRM para Power BI / Reporteria
+Motor objetivo: SQL Server / legacy_crm_analytics
 
 Objetivos
 - Mantener option_client_scope sin cambios para Portfolio Control Center.
-- Permitir que los tableros Power BI autoricen por nId_Grupo exacto de SISGES.
+- Permitir que los tableros Power BI autoricen por nId_Grupo exacto de CRM.
 - Evitar que dos grupos distintos con el mismo nid_cliente otorguen el mismo acceso.
 - Mantener default deny: un BI sin grupos activos no queda habilitado por group scope.
 
 IMPORTANTE
-- sisges_group_id referencia dbo.av_Grupo.nId_Grupo en SISGES, pero no se crea FK
+- crm_group_id referencia dbo.av_Grupo.nId_Grupo en CRM, pero no se crea FK
   porque pertenece a otra base/conexion.
 - Este script no migra automaticamente option_client_scope a grupos: un crm_client_id
   puede corresponder a varios grupos y la conversion seria ambigua.
@@ -36,7 +36,7 @@ BEGIN
     CREATE TABLE analytics_access.option_group_scope
     (
         option_id       INT NOT NULL,
-        sisges_group_id INT NOT NULL,
+        crm_group_id INT NOT NULL,
         is_active       BIT NOT NULL
             CONSTRAINT DF_option_group_scope_is_active
             DEFAULT (1),
@@ -50,13 +50,13 @@ BEGIN
             DEFAULT (SYSUTCDATETIME()),
 
         CONSTRAINT PK_option_group_scope
-            PRIMARY KEY (option_id, sisges_group_id),
+            PRIMARY KEY (option_id, crm_group_id),
 
         CONSTRAINT CK_option_group_scope_option_id
             CHECK (option_id > 0),
 
-        CONSTRAINT CK_option_group_scope_sisges_group_id
-            CHECK (sisges_group_id > 0)
+        CONSTRAINT CK_option_group_scope_crm_group_id
+            CHECK (crm_group_id > 0)
     );
 END;
 GO
@@ -72,7 +72,7 @@ BEGIN
     CREATE INDEX IX_option_group_scope_active_group
         ON analytics_access.option_group_scope
         (
-            sisges_group_id,
+            crm_group_id,
             option_id
         )
         WHERE is_active = 1;

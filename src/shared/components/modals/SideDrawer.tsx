@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import {
   lockModalScroll,
@@ -107,7 +107,7 @@ export const SideDrawer = ({
             aria-label="Cerrar"
             onClick={onClose}
           >
-            <SisgesIcon name="close" width={19} height={19} />
+            <CrmIcon name="close" width={19} height={19} />
           </button>
         </header>
 

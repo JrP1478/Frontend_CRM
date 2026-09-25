@@ -80,8 +80,8 @@ const GESTION_BOTONES_REGISTRY: Readonly<
       documento: data.dniRuc,
     });
   },
-  adicionalmaf: ({ data, params }) => {
-    openFichaDeudorPopup('adicional-maf', {
+  adicionalcliente_b: ({ data, params }) => {
+    openFichaDeudorPopup('adicional-cliente_b', {
       idCliente: params.id_cliente,
       idCartera: params.id_cartera,
       idDeudor: params.id_deudor,

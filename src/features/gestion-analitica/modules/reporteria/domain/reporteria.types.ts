@@ -1,6 +1,6 @@
 import type {
-  SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIconName,
+} from '@shared/icons/crm';
 
 export type ReporteriaAccessStatus =
   | 'idle'
@@ -16,7 +16,7 @@ export interface PowerBiReport {
   serviceUrl: string | null;
   image: string | null;
   email: string | null;
-  icon: SisgesIconName;
+  icon: CrmIconName;
 }
 
 export interface ReporteriaSection {

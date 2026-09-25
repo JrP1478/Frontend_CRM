@@ -3,7 +3,7 @@ Portfolio Control Center - ETAPA 6
 Soporte de atribución segura de métricas Supervisor -> Asesor
 Motor: SQL Server
 
-Ejecutar DENTRO de aval_analytics después de:
+Ejecutar DENTRO de legacy_crm_analytics después de:
   001_portfolio_v1_schema.sql
   005_portfolio_v1_advisor_support.sql
   006_portfolio_v1_supervisor_support.sql

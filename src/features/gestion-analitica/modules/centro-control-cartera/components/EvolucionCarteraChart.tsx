@@ -2,7 +2,7 @@ import type React from 'react';
 import { useMemo, useState } from 'react';
 
 import { SegmentedControl } from '@shared/components/ui';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsPanel } from '../../../shared/components';
 
@@ -100,7 +100,7 @@ export const EvolucionCarteraChart: React.FC<
       className="portfolio-control-center__section portfolio-evolution-panel"
       headerClassName="portfolio-evolution-panel__header portfolio-control-center__section-heading portfolio-control-center__section-heading--compact"
       iconClassName="analytics-heading-icon analytics-heading-icon--info"
-      icon={<SisgesIcon name="analytics" />}
+      icon={<CrmIcon name="analytics" />}
       title="Evolución operativa"
       description="Seguimiento temporal del avance de cartera y recuperación."
       actions={(

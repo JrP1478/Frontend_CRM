@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-import { SisgesIcon } from '../../icons/sisges';
+import { CrmIcon } from '../../icons/crm';
 import type { SelectOption } from '../../types';
 import { filterSearchableSelectOptions } from './searchableSelectField.utils';
 
@@ -214,7 +214,7 @@ export const SearchableSelectField = <
                 className="searchable-select-field__search-icon"
                 aria-hidden="true"
               >
-                <SisgesIcon name="search" width={13} height={13} />
+                <CrmIcon name="search" width={13} height={13} />
               </span>
               <input
                 type="search"
@@ -351,7 +351,7 @@ export const SearchableSelectField = <
           }`}
           aria-hidden="true"
         >
-          <SisgesIcon name="chevron-right" width={11} height={11} />
+          <CrmIcon name="chevron-right" width={11} height={11} />
         </span>
       </button>
 

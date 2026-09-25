@@ -25,10 +25,10 @@ const OPTIONS: CentroControlCarteraFilterOptions = {
   availableDateTo: '2026-08-13',
   portfolio: { id: '95' },
   businessUnits: [
-    { id: 'CLARO ADMINISTRATIVO', label: 'CLARO ADMINISTRATIVO' },
-    { id: 'CLARO GOBIERNO', label: 'CLARO GOBIERNO' },
+    { id: 'CLIENTE_A ADMINISTRATIVO', label: 'CLIENTE_A ADMINISTRATIVO' },
+    { id: 'CLIENTE_A GOBIERNO', label: 'CLIENTE_A GOBIERNO' },
   ],
-  selectedBusinessUnit: 'CLARO GOBIERNO',
+  selectedBusinessUnit: 'CLIENTE_A GOBIERNO',
   subPortfolios: [
     { id: '10', label: 'Subcartera histórica' },
     { id: '20', label: 'Subcartera vigente' },
@@ -135,7 +135,7 @@ const MULTI_YEAR_OPTIONS: CentroControlCarteraFilterOptions = {
 };
 
 const SCOPED_FILTERS: CentroControlCarteraFilters = {
-  businessUnit: 'CLARO ADMINISTRATIVO',
+  businessUnit: 'CLIENTE_A ADMINISTRATIVO',
   dateFrom: '2026-08-05',
   dateTo: '2026-08-13',
   subPortfolioId: '20',
@@ -374,10 +374,10 @@ export const suite = defineSuite(
         assert.deepEqual(
           switchUnidadNegocioCartera(
             SCOPED_FILTERS,
-            'CLARO GOBIERNO'
+            'CLIENTE_A GOBIERNO'
           ),
           {
-            businessUnit: 'CLARO GOBIERNO',
+            businessUnit: 'CLIENTE_A GOBIERNO',
             dateFrom: null,
             dateTo: null,
             subPortfolioId: null,
@@ -390,12 +390,12 @@ export const suite = defineSuite(
           switchUnidadNegocioCartera(
             {
               ...SCOPED_FILTERS,
-              businessUnit: 'CLARO GOBIERNO',
+              businessUnit: 'CLIENTE_A GOBIERNO',
             },
-            'CLARO ADMINISTRATIVO'
+            'CLIENTE_A ADMINISTRATIVO'
           ),
           {
-            businessUnit: 'CLARO ADMINISTRATIVO',
+            businessUnit: 'CLIENTE_A ADMINISTRATIVO',
             dateFrom: null,
             dateTo: null,
             subPortfolioId: null,
@@ -410,22 +410,22 @@ export const suite = defineSuite(
       () => {
         assert.equal(
           isUnidadNegocioCarteraTransitionPending(
-            'CLARO GOBIERNO',
-            'CLARO ADMINISTRATIVO'
+            'CLIENTE_A GOBIERNO',
+            'CLIENTE_A ADMINISTRATIVO'
           ),
           true
         );
         assert.equal(
           isUnidadNegocioCarteraTransitionPending(
-            'CLARO GOBIERNO',
-            'CLARO GOBIERNO'
+            'CLIENTE_A GOBIERNO',
+            'CLIENTE_A GOBIERNO'
           ),
           false
         );
         assert.equal(
           isUnidadNegocioCarteraTransitionPending(
             null,
-            'CLARO ADMINISTRATIVO'
+            'CLIENTE_A ADMINISTRATIVO'
           ),
           false
         );

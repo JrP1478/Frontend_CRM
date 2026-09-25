@@ -1,7 +1,7 @@
 import { TIPO_CONTACTO, TIPO_GESTION } from '../constants/fichaGestion.constants';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
 } from '../types/fichaGestionForm.types';
 import {
   toDecimalNumber,
@@ -10,10 +10,10 @@ import {
 import { normalizeTelefonoForComparison } from '../../telefonos-referenciados/utils/telefonoNormalization.utils';
 
 interface ValidateFichaGestionParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   np1TipoContacto: number;
   tieneDocumentos: boolean;
-  requiereCamposClaro?: boolean;
+  requiereCamposClienteA?: boolean;
 }
 
 const isEmptyValue = (value: string | number | null | undefined) => {
@@ -28,7 +28,7 @@ export const validateFichaGestion = ({
   form,
   np1TipoContacto,
   tieneDocumentos,
-  requiereCamposClaro = false,
+  requiereCamposClienteA = false,
 }: ValidateFichaGestionParams): FichaGestionValidationErrors => {
   const errors: FichaGestionValidationErrors = {};
 
@@ -56,9 +56,9 @@ export const validateFichaGestion = ({
     errors.observaciones = 'Ingrese Observaciones';
   }
 
-  if (requiereCamposClaro) {
-    if (isEmptyOrZero(form.estadoGestionClaro)) {
-      errors.estadoGestionClaro = 'Selecciona: Estado de Gestión Claro';
+  if (requiereCamposClienteA) {
+    if (isEmptyOrZero(form.estadoGestionClienteA)) {
+      errors.estadoGestionClienteA = 'Selecciona: Estado de Gestión ClienteA';
     }
 
     if (isEmptyOrZero(form.motivoNoPago)) {

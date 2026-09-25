@@ -27,7 +27,7 @@ a un identificador humano estable, preferentemente DNI/código, mediante:
 - `rpt_ref_usuario`;
 - `RPTC_253_PRODUCCIONGENERALPORGESTOR_ACUMULADO`;
 - `RPTC_253_PRODUCCIONGENERALPORGESTOR_DIA`;
-- `PBI_CARTERA_DIA_CLARO_CORP_ADMINISTRATIVO_PROD`.
+- `PBI_CARTERA_DIA_CLIENTE_A_CORP_ADMINISTRATIVO_PROD`.
 
 ## Regla de aceptación
 

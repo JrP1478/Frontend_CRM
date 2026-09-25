@@ -19,7 +19,7 @@ const createPublication = (
   overrides: Partial<AnalyticsOptionReportClientPublication> = {}
 ): AnalyticsOptionReportClientPublication => ({
   clientId: 178,
-  name: 'ADEX INSTITUTO',
+  name: 'CLIENTE_C INSTITUTO',
   isAvailable: true,
   groupResolution: 'AUTO_DETECTED',
   hasExplicitGroupConfiguration: false,
@@ -27,7 +27,7 @@ const createPublication = (
   candidateGroups: [
     {
       groupId: 219,
-      name: 'ADEX INSTITUTO',
+      name: 'CLIENTE_C INSTITUTO',
     },
   ],
   embedUrl:
@@ -64,11 +64,11 @@ export const suite = defineSuite(
         assert.match(html, /1\/1 listas/);
         assert.match(
           html,
-          /ADEX INSTITUTO \[219\]/
+          /CLIENTE_C INSTITUTO \[219\]/
         );
         assert.match(
           html,
-          /Detectado automáticamente por cliente SISGES\./
+          /Detectado automáticamente por cliente CRM\./
         );
         assert.match(html, />Listo</);
       }
@@ -84,11 +84,11 @@ export const suite = defineSuite(
             candidateGroups: [
               {
                 groupId: 219,
-                name: 'ADEX INSTITUTO',
+                name: 'CLIENTE_C INSTITUTO',
               },
               {
                 groupId: 220,
-                name: 'ADEX COBRANZA',
+                name: 'CLIENTE_C COBRANZA',
               },
             ],
           }),

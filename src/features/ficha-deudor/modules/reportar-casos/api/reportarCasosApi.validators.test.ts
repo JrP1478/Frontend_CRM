@@ -12,7 +12,7 @@ const validCase = {
   id: 15,
   caso: 'VALIDACIÓN DOCUMENTARIA',
   descripcion: 'El cliente solicita revisar la documentación.',
-  cartera: 'MAF',
+  cartera: 'CLIENTE_B',
   usuario: 'GESTOR 01',
   fec_Ingreso: '2026-09-16T10:30:00',
 };
@@ -53,7 +53,7 @@ export const suite = defineSuite('reportarCasosApi.validators', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     };
 

@@ -6,7 +6,7 @@ import type {
 import type {
   FichaGestionValidationErrors,
   GestionFeedback,
-  GestionFormClaro,
+  GestionFormClienteA,
   SetGestionField,
   SetGestionFields,
 } from '../types/fichaGestionForm.types';
@@ -14,7 +14,7 @@ import type {
 interface BuildFichaGestionViewModelPropsParams {
   idCliente: string;
 
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   setField: SetGestionField;
   setFields: SetGestionFields;
 
@@ -52,7 +52,7 @@ interface BuildFichaGestionViewModelPropsParams {
 
   handleCloseFeedback: () => void;
 
-  mostrarCamposClaro: boolean;
+  mostrarCamposClienteA: boolean;
 
   handleGuardarGestion:
     () => void | Promise<void>;
@@ -84,7 +84,7 @@ export const buildFichaGestionViewModelProps = ({
   feedback,
   handleCloseFeedback,
 
-  mostrarCamposClaro,
+  mostrarCamposClienteA,
   handleGuardarGestion,
   isSaving,
 }: BuildFichaGestionViewModelPropsParams): FichaGestionViewModel => {
@@ -109,9 +109,9 @@ export const buildFichaGestionViewModelProps = ({
     isLoadingNP2,
     errorNP2,
 
-    estadoGestionClaroOptions,
-    isLoadingEstadoGestionClaro,
-    errorEstadoGestionClaro,
+    estadoGestionClienteAOptions,
+    isLoadingEstadoGestionClienteA,
+    errorEstadoGestionClienteA,
 
     motivoNoPagoOptions,
     isLoadingMotivoNoPago,
@@ -188,11 +188,11 @@ export const buildFichaGestionViewModelProps = ({
       onCloseFeedback:
         handleCloseFeedback,
 
-      mostrarCamposClaro,
+      mostrarCamposClienteA,
 
-      estadoGestionClaroOptions,
-      isLoadingEstadoGestionClaro,
-      errorEstadoGestionClaro,
+      estadoGestionClienteAOptions,
+      isLoadingEstadoGestionClienteA,
+      errorEstadoGestionClienteA,
 
       motivoNoPagoOptions,
       isLoadingMotivoNoPago,

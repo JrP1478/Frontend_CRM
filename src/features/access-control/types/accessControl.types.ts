@@ -1,8 +1,8 @@
 import type React from 'react';
 
 import type {
-  SisgesIconName,
-} from '@shared/icons/sisges';
+  CrmIconName,
+} from '@shared/icons/crm';
 
 export type AccessPermissionName =
   | 'consultar'
@@ -60,7 +60,7 @@ export interface AuthorizedOption {
   urlBI: string | null;
   image: string | null;
   email?: string | null;
-  icon: SisgesIconName;
+  icon: CrmIconName;
   type: number;
   parentId: number;
   order: number;

@@ -39,7 +39,7 @@ const authValue: AuthContextValue = {
   clienteSeleccionada: {
     id_cliente: '1',
     id_grupo: 1,
-    nombre: 'CLARO CORPORATIVO',
+    nombre: 'CLIENTE_A CORPORATIVO',
   },
   isLoading: false,
   error: null,
@@ -115,7 +115,7 @@ export const suite = defineSuite(
         );
         assert.match(
           switchableHtml,
-          /Cambiar cliente\. Cliente actual: CLARO CORPORATIVO/
+          /Cambiar cliente\. Cliente actual: CLIENTE_A CORPORATIVO/
         );
         assert.doesNotMatch(
           readonlyHtml,

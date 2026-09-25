@@ -9,8 +9,8 @@ import {
 } from '@shared/components/ui';
 
 import {
-  SisgesIconPicker,
-} from '@shared/icons/sisges';
+  CrmIconPicker,
+} from '@shared/icons/crm';
 
 import PowerBiImagePicker from './PowerBiImagePicker';
 
@@ -305,7 +305,7 @@ export const ModuloFormFields = ({
           )}
 
           {!form.esPowerBI && (
-            <SisgesIconPicker
+            <CrmIconPicker
               id="modulo-icono"
               label={
                 MODAL_REGISTRAR_MODULO_LABELS

@@ -13,7 +13,7 @@ export const createUsuario = (
   nombre: 'Carlos',
   apellido: 'Ramírez López',
   username: 'cramirez',
-  email: 'carlos@avalperu.pe',
+  email: 'carlos@legacy_crmperu.pe',
   perfil: 'Administrador Base Datos',
   perfilId: 9,
   ...overrides,
@@ -24,7 +24,7 @@ export const createCliente = (
 ): Cliente => ({
   id_cliente: '95',
   id_grupo: 156,
-  nombre: 'CLARO CORPORATIVO',
+  nombre: 'CLIENTE_A CORPORATIVO',
   ...overrides,
 });
 
@@ -37,7 +37,7 @@ export const createLoginUsuarioApi = (
   cUsr_Nombres: 'Carlos',
   cUsr_ApePat: 'Ramírez',
   cUsr_ApeMat: 'López',
-  cUsr_Email: 'carlos@avalperu.pe',
+  cUsr_Email: 'carlos@legacy_crmperu.pe',
   cUsr_EmailPersonal: '',
   cUsr_EmailProfile: '',
   per_Nombre: 'Administrador Base Datos      ',

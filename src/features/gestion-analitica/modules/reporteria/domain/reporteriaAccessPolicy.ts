@@ -1,9 +1,9 @@
 /**
  * Políticas excepcionales de acceso/navegación para Reportería.
  *
- * El reporte "GESTION INTEGRAL DE COBRANZA - SUPERVISOR" (opción SISGES 27)
+ * El reporte "GESTION INTEGRAL DE COBRANZA - SUPERVISOR" (opción CRM 27)
  * no debe quedar bloqueado por el grupo Analytics asociado al Power BI. El
- * permiso `consultar` de SISGES sigue siendo obligatorio porque el reporte
+ * permiso `consultar` de CRM sigue siendo obligatorio porque el reporte
  * solo llega al catálogo desde el menú autorizado.
  *
  * Aunque omite esa validación de grupo, el reporte sí trabaja por cartera y

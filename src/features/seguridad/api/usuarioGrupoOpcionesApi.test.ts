@@ -67,7 +67,7 @@ export const suite = defineSuite(
                 cUsr_Nombres: 'Luis Pierre',
                 cUsr_Login: '14931',
                 nId_Grupo: 22,
-                cNombre_Grupo: 'BACKUS',
+                cNombre_Grupo: 'CLIENTE_F',
                 nId_Opcion: 10,
                 sCodigoOpcion:
                   'mMantenerPerfil',
@@ -136,7 +136,7 @@ export const suite = defineSuite(
               nombreCompleto:
                 'Luis Pierre Martinez Zapana',
               idGrupo: 22,
-              grupo: 'BACKUS',
+              grupo: 'CLIENTE_F',
               idOpcion: 10,
               codigoOpcion:
                 'mMantenerPerfil',
@@ -203,7 +203,7 @@ export const suite = defineSuite(
                 cUsr_Nombres: 'Luis Pierre',
                 cUsr_Login: '14931',
                 nId_Grupo: 22,
-                cNombre_Grupo: 'BACKUS',
+                cNombre_Grupo: 'CLIENTE_F',
                 nId_Opcion: 10,
                 sCodigoOpcion:
                   'mMantenerPerfil',

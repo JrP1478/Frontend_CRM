@@ -74,7 +74,7 @@ export const suite = defineSuite(
 
         assert.equal(
           errors.icono,
-          'Seleccione un icono válido del catálogo SISGES.'
+          'Seleccione un icono válido del catálogo CRM.'
         );
       }
     ),
@@ -143,14 +143,14 @@ export const suite = defineSuite(
       () => {
         const validErrors = validateRegistrarModuloForm(
           {
-            nombre: 'Backus Cobranza',
+            nombre: 'ClienteF Cobranza',
             descripcion: '',
-            codigo: 'mBackusCobranza',
+            codigo: 'mClienteFCobranza',
             icono: 'analytics',
             esPowerBI: true,
             urlBI: 'https://app.powerbi.com/view?r=demo',
             imagenOpcion: '/logos/backus.webp',
-            emailOpcion: 'ngutierrez@avalperu.com',
+            emailOpcion: 'ngutierrez@legacy_crmperu.com',
             padreId: 25,
             visible: true,
             estado: true,
@@ -164,9 +164,9 @@ export const suite = defineSuite(
 
         const invalidErrors = validateRegistrarModuloForm(
           {
-            nombre: 'Backus Crédito',
+            nombre: 'ClienteF Crédito',
             descripcion: '',
-            codigo: 'mBackusCredito',
+            codigo: 'mClienteFCredito',
             icono: '',
             esPowerBI: true,
             urlBI: 'javascript:alert(1)',

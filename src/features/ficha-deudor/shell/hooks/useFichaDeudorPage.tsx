@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ActionButton } from '@shared/components/ui/ActionButton';
 import { useAppLayout } from '@shared/components/layout/AppLayoutContext';
 
-import type { GestionFormClaro } from '../../modules/gestion/types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../../modules/gestion/types/fichaGestionForm.types';
 import {
   useCabeceraHeader,
   useDeudorHeader,
@@ -90,7 +90,7 @@ export const useFichaDeudorPage = ({
 
   const handleGestionSubmit = useCallback(
     (
-      _data: GestionFormClaro,
+      _data: GestionFormClienteA,
       fechaFinGestion: string
     ) => {
       setGestionRealizadaRefreshKey(

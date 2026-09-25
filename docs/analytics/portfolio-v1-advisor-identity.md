@@ -12,7 +12,7 @@ No se usará `nombre_asesor` como clave.
 
 ## Candidatos físicos
 
-La tabla `aval_reporteria.dbo.rpt_gestiones_pagos_final` expone:
+La tabla `legacy_crm_reporteria.dbo.rpt_gestiones_pagos_final` expone:
 
 - `nId_Usuario`
 - `nId_UsuOpe`

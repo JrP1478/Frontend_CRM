@@ -55,7 +55,7 @@ export const suite = defineSuite('direccionesReferenciadas.mapper', [
     const editForm: DireccionEditFormData = {
       ...createForm(),
       id: '9',
-      nombreAval: '',
+      nombreLegacyCrm: '',
       estado: true,
     };
 

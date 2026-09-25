@@ -19,7 +19,7 @@ export interface DireccionReferenciada {
   distrito?: string;
   comentario?: string;
   llegoDeBase?: boolean;
-  nombreAval?: string
+  nombreLegacyCrm?: string
 }
 
 export interface DireccionFormData {
@@ -43,7 +43,7 @@ export interface DireccionEditFormData {
   comentario: string;
   llegoDeBase: boolean;
   tipoDeudor: string;
-  nombreAval: string;
+  nombreLegacyCrm: string;
   estado: boolean;
 }
 
@@ -112,7 +112,7 @@ export interface CreateDireccionResponse {
 export interface DireccionByIdApi {
   nId_PersDirecc: number;
   cDirecc_Nomb: string;
-  nombreAval: string;
+  nombreLegacyCrm: string;
   nId_PersRefUbi: number;
   cDirecc_Coment: string;
   bEstado?: boolean | null;

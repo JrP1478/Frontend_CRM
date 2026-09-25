@@ -3,11 +3,11 @@ import { parsePeruDateTime } from '../../../shared/utils/date.utils';
 import { toNumberOrZero } from '../../../shared/utils/number.utils';
 import type {
   FichaGestionValidationErrors,
-  GestionFormClaro,
+  GestionFormClienteA,
 } from '../types/fichaGestionForm.types';
 
 interface ValidateFichaGestionAgendaParams {
-  form: GestionFormClaro;
+  form: GestionFormClienteA;
   np1Options: PaletaRespuestaOption[];
   np2Options: PaletaRespuestaOption[];
   now?: Date;

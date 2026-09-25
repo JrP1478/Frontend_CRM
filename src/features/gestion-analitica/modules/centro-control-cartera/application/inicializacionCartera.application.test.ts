@@ -15,7 +15,7 @@ import {
 } from './inicializacionCartera.application';
 
 const FILTERS: CentroControlCarteraFilters = {
-  businessUnit: 'CLARO ADMINISTRATIVO',
+  businessUnit: 'CLIENTE_A ADMINISTRATIVO',
   dateFrom: '2026-08-01',
   dateTo: '2026-08-13',
   subPortfolioId: '10',
@@ -35,7 +35,7 @@ export const suite = defineSuite(
       );
 
       session.filterOptionsLoaded = true;
-      session.selectedBusinessUnit = 'CLARO ADMINISTRATIVO';
+      session.selectedBusinessUnit = 'CLIENTE_A ADMINISTRATIVO';
       requestInicializacionCartera(session);
 
       assert.equal(
@@ -46,12 +46,12 @@ export const suite = defineSuite(
     test('mantiene Overview al cambiar filtros dentro de la misma cartera', () => {
       const session = createInicializacionCarteraSession();
       session.filterOptionsLoaded = true;
-      session.selectedBusinessUnit = 'CLARO GOBIERNO';
+      session.selectedBusinessUnit = 'CLIENTE_A GOBIERNO';
 
       assert.equal(
         resolveCentroControlCarteraLoadMode(session, {
           ...FILTERS,
-          businessUnit: ' claro gobierno ',
+          businessUnit: ' cliente_a gobierno ',
         }),
         'overview'
       );
@@ -59,12 +59,12 @@ export const suite = defineSuite(
     test('fuerza Bootstrap cuando cambia la cartera solicitada', () => {
       const session = createInicializacionCarteraSession();
       session.filterOptionsLoaded = true;
-      session.selectedBusinessUnit = 'CLARO ADMINISTRATIVO';
+      session.selectedBusinessUnit = 'CLIENTE_A ADMINISTRATIVO';
 
       assert.equal(
         resolveCentroControlCarteraLoadMode(session, {
           ...FILTERS,
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
         }),
         'bootstrap'
       );
@@ -72,13 +72,13 @@ export const suite = defineSuite(
     test('reintenta Bootstrap sin campaña actual y usa Overview al elegir un histórico', () => {
       const session = createInicializacionCarteraSession();
       session.filterOptionsLoaded = true;
-      session.selectedBusinessUnit = 'CLARO GOBIERNO';
+      session.selectedBusinessUnit = 'CLIENTE_A GOBIERNO';
       session.currentCampaignUnavailable = true;
 
       assert.equal(
         resolveCentroControlCarteraLoadMode(session, {
           ...FILTERS,
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           campaignId: null,
         }),
         'bootstrap'
@@ -86,7 +86,7 @@ export const suite = defineSuite(
       assert.equal(
         resolveCentroControlCarteraLoadMode(session, {
           ...FILTERS,
-          businessUnit: 'CLARO GOBIERNO',
+          businessUnit: 'CLIENTE_A GOBIERNO',
           campaignId: '2026-08',
         }),
         'overview'
@@ -96,12 +96,12 @@ export const suite = defineSuite(
       const adminKey = getCentroControlCarteraResourceKey(95, FILTERS);
       const governmentKey = getCentroControlCarteraResourceKey(95, {
         ...FILTERS,
-        businessUnit: 'CLARO GOBIERNO',
+        businessUnit: 'CLIENTE_A GOBIERNO',
       });
 
       assert.notDeepEqual(adminKey, governmentKey);
-      assert.equal(adminKey[1], 'CLARO ADMINISTRATIVO');
-      assert.equal(governmentKey[1], 'CLARO GOBIERNO');
+      assert.equal(adminKey[1], 'CLIENTE_A ADMINISTRATIVO');
+      assert.equal(governmentKey[1], 'CLIENTE_A GOBIERNO');
     }),
   ]
 );

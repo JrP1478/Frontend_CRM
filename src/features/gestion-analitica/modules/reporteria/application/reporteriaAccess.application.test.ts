@@ -98,7 +98,7 @@ export const suite = defineSuite(
       }
     ),
     test(
-      'el reporte 27 queda autorizado por SISGES sin consultar el grupo Analytics y mantiene selección de cartera',
+      'el reporte 27 queda autorizado por CRM sin consultar el grupo Analytics y mantiene selección de cartera',
       async () => {
         let requestCount = 0;
 
@@ -162,7 +162,7 @@ export const suite = defineSuite(
               getReportClients: async () => [
                 {
                   clientId: 95,
-                  name: 'CLARO',
+                  name: 'CLIENTE_A',
                 },
               ],
             }
@@ -177,7 +177,7 @@ export const suite = defineSuite(
           );
           assert.match(
             result.route,
-            /reportClient=CLARO/
+            /reportClient=CLIENTE_A/
           );
         }
       }
@@ -186,7 +186,7 @@ export const suite = defineSuite(
       'el reporte 27 abre Seleccionar cartera incluso cuando solo existe una opción',
       async () => {
         const clients = [
-          { clientId: 95, name: 'CLARO' },
+          { clientId: 95, name: 'CLIENTE_A' },
         ];
 
         const result =
@@ -209,8 +209,8 @@ export const suite = defineSuite(
       'varias carteras mantienen la selección como decisión de presentación',
       async () => {
         const clients = [
-          { clientId: 95, name: 'CLARO' },
-          { clientId: 120, name: 'ADEX' },
+          { clientId: 95, name: 'CLIENTE_A' },
+          { clientId: 120, name: 'CLIENTE_C' },
         ];
 
         const result =
@@ -267,7 +267,7 @@ export const suite = defineSuite(
         const result =
           await loadPowerBiViewerAccess(
             27,
-            'clientId=95&reportClient=CLARO',
+            'clientId=95&reportClient=CLIENTE_A',
             undefined,
             {
               getViewerContext: async (
@@ -292,7 +292,7 @@ export const suite = defineSuite(
 
         assert.deepEqual(receivedClient, {
           clientId: 95,
-          name: 'CLARO',
+          name: 'CLIENTE_A',
         });
         assert.equal(result.allowed, true);
         assert.equal(
@@ -337,7 +337,7 @@ export const suite = defineSuite(
               clientSelectionStatus: 'VALID',
               selectedClient: {
                 clientId: 95,
-                name: 'CLARO',
+                name: 'CLIENTE_A',
               },
               scopedEmbedUrl:
                 'https://example.com/no-power-bi',

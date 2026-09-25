@@ -61,27 +61,27 @@ export const suite = defineSuite(
         );
         assert.equal(
           catalogById.get('alfin')?.src,
-          '/imgs_webp/logo-alfin.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           catalogById.get('certus')?.src,
-          '/imgs_webp/logo-certus.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           catalogById.get('directv')?.src,
-          '/imgs_webp/logo-directv.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
-          catalogById.get('maf')?.src,
-          '/imgs_webp/logo-maf.webp'
+          catalogById.get('cliente_b')?.src,
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           catalogById.get('niubiz')?.src,
-          '/imgs_webp/logo-niubiz.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
         assert.equal(
           catalogById.get('oriflame')?.src,
-          '/imgs_webp/logo-oriflame.webp'
+          '/imgs_webp/client-logo-placeholder.svg'
         );
       }
     ),
@@ -90,9 +90,9 @@ export const suite = defineSuite(
       () => {
         assert.equal(
           findPowerBiImageDefinition(
-            '/imgs_webp/logo-backus.webp'
+            '/imgs_webp/client-logo-placeholder.svg'
           )?.label,
-          'BACKUS COBRANZA'
+          'CLIENTE_F COBRANZA'
         );
 
         assert.equal(

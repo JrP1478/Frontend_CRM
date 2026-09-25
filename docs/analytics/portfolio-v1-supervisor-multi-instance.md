@@ -4,26 +4,26 @@
 
 Analytics:
 
-`172.23.1.180\MSSQLSERVER,51601 / aval_analytics`
+`PRIVATE_HOST\MSSQLSERVER,51601 / legacy_crm_analytics`
 
-Fuente SISGES accesible:
+Fuente CRM accesible:
 
-`192.168.100.45\MSSQLSERVER,51601 / aval_cob`
+`PRIVATE_HOST\MSSQLSERVER,51601 / legacy_crm_cob`
 
-Existe también `aval_cob` en `172.23.1.180`, pero el usuario utilizado no
+Existe también `legacy_crm_cob` en `PRIVATE_HOST`, pero el usuario utilizado no
 tiene acceso y esa copia no se usa como fuente para este ETL.
 
 ## Decisión
 
-No se realiza referencia SQL de tres partes desde `aval_analytics` a
-`aval_cob`.
+No se realiza referencia SQL de tres partes desde `legacy_crm_analytics` a
+`legacy_crm_cob`.
 
 La integración se divide en:
 
-1. extracción pequeña de `192.168.100.45 / aval_cob.dbo.av_Usuario`;
-2. carga a `aval_analytics.staging.aval_usuario_current`;
+1. extracción pequeña de `PRIVATE_HOST / legacy_crm_cob.dbo.av_Usuario`;
+2. carga a `legacy_crm_analytics.staging.legacy_crm_usuario_current`;
 3. transformación local:
-   `etl.usp_load_claro_supervisor_hierarchy`.
+   `etl.usp_load_cliente_a_supervisor_hierarchy`.
 
 La tabla `av_Usuario` tiene un volumen pequeño frente a las tablas
 transaccionales masivas, por lo que el snapshot completo de las columnas
@@ -35,8 +35,8 @@ Las cadenas de conexión no viven en Git.
 
 El loader exige:
 
-- `AVAL_COB_CONNECTION_STRING`;
-- `AVAL_ANALYTICS_CONNECTION_STRING`.
+- `LEGACY_CRM_COB_CONNECTION_STRING`;
+- `LEGACY_CRM_ANALYTICS_CONNECTION_STRING`.
 
 Cada una puede utilizar el mecanismo de autenticación autorizado para su
 servidor.

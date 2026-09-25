@@ -86,7 +86,7 @@ export const suite = defineSuite('reportarCasosApi', [
               id: 7,
               caso: ' CASO DE PRUEBA ',
               descripcion: ' Detalle del caso ',
-              cartera: ' MAF ',
+              cartera: ' CLIENTE_B ',
               usuario: ' GESTOR 01 ',
               fec_Ingreso: '2026-09-16T10:30:00',
             },
@@ -110,7 +110,7 @@ export const suite = defineSuite('reportarCasosApi', [
           id: '7',
           caso: 'CASO DE PRUEBA',
           descripcion: 'Detalle del caso',
-          cartera: 'MAF',
+          cartera: 'CLIENTE_B',
           usuario: 'GESTOR 01',
           fechaIngreso: '2026-09-16T10:30:00',
         },
@@ -130,7 +130,7 @@ export const suite = defineSuite('reportarCasosApi', [
               id: '7',
               caso: 'CASO',
               descripcion: 'Detalle',
-              cartera: 'MAF',
+              cartera: 'CLIENTE_B',
               usuario: 'GESTOR',
               fec_Ingreso: '2026-09-16T10:30:00',
             },
@@ -189,7 +189,7 @@ export const suite = defineSuite('reportarCasosApi', [
           idDeudor: '3001',
           idUsuario: '15458',
           data: {
-            caso: 'Reportar Caso MAF',
+            caso: 'Reportar Caso CLIENTE_B',
             descripcion: 'Detalle del caso',
             tipoSiniestro: 'Caso Varios',
           },
@@ -209,7 +209,7 @@ export const suite = defineSuite('reportarCasosApi', [
       assert.equal(body.nId_PersDeudor, 3001);
       assert.equal(body.nId_Cartera, 156);
       assert.equal(body.nId_Cliente, 95);
-      assert.equal(body.cDocParam01, 'Reportar Caso MAF');
+      assert.equal(body.cDocParam01, 'Reportar Caso CLIENTE_B');
       assert.equal(body.cDocParam04, 'Caso Varios');
       assert.equal(body.cDocOpeCobOut_Descr, 'Detalle del caso');
       assert.equal(typeof body.dDocCobOpe_FecIni, 'string');
@@ -241,7 +241,7 @@ export const suite = defineSuite('reportarCasosApi', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     };
 
@@ -292,7 +292,7 @@ export const suite = defineSuite('reportarCasosApi', [
       nId_Cartera: 34359,
       nId_Cliente: 59,
       dDoc_FecActual: '2026-09-16T13:33:57.907',
-      cDocParam01: 'Reportar Caso MAF',
+      cDocParam01: 'Reportar Caso CLIENTE_B',
       cDocParam04: 'Caso Varios',
     };
 
@@ -325,7 +325,7 @@ export const suite = defineSuite('reportarCasosApi', [
           idUsuario: '15458',
           original,
           data: {
-            caso: 'Reportar Caso MAF',
+            caso: 'Reportar Caso CLIENTE_B',
             descripcion: ' Descripción actualizada ',
             tipoSiniestro: 'Pago no Reflejado',
           },
@@ -348,7 +348,7 @@ export const suite = defineSuite('reportarCasosApi', [
       assert.equal(body.nId_PersDeudor, 17524528);
       assert.equal(body.nId_Cartera, 34359);
       assert.equal(body.nId_Cliente, 59);
-      assert.equal(body.cDocParam01, 'Reportar Caso MAF');
+      assert.equal(body.cDocParam01, 'Reportar Caso CLIENTE_B');
       assert.equal(body.cDocParam04, 'Pago no Reflejado');
       assert.equal(typeof body.dDoc_FecActual, 'string');
       assert.notEqual(body.dDoc_FecActual, '');

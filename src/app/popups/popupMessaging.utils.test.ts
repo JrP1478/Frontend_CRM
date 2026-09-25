@@ -47,13 +47,13 @@ export const suite = defineSuite(
         );
         assert.equal(
           parsePopupWindowName(
-            `avalperu-popup:desconocido:${popupId}`
+            `legacy_crmperu-popup:desconocido:${popupId}`
           ),
           null
         );
         assert.equal(
           parsePopupWindowName(
-            `avalperu-popup:lista-gestores:${popupId}:extra`
+            `legacy_crmperu-popup:lista-gestores:${popupId}:extra`
           ),
           null
         );
@@ -64,7 +64,7 @@ export const suite = defineSuite(
       () => {
         const request = {
           version: POPUP_MESSAGING_PROTOCOL_VERSION,
-          type: 'AVALPERU_POPUP_CONTEXT_REQUEST',
+          type: 'LEGACY_CRMPERU_POPUP_CONTEXT_REQUEST',
           popupId,
           popupType: 'lista-gestores',
         };
@@ -94,7 +94,7 @@ export const suite = defineSuite(
       () => {
         const response = {
           version: POPUP_MESSAGING_PROTOCOL_VERSION,
-          type: 'AVALPERU_POPUP_CONTEXT_RESPONSE',
+          type: 'LEGACY_CRMPERU_POPUP_CONTEXT_RESPONSE',
           popupId,
           popupType: 'lista-gestores',
           context: validContext,
@@ -118,7 +118,7 @@ export const suite = defineSuite(
       () => {
         const response = {
           version: POPUP_MESSAGING_PROTOCOL_VERSION,
-          type: 'AVALPERU_POPUP_CONTEXT_RESPONSE',
+          type: 'LEGACY_CRMPERU_POPUP_CONTEXT_RESPONSE',
           popupId,
           popupType: 'lista-gestores',
           context: validContext,

@@ -54,7 +54,7 @@ export const suite = defineSuite('deudorHeaderApi', [
         JSON.stringify(
           createEnvelope({
             ciudad: 'LIMA',
-            cCar_Nombre: 'CLARO 2026',
+            cCar_Nombre: 'CLIENTE_A 2026',
             cCampanna: 'AGOSTO',
           })
         ),
@@ -70,7 +70,7 @@ export const suite = defineSuite('deudorHeaderApi', [
 
       assert.deepEqual(result, {
         zona: 'LIMA',
-        cartera: 'CLARO 2026',
+        cartera: 'CLIENTE_A 2026',
         campana: 'AGOSTO',
       });
       const capturedUrl = capturedUrls[0];

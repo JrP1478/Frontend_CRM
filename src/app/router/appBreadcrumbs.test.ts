@@ -47,8 +47,8 @@ const portfolio: AuthorizedOption = {
 
 const powerBiReport: AuthorizedOption = {
   id: 26,
-  code: 'mBackusCobranza',
-  name: 'Backus Cobranza',
+  code: 'mClienteFCobranza',
+  name: 'ClienteF Cobranza',
   description: 'Reporte Power BI.',
   icon: 'analytics',
   type: 4,
@@ -117,7 +117,7 @@ export const suite = defineSuite(
             buildReporteriaBiRoute(26),
             [businessIntelligence]
           ),
-          'INTELIGENCIA DE NEGOCIO › REPORTERÍA › BACKUS COBRANZA'
+          'INTELIGENCIA DE NEGOCIO › REPORTERÍA › CLIENTE_F COBRANZA'
         );
       }
     ),

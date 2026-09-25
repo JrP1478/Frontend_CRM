@@ -236,16 +236,16 @@ export const buildAccessTree = (
   const roots = [
     ...(childrenByParent.get(0) ?? []),
   ].sort((left, right) => {
-    const leftIsNaturalRoot =
+    const leftIsClienteLlRoot =
       left.idPadre <= 0;
-    const rightIsNaturalRoot =
+    const rightIsClienteLlRoot =
       right.idPadre <= 0;
 
     if (
-      leftIsNaturalRoot !==
-      rightIsNaturalRoot
+      leftIsClienteLlRoot !==
+      rightIsClienteLlRoot
     ) {
-      return leftIsNaturalRoot
+      return leftIsClienteLlRoot
         ? -1
         : 1;
     }

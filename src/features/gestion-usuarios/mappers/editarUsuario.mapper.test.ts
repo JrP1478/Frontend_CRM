@@ -283,14 +283,14 @@ export const suite = defineSuite(
             nId_UGrupo: 9901,
             nId_Usuario: 16068,
             nid_grupo: 219,
-            cNombre_Grupo: 'ADEX INSTITUTO',
+            cNombre_Grupo: 'CLIENTE_C INSTITUTO',
           });
 
         assert.deepEqual(group, {
           idUsuarioGrupo: 9901,
           idUsuario: 16068,
           idGrupo: 219,
-          nombre: 'ADEX INSTITUTO',
+          nombre: 'CLIENTE_C INSTITUTO',
         });
       }
     ),

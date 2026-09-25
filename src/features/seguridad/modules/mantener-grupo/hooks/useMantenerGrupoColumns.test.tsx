@@ -22,10 +22,10 @@ import {
 const row: Grupo = {
   idGrupo: 219,
   nombreGrupo:
-    'ADEX INSTITUTO',
+    'CLIENTE_C INSTITUTO',
   idCliente: 178,
   cliente:
-    'ADEX INSTITUTO',
+    'CLIENTE_C INSTITUTO',
   estado: 'Activo',
 };
 
@@ -83,7 +83,7 @@ export const suite = defineSuite(
         );
         assert.match(
           html,
-          /ADEX INSTITUTO/
+          /CLIENTE_C INSTITUTO/
         );
         assert.match(
           html,

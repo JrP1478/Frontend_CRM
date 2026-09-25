@@ -81,12 +81,12 @@ VALUES
     ('analytics.v_supervisor_debtor_contact_daily', 'V'),
     ('analytics.v_supervisor_debtor_payment_daily', 'V'),
     ('analytics.v_supervisor_promise_operational', 'V'),
-    ('etl.usp_load_claro_portfolio_snapshot', 'P'),
-    ('etl.usp_load_claro_live_operations', 'P'),
-    ('etl.usp_load_claro_advisor_daily', 'P'),
-    ('etl.usp_load_claro_supervisor_hierarchy', 'P'),
-    ('etl.usp_load_claro_target_monthly', 'P'),
-    ('etl.usp_load_claro_portfolio_evolution', 'P');
+    ('etl.usp_load_cliente_a_portfolio_snapshot', 'P'),
+    ('etl.usp_load_cliente_a_live_operations', 'P'),
+    ('etl.usp_load_cliente_a_advisor_daily', 'P'),
+    ('etl.usp_load_cliente_a_supervisor_hierarchy', 'P'),
+    ('etl.usp_load_cliente_a_target_monthly', 'P'),
+    ('etl.usp_load_cliente_a_portfolio_evolution', 'P');
 
 INSERT INTO @Failures(check_name, actual_value, expected_value, detail)
 SELECT
@@ -119,12 +119,12 @@ BEGIN
 
     INSERT INTO @RequiredWatermarks(source_code)
     VALUES
-        ('CLARO_PORTFOLIO_SNAPSHOT'),
+        ('CLIENTE_A_PORTFOLIO_SNAPSHOT'),
         ('GESTION_COB2_LIVE'),
-        ('CLARO_ADVISOR_DAILY'),
-        ('CLARO_SUPERVISOR_HIERARCHY'),
-        ('CLARO_TARGET_MONTHLY'),
-        ('CLARO_EVOLUTION_DAILY');
+        ('CLIENTE_A_ADVISOR_DAILY'),
+        ('CLIENTE_A_SUPERVISOR_HIERARCHY'),
+        ('CLIENTE_A_TARGET_MONTHLY'),
+        ('CLIENTE_A_EVOLUTION_DAILY');
 
     INSERT INTO @Failures(check_name, actual_value, expected_value, detail)
     SELECT

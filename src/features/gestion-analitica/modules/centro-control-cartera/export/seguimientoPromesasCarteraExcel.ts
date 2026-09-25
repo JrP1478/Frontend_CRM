@@ -81,7 +81,7 @@ export const buildSeguimientoPromesasExcelFile = (
       worksheetXml: buildSeguimientoPromesasWorksheetXml(worksheetParams),
       stylesXml: buildSeguimientoPromesasStylesXml(),
       documentTitle: 'Seguimiento de promesas',
-      creator: 'SISGES',
+      creator: 'CRM',
       exportedAt,
     }),
     fileName: buildFileName(params.dueDate, params.status, exportedAt),

@@ -38,7 +38,7 @@ export const loadPowerBiModuleConfiguration = (
   );
 
 export class ModuloAnalyticsSyncError extends Error {
-  readonly hasPersistedSisgesChanges = true;
+  readonly hasPersistedCrmChanges = true;
 
   constructor(message: string) {
     super(message);
@@ -109,7 +109,7 @@ export const registrarModulo = async (
     });
   } catch (error) {
     throw new ModuloAnalyticsSyncError(
-      'El módulo fue creado correctamente en SISGES, pero no se pudo completar su configuración de grupos en Analytics.' +
+      'El módulo fue creado correctamente en CRM, pero no se pudo completar su configuración de grupos en Analytics.' +
         resolveErrorDetail(error) +
         ' No vuelva a registrarlo; complete la configuración de grupos Analytics para la opción creada.'
     );
@@ -143,7 +143,7 @@ export const actualizarModulo = async (
     });
   } catch (error) {
     throw new ModuloAnalyticsSyncError(
-      'El módulo fue actualizado correctamente en SISGES, pero no se pudo completar su configuración Power BI en Analytics.' +
+      'El módulo fue actualizado correctamente en CRM, pero no se pudo completar su configuración Power BI en Analytics.' +
         resolveErrorDetail(error) +
         ' Vuelva a editar el módulo y reintente el guardado.'
     );

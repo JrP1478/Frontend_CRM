@@ -9,8 +9,8 @@ import {
 } from '@shared/components/ui';
 
 import {
-  SisgesIconPicker,
-} from '@shared/icons/sisges';
+  CrmIconPicker,
+} from '@shared/icons/crm';
 
 import type {
   SelectOption,
@@ -150,7 +150,7 @@ export const RegistrarModuloFormFields = ({
             required
           />
 
-          <SisgesIconPicker
+          <CrmIconPicker
             id="registrar-modulo-icono"
             label={
               MODAL_REGISTRAR_MODULO_LABELS

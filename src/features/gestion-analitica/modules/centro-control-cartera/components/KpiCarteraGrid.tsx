@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import { AnalyticsKpiCard } from '../../../shared/components';
 import type {
@@ -39,7 +39,7 @@ export const KpiCarteraGrid: React.FC<
           summary.assignedPortfolio
         )}
         hint="Universo asignado al corte"
-        icon={<SisgesIcon name="briefcase" />}
+        icon={<CrmIcon name="briefcase" />}
         progress={100}
       />
 
@@ -52,7 +52,7 @@ export const KpiCarteraGrid: React.FC<
         hint={`${formatPortfolioPercentage(
           managedRate
         )} de la cartera`}
-        icon={<SisgesIcon name="success" />}
+        icon={<CrmIcon name="success" />}
         tone="success"
         progress={managedRate}
       />
@@ -66,7 +66,7 @@ export const KpiCarteraGrid: React.FC<
         hint={`${formatPortfolioPercentage(
           pendingRate
         )} por gestionar`}
-        icon={<SisgesIcon name="history" />}
+        icon={<CrmIcon name="history" />}
         tone="warning"
         progress={pendingRate}
       />
@@ -78,7 +78,7 @@ export const KpiCarteraGrid: React.FC<
           summary.recoveredAmount
         )}
         hint="Pagos válidos acumulados"
-        icon={<SisgesIcon name="money" />}
+        icon={<CrmIcon name="money" />}
         tone="danger"
         emphasis
       />

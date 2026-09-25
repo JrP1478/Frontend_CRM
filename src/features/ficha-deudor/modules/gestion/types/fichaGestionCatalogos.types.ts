@@ -26,7 +26,7 @@ export interface GestionPaletaRespuestaParams {
   idTipoGestion?: string | number;
 }
 
-export interface GestionEstadoClaroList {
+export interface GestionEstadoClienteAList {
   id: string;
   nombre: string;
 }
@@ -71,9 +71,9 @@ export interface FichaGestionCatalogos {
   isLoadingNP2: boolean;
   errorNP2: string | null;
 
-  estadoGestionClaroOptions: SelectOption[];
-  isLoadingEstadoGestionClaro: boolean;
-  errorEstadoGestionClaro: string | null;
+  estadoGestionClienteAOptions: SelectOption[];
+  isLoadingEstadoGestionClienteA: boolean;
+  errorEstadoGestionClienteA: string | null;
 
   motivoNoPagoOptions: SelectOption[];
   isLoadingMotivoNoPago: boolean;

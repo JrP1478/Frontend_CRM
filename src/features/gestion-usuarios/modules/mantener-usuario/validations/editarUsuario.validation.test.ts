@@ -43,7 +43,7 @@ const assignedGroup: UsuarioGrupoItem = {
   idUsuarioGrupo: 9901,
   idUsuario: 16068,
   idGrupo: 219,
-  nombre: 'ADEX INSTITUTO',
+  nombre: 'CLIENTE_C INSTITUTO',
 };
 
 export const suite = defineSuite(

@@ -1,7 +1,7 @@
 import type React from 'react';
 
 import { AnalyticsPageHeader } from '../../../shared/components';
-import { SisgesIcon } from '@shared/icons/sisges';
+import { CrmIcon } from '@shared/icons/crm';
 
 import type {
   CentroControlCarteraFreshness,
@@ -56,7 +56,7 @@ const CentroControlCarteraFreshnessInfo: React.FC<
         className="portfolio-control-center__freshness-icon"
         aria-hidden="true"
       >
-        <SisgesIcon name="history" />
+        <CrmIcon name="history" />
       </span>
 
       <div className="portfolio-control-center__freshness-copy">
@@ -119,7 +119,7 @@ export const CentroControlCarteraHeader: React.FC<
   <AnalyticsPageHeader
     variant="hero"
     className="portfolio-control-center__header"
-    icon={<SisgesIcon name="analytics" />}
+    icon={<CrmIcon name="analytics" />}
     title="Análisis de Carteras"
     description="Seguimiento operativo de cartera, avance y resultados."
     actions={(

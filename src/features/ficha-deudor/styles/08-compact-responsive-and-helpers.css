@@ -795,7 +795,7 @@
     minmax(110px, 0.85fr);
 }
 
-.gestion-compact-grid--claro-resultados {
+.gestion-compact-grid--cliente_a-resultados {
   grid-template-columns: repeat(2, minmax(220px, 1fr));
 }
 
@@ -906,7 +906,7 @@
   .gestion-compact-grid--np,
   .gestion-compact-grid--resultado-gestor,
   .gestion-compact-grid--compromiso,
-  .gestion-compact-grid--claro-resultados {
+  .gestion-compact-grid--cliente_a-resultados {
     grid-template-columns: repeat(2, minmax(180px, 1fr));
   }
 
@@ -939,7 +939,7 @@
   .gestion-compact-grid--resultado-gestor,
   .gestion-compact-grid--compromiso,
   .gestion-compact-grid--fechas,
-  .gestion-compact-grid--claro-resultados {
+  .gestion-compact-grid--cliente_a-resultados {
     grid-template-columns: 1fr;
   }
 
@@ -984,7 +984,7 @@
  * - Observaciones
  *
  * Columna derecha:
- * - Estado Gestión Claro
+ * - Estado Gestión ClienteA
  * - Motivo No Pago
  */
 .resultados-llamada-layout {
@@ -1002,7 +1002,7 @@
 }
 
 /*
- * Cuando los campos de Claro no se muestran,
+ * Cuando los campos de ClienteA no se muestran,
  * la sección principal utiliza todo el ancho.
  */
 .resultados-llamada-layout--single {
@@ -1051,7 +1051,7 @@
 
 /* ── Columna derecha ──────────────────────────────── */
 
-.resultados-llamada__campos-claro {
+.resultados-llamada__campos-cliente_a {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: start;
@@ -1061,7 +1061,7 @@
   min-width: 0;
 }
 
-.resultados-llamada__campos-claro .form-group {
+.resultados-llamada__campos-cliente_a .form-group {
   width: 100%;
   min-width: 0;
   margin: 0;

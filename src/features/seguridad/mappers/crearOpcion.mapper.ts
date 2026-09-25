@@ -80,7 +80,7 @@ export const buildCreateOpcionRequest = (
     sDescripcionOpcion:
       form.descripcion.trim(),
 
-    // sUrlOpcion representa la jerarquía configurada en SISGES.
+    // sUrlOpcion representa la jerarquía configurada en CRM.
     // La ruta real de React permanece únicamente en el registry de pantallas.
     sUrlOpcion:
       buildModuloRoute(

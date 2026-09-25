@@ -1,8 +1,8 @@
-# Portfolio V1 - ETL de evolución histórica CLARO
+# Portfolio V1 - ETL de evolución histórica CLIENTE_A
 
 ## Fuente
 
-`aval_reporteria.dbo.PBI_CARTERA_DIA_CLARO_CORP_ADMINISTRATIVO_EVOL`
+`legacy_crm_reporteria.dbo.PBI_CARTERA_DIA_CLIENTE_A_CORP_ADMINISTRATIVO_EVOL`
 
 El diagnóstico físico de agosto 2026 confirmó:
 
@@ -72,15 +72,15 @@ Esto evita que el gráfico introduzca una segunda definición de recaudo.
 ## Scope
 
 El loader no crea carteras desde EVOL. Exige que `nid_cartera` ya exista en
-`analytics.dim_portfolio`, que fue poblada desde el snapshot CLARO canonical.
+`analytics.dim_portfolio`, que fue poblada desde el snapshot CLIENTE_A canonical.
 De esta forma EVOL hereda el mismo scope de carteras y no amplía el cliente por
-un filtro textual como `%CLARO%`.
+un filtro textual como `%CLIENTE_A%`.
 
 ## Carga
 
 Procedimiento:
 
-`etl.usp_load_claro_portfolio_evolution`
+`etl.usp_load_cliente_a_portfolio_evolution`
 
 V1 reprocesa el mes completo. EVOL puede corregir días históricos y el volumen
 mensual es pequeño respecto de la fuente transaccional masiva.
@@ -93,7 +93,7 @@ La carga:
 4. valida que `CLIENTE_GESTIONADO_NVO` no sea negativo y que su acumulado cumpla `0 <= managed <= assigned`;
 5. upserta el grain mensual;
 6. elimina filas desaparecidas de EVOL dentro de la campaña;
-7. actualiza `CLARO_EVOLUTION_DAILY`;
+7. actualiza `CLIENTE_A_EVOLUTION_DAILY`;
 8. hace commit en una única transacción.
 
 ## Contratos de lectura

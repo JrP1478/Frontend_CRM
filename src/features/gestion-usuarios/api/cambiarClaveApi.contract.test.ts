@@ -113,7 +113,7 @@ export const suite = defineSuite(
     ),
 
     test(
-      'reemplaza un OK genérico del backend por un mensaje claro para el usuario',
+      'reemplaza un OK genérico del backend por un mensaje cliente_a para el usuario',
       async () => {
         const originalFetch = globalThis.fetch;
 

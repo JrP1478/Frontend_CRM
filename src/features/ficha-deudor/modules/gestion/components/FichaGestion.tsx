@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { DocumentoApi } from '../../../shared/types';
 import { useFichaGestionViewModel } from '../hooks/useFichaGestionViewModel';
-import type { GestionFormClaro } from '../types/fichaGestionForm.types';
+import type { GestionFormClienteA } from '../types/fichaGestionForm.types';
 import type { FichaDeudorGestionFormParams } from '../../../shared/types/fichaDeudor.types';
 import FichaGestionDatosPrincipales from './FichaGestionDatosPrincipales';
 import FichaGestionAccionesTomar from './FichaGestionAccionesTomar';
@@ -23,7 +23,7 @@ interface Props {
     gestionTerminada: boolean
   ) => void;
   onSubmit?: (
-    data: GestionFormClaro,
+    data: GestionFormClienteA,
     fechaFinGestion: string
   ) => void;
 }

@@ -1,4 +1,4 @@
-name: One-time frontend anonymization
+name: One-time frontend anonymization v2
 
 on:
   push:

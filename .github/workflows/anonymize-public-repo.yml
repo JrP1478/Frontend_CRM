@@ -1,0 +1,319 @@
+name: One-time frontend anonymization
+
+on:
+  push:
+    branches:
+      - cleanup/anonymize-public-repo
+    paths:
+      - .github/workflows/anonymize-public-repo.yml
+
+permissions:
+  contents: write
+
+jobs:
+  anonymize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cleanup branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Sanitize repository
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+
+          root = Path(".")
+          workflow = Path(".github/workflows/anonymize-public-repo.yml")
+
+          text_exts = {
+              ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs",
+              ".css", ".scss", ".html", ".json", ".md", ".txt",
+              ".sql", ".py", ".ps1", ".sh", ".xml", ".yml", ".yaml",
+              ".env", ".http", ".toml", ".ini",
+          }
+          text_names = {
+              ".gitignore", ".gitattributes", ".dockerignore",
+              ".editorconfig", "Dockerfile"
+          }
+
+          def is_text(path: Path) -> bool:
+              return path.name in text_names or path.suffix.lower() in text_exts or path.name.startswith(".env")
+
+          # Company/internal names and identifiable clients are mapped to neutral portfolio labels.
+          replacements = [
+              ("API.BS.GestionManagement", "Backend.CRM"),
+              ("SISGES", "CRM"),
+              ("Sisges", "Crm"),
+              ("sisges", "crm"),
+              ("AVAL", "LEGACY_CRM"),
+              ("Aval", "LegacyCrm"),
+              ("aval", "legacy_crm"),
+              ("CLARO", "CLIENTE_A"),
+              ("Claro", "ClienteA"),
+              ("claro", "cliente_a"),
+              ("MAF", "CLIENTE_B"),
+              ("Maf", "ClienteB"),
+              ("maf", "cliente_b"),
+              ("ADEX", "CLIENTE_C"),
+              ("Adex", "ClienteC"),
+              ("ALFIN", "CLIENTE_D"),
+              ("Alfin", "ClienteD"),
+              ("AZZORTI", "CLIENTE_E"),
+              ("Azzorti", "ClienteE"),
+              ("BACKUS", "CLIENTE_F"),
+              ("Backus", "ClienteF"),
+              ("CERTUS", "CLIENTE_G"),
+              ("Certus", "ClienteG"),
+              ("CIENTIFICA", "CLIENTE_H"),
+              ("Cientifica", "ClienteH"),
+              ("Científica", "ClienteH"),
+              ("DIRECTV", "CLIENTE_I"),
+              ("Directv", "ClienteI"),
+              ("ELEDE", "CLIENTE_J"),
+              ("Elede", "ClienteJ"),
+              ("ENTEL", "CLIENTE_K"),
+              ("Entel", "ClienteK"),
+              ("NATURA", "CLIENTE_L"),
+              ("Natura", "ClienteL"),
+              ("NIUBIZ", "CLIENTE_M"),
+              ("Niubiz", "ClienteM"),
+              ("OPENPAY", "CLIENTE_N"),
+              ("Openpay", "ClienteN"),
+              ("ORIFLAME", "CLIENTE_O"),
+              ("Oriflame", "ClienteO"),
+              ("PUCP", "CLIENTE_P"),
+              ("VERISURE", "CLIENTE_Q"),
+              ("Verisure", "ClienteQ"),
+              ("DERRAMA", "CLIENTE_R"),
+              ("Derrama", "ClienteR"),
+              ("YANBAL", "CLIENTE_S"),
+              ("Yanbal", "ClienteS"),
+          ]
+
+          # Known branded image assets. References are redirected to one neutral placeholder.
+          branded_assets = [
+              "adex_logo.webp",
+              "logo-alfin.png", "logo-alfin.webp",
+              "logo-azzorti.webp",
+              "logo-backus-cre.webp", "logo-backus.webp",
+              "logo-certus.png", "logo-certus.webp",
+              "logo-cientifica-completo.webp",
+              "logo-claro-corp.webp", "logo-claro-gob.webp",
+              "logo-directv.png", "logo-directv.webp",
+              "logo-elede-bi.webp",
+              "logo-entel.webp",
+              "logo-maf.png", "logo-maf.webp",
+              "logo-natura.webp",
+              "logo-niubiz.png", "logo-niubiz.webp",
+              "logo-openpay.webp",
+              "logo-oriflame.png", "logo-oriflame.webp",
+              "logo-pucp.webp",
+              "logo-verisure.webp",
+              "logo_derrama.webp",
+              "yanbal_logo.webp",
+          ]
+
+          placeholder = Path("public/imgs_webp/client-logo-placeholder.svg")
+          placeholder.parent.mkdir(parents=True, exist_ok=True)
+          placeholder.write_text(
+              '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120">'
+              '<rect width="320" height="120" rx="12" fill="#f3f4f6"/>'
+              '<text x="160" y="66" text-anchor="middle" font-family="Arial,sans-serif" '
+              'font-size="22" fill="#4b5563">CLIENTE</text></svg>\n',
+              encoding="utf-8",
+          )
+
+          files = [
+              p for p in root.rglob("*")
+              if p.is_file() and ".git" not in p.parts and p != workflow and is_text(p)
+          ]
+
+          for path in files:
+              try:
+                  content = path.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
+                  continue
+
+              updated = content
+
+              # Redirect any explicit branded image filename to the neutral SVG.
+              for asset in branded_assets:
+                  updated = updated.replace(asset, "client-logo-placeholder.svg")
+
+              for old, new in replacements:
+                  updated = updated.replace(old, new)
+
+              # Remove private/internal IPv4 addresses while preserving localhost examples.
+              updated = re.sub(
+                  r'https?://(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})(?::\d+)?',
+                  '/api',
+                  updated,
+              )
+
+              if updated != content:
+                  path.write_text(updated, encoding="utf-8")
+
+          # Environment-specific files must never expose real infrastructure.
+          for env_path in [Path(".env.development"), Path(".env.production")]:
+              if env_path.exists():
+                  env_path.unlink()
+
+          # Replace the generic template README with a portfolio-safe project description.
+          Path("README.md").write_text(
+              """# Frontend.CRM
+
+> **Repositorio anonimizado para portafolio.** Los nombres de empresa, clientes, logos, servidores y datos específicos del entorno original fueron sustituidos por valores genéricos.
+
+Frontend de una plataforma CRM desarrollado con React, TypeScript y Vite.
+
+## Stack
+
+- React
+- TypeScript
+- Vite
+- React Router
+- ESLint
+- Tests automatizados
+
+## Configuración local
+
+Copie `.env.example` y configure únicamente valores de su propio entorno. Los archivos de entorno reales no forman parte del repositorio.
+
+```bash
+npm ci
+npm run dev
+```
+
+## Validación
+
+```bash
+npm run typecheck
+npm run test
+npm run build
+```
+
+Los nombres de clientes, marcas y configuración de infraestructura utilizados en el proyecto original han sido anonimizados.
+""",
+              encoding="utf-8",
+          )
+
+          # Remove branded binary assets after redirecting references.
+          for asset in branded_assets:
+              p = Path("public/imgs_webp") / asset
+              if p.exists():
+                  p.unlink()
+
+          # Prevent environment/build/local artifacts from being committed again.
+          gitignore = Path(".gitignore")
+          content = gitignore.read_text(encoding="utf-8") if gitignore.exists() else ""
+          additions = """
+# Local/environment files
+.env*
+!.env.example
+
+# Generated analysis/build metadata
+.sonarqube/
+coverage/
+"""
+          if "# Local/environment files" not in content:
+              content = content.rstrip() + "\n" + additions
+              gitignore.write_text(content, encoding="utf-8")
+
+          # Rename branded paths after content updates.
+          path_replacements = [
+              ("sisges", "crm"),
+              ("Sisges", "Crm"),
+              ("SISGES", "CRM"),
+              ("aval", "legacy_crm"),
+              ("Aval", "LegacyCrm"),
+              ("AVAL", "LEGACY_CRM"),
+              ("claro", "cliente_a"),
+              ("Claro", "ClienteA"),
+              ("CLARO", "CLIENTE_A"),
+              ("maf", "cliente_b"),
+              ("Maf", "ClienteB"),
+              ("MAF", "CLIENTE_B"),
+          ]
+
+          paths = sorted(
+              [p for p in root.rglob("*") if ".git" not in p.parts and p != workflow],
+              key=lambda p: len(p.parts),
+              reverse=True,
+          )
+          for path in paths:
+              rel = path.as_posix()
+              new_rel = rel
+              for old, new in path_replacements:
+                  new_rel = new_rel.replace(old, new)
+              if new_rel == rel:
+                  continue
+              target = Path(new_rel)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              if target.exists() and target != path:
+                  if path.is_dir() and target.is_dir():
+                      continue
+                  if target.is_file():
+                      target.unlink()
+              path.rename(target)
+
+          # Remove one-time workflow from the cleaned tree.
+          if workflow.exists():
+              workflow.unlink()
+
+          # Final safety scan.
+          forbidden_patterns = [
+              r"CLARO", r"Claro", r"claro",
+              r"MAF", r"Maf", r"maf",
+              r"SISGES", r"Sisges", r"sisges",
+              r"AVAL", r"Aval", r"aval",
+              r"192\.168\.\d{1,3}\.\d{1,3}",
+              r"172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}",
+              r"10\.\d{1,3}\.\d{1,3}\.\d{1,3}",
+          ]
+
+          findings = []
+          for path in root.rglob("*"):
+              if ".git" in path.parts or path == workflow:
+                  continue
+              rel = path.as_posix()
+              for pattern in forbidden_patterns:
+                  if re.search(pattern, rel):
+                      findings.append(f"path: {rel} -> {pattern}")
+              if path.is_file() and is_text(path):
+                  try:
+                      content = path.read_text(encoding="utf-8")
+                  except UnicodeDecodeError:
+                      continue
+                  for pattern in forbidden_patterns:
+                      if re.search(pattern, content):
+                          findings.append(f"content: {rel} -> {pattern}")
+                          if len(findings) >= 50:
+                              break
+              if len(findings) >= 50:
+                  break
+
+          if findings:
+              raise SystemExit("Sensitive references remain:\n" + "\n".join(findings))
+          PY
+
+      - name: Install and build
+        shell: bash
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+
+      - name: Commit sanitized frontend
+        shell: bash
+        run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: anonymize frontend for public portfolio"
+          git push origin HEAD:cleanup/anonymize-public-repo
